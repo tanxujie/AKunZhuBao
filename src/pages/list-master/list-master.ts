@@ -5,6 +5,7 @@ import { ItemCreatePage } from '../item-create/item-create';
 import { ItemDetailPage } from '../item-detail/item-detail';
 
 import { Items } from '../../providers/providers';
+//import { Items } from '../../providers/items';
 
 import { Item } from '../../models/item';
 
