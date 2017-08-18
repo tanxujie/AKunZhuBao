@@ -5,8 +5,6 @@ import { ItemCreatePage } from '../item-create/item-create';
 import { ItemDetailPage } from '../item-detail/item-detail';
 
 import { Items } from '../../providers/providers';
-//import { Items } from '../../providers/items';
-
 import { Item } from '../../models/item';
 
 @Component({
@@ -30,6 +28,7 @@ export class ListMasterPage {
    * Prompt the user to add a new item. This shows our ItemCreatePage in a
    * modal and then adds the new item to our data source if the user created one.
    */
+  /*
   addItem() {
     let addModal = this.modalCtrl.create(ItemCreatePage);
     addModal.onDidDismiss(item => {
@@ -38,6 +37,11 @@ export class ListMasterPage {
       }
     })
     addModal.present();
+  }*/
+
+  searchItems(ent:any) {
+    let condition = ent.target.value;
+    this.currentItems = this.items.query({'condition': (condition||'')});
   }
 
   /**

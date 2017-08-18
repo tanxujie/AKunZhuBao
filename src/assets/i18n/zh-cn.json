@@ -8,9 +8,9 @@
   "LOGIN": "登录",
   "SIGNUP": "注册",
 
-  "TAB1_TITLE": "项目",
-  "TAB2_TITLE": "查询",
-  "TAB3_TITLE": "设定",
+  "TAB1_TITLE": "首页",
+  "TAB2_TITLE": "微课堂",
+  "TAB3_TITLE": "我的",
 
   "MAP_TITLE": "地图",
 
@@ -49,7 +49,7 @@
   "SIGNUP_ERROR": "不能生成账号。 请确认账户信息后重试。",
   "SIGNUP_BUTTON": "注册",
 
-  "LIST_MASTER_TITLE": "项目",
+  "LIST_MASTER_TITLE": "阿坤珠宝",
 
   "ITEM_CREATE_TITLE": "新项目",
   "ITEM_CREATE_CHOOSE_IMAGE": "追加图片",
