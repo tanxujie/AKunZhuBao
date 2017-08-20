@@ -1,39 +1,48 @@
+<!--
 <ion-header>
-
   <ion-navbar>
     <ion-title>{{ 'LOGIN_TITLE' | translate }}</ion-title>
   </ion-navbar>
-
 </ion-header>
-
+-->
 
 <ion-content>
+  <!--
+  <ion-slides>
+    <ion-slide>
+      <img src="assets/icon/favicon.png" class="slide-image" />
+    </ion-slide>
+  </ion-slides>
+  -->
   <form (submit)="doLogin()">
     <ion-list>
-
       <ion-item>
-        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
-        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+        <div align="center" padding>
+        <img src="assets/icon/favicon.png" class="slide-image" />
+        </div>
       </ion-item>
-
-      <!--
-      Want to use a Username instead of an Email? Here you go:
-
       <ion-item>
-        <ion-label floating>{{ 'USERNAME' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>
+        <ion-label fixed>{{ 'PHONENUMBER' | translate }}</ion-label>
+        <ion-input type="number" [(ngModel)]="account.phonenumber" name="phonenumber"></ion-input>
       </ion-item>
-      -->
-
       <ion-item>
         <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
         <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
       </ion-item>
-
+      <ion-item>
+        <ion-label fixed>{{ 'REMEMBER_PASSWORD' | translate }}</ion-label>
+        <ion-checkbox name="rememberPassword" checked="true" [(ngModel)]="account.rememberPassword"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>{{ 'AUTO_LOGIN' | translate }}</ion-label>
+        <ion-checkbox name="autoLogin" checked="true" [(ngModel)]="account.autoLogin"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <a href="">{{ 'FORGET_PASSWORD' | translate }}</a>
+      </ion-item>
       <div padding>
         <button ion-button color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
       </div>
-
     </ion-list>
   </form>
 </ion-content>

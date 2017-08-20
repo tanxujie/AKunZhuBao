@@ -25,14 +25,15 @@ export class WelcomePage {
   }
 
   checkLoginToken() {
-    return true;
+    return false;
   }
 
+  /*
   login() {
     this.navCtrl.push(LoginPage);
   }
 
   signup() {
     this.navCtrl.push(SignupPage);
-  }
+  }*/
 }

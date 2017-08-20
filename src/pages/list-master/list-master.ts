@@ -40,6 +40,7 @@ export class ListMasterPage {
   }*/
 
   searchItems(ent:any) {
+    // query condition
     let condition = ent.target.value;
     this.currentItems = this.items.query({'condition': (condition||'')});
   }
@@ -47,9 +48,11 @@ export class ListMasterPage {
   /**
    * Delete an item from the list of items.
    */
+  /*
   deleteItem(item) {
     this.items.delete(item);
   }
+  */
 
   /**
    * Navigate to the detail page for this item.
