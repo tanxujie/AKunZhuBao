@@ -25,7 +25,7 @@ export class WelcomePage {
   }
 
   checkLoginToken() {
-    return false;
+    return true;
   }
 
   /*

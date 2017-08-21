@@ -11,6 +11,17 @@ import { ContentPage } from '../pages/content/content';
 import { ItemCreatePage } from '../pages/item-create/item-create';
 import { ItemDetailPage } from '../pages/item-detail/item-detail';
 import { ListMasterPage } from '../pages/list-master/list-master';
+// product
+import { ListProductPage } from '../pages/list-product/list-product';
+import { ProductDetailPage } from '../pages/product-detail/product-detail';
+// microclass & microclassvideo
+import { ListMicroclassPage } from '../pages/list-microclass/list-microclass';
+import { ListMicroclassvideoPage } from '../pages/list-microclassvideo/list-microclassvideo';
+import { MicroclassvideoDetailPage } from '../pages/microclassvideo-detail/microclassvideo-detail';
+// category & product by category
+import { ListCategoryPage } from '../pages/list-category/list-category';
+import { ListCategoryProductPage } from '../pages/list-category-product/list-category-product';
+
 import { LoginPage } from '../pages/login/login';
 import { MapPage } from '../pages/map/map';
 import { MenuPage } from '../pages/menu/menu';
@@ -34,6 +45,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ProductProvider } from '../providers/product/product';
+import { MicroClassProvider } from '../providers/micro-class/micro-class';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -64,6 +77,13 @@ export function provideSettings(storage: Storage) {
     ItemCreatePage,
     ItemDetailPage,
     ListMasterPage,
+    ListProductPage,
+    ProductDetailPage,
+    ListMicroclassPage,
+    ListMicroclassvideoPage,
+    MicroclassvideoDetailPage,
+    ListCategoryPage,
+    ListCategoryProductPage,
     LoginPage,
     MapPage,
     MenuPage,
@@ -95,6 +115,13 @@ export function provideSettings(storage: Storage) {
     ItemCreatePage,
     ItemDetailPage,
     ListMasterPage,
+    ListProductPage,
+    ProductDetailPage,
+    ListMicroclassPage,
+    ListMicroclassvideoPage,
+    MicroclassvideoDetailPage,
+    ListCategoryPage,
+    ListCategoryProductPage,
     LoginPage,
     MapPage,
     MenuPage,
@@ -115,7 +142,9 @@ export function provideSettings(storage: Storage) {
     StatusBar,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    ProductProvider,
+    MicroClassProvider
   ]
 })
 export class AppModule { }
