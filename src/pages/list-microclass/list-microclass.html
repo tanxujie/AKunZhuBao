@@ -5,14 +5,17 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>list-microclass</ion-title>
+    <ion-title>{{ 'MICROCLASS' | translate }}</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-
+  <ion-list>
+    <ion-item-sliding *ngFor="let microclass of currentMicroclasses">
+      <button ion-item (click)="openMicroClass(microclass.microClassVideos)">
+        <h2>{{ microclass.title }}</h2>
+      </button>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

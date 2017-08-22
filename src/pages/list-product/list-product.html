@@ -17,26 +17,26 @@
     <ion-item *ngFor="let cp of currentProducts">
       <ion-row>
         <ion-col left>
-          <button ion-item (click)="openDetail(cp.left)">
+          <button ion-item *ngIf="cp.hasLeft" (click)="openDetail(cp.left)">
             <ion-card>
               <ion-card-header>
                 <h2>{{cp.left.code}} : {{cp.left.name}}</h2>
               </ion-card-header>
               <ion-card-content>
-                <img [src]="cp.left.imageName" />
+                <img [src]="cp.left.imageSrc" />
               </ion-card-content>
               <h2>{{cp.left.name}}</h2>
             </ion-card>
           </button>
         </ion-col>
         <ion-col right>
-          <button ion-item (click)="openDetail(cp.right)">
+          <button ion-item *ngIf="cp.hasRight" (click)="openDetail(cp.right)">
             <ion-card>
               <ion-card-header>
                 <h2>{{cp.right.code}} : {{cp.right.name}}</h2>
               </ion-card-header>
               <ion-card-content>
-                <img [src]="cp.right.imageName" />
+                <img [src]="cp.right.imageSrc" />
               </ion-card-content>
               <h2>{{cp.right.name}}</h2>
             </ion-card>

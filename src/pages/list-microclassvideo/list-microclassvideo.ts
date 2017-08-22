@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { MicroClassVideo } from '../../models/microclassvideo';
+import { MicroclassvideoDetailPage } from '../microclassvideo-detail/microclassvideo-detail';
 /**
  * Generated class for the ListMicroclassvideoPage page.
  *
@@ -8,18 +9,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-list-microclassvideo',
   templateUrl: 'list-microclassvideo.html',
 })
 export class ListMicroclassvideoPage {
-
+  currentMicroClassVideos: MicroClassVideo[]; 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.currentMicroClassVideos = navParams.get('microClassVideos');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListMicroclassvideoPage');
   }
 
+  openMicroClassVideo(videoSrc) {
+    this.navCtrl.push(MicroclassvideoDetailPage, {'VideoSrc': videoSrc});
+  }
 }

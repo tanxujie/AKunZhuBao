@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Api } from '../api';
 
 /*
   Generated class for the MicroClassProvider provider.
@@ -11,8 +12,11 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class MicroClassProvider {
 
-  constructor(public http: Http) {
+  constructor(public http: Http, public api: Api) {
     console.log('Hello MicroClassProvider Provider');
   }
 
+  query(params?: any) {
+    return this.api.get('microclass/app/search', params).map(resp => resp.json()); 
+  }
 }

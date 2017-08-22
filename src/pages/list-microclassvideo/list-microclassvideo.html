@@ -5,14 +5,17 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <ion-title>list-microclassvideo</ion-title>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
-
+  <ion-list>
+    <ion-item-sliding *ngFor="let microclassVideo of currentMicroClassVideos">
+      <button ion-item (click)="openMicroClassVideo(microclassVideo.videoSrc)">
+        <h2>{{ microclassVideo.title }}</h2>
+        <p>{{ microclassVideo.description }}</p>
+      </button>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

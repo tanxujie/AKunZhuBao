@@ -11,7 +11,7 @@ import { ProductProvider } from '../../providers/product/product';
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
+//@IonicPage()
 @Component({
   selector: 'page-list-product',
   templateUrl: 'list-product.html',
