@@ -5,12 +5,6 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { Storage, IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
-
-import { CardsPage } from '../pages/cards/cards';
-import { ContentPage } from '../pages/content/content';
-import { ItemCreatePage } from '../pages/item-create/item-create';
-import { ItemDetailPage } from '../pages/item-detail/item-detail';
-import { ListMasterPage } from '../pages/list-master/list-master';
 // product
 import { ListProductPage } from '../pages/list-product/list-product';
 import { ProductDetailPage } from '../pages/product-detail/product-detail';
@@ -24,20 +18,15 @@ import { ListCategoryProductPage } from '../pages/list-category-product/list-cat
 // my setting
 import { MySettingPage } from '../pages/my-setting/my-setting';
 import { LoginPage } from '../pages/login/login';
-import { MapPage } from '../pages/map/map';
-import { MenuPage } from '../pages/menu/menu';
-import { SearchPage } from '../pages/search/search';
-import { SettingsPage } from '../pages/settings/settings';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
-import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
 
 import { Api } from '../providers/api';
 //import { Items } from '../mocks/providers/items';
-import { Items } from '../providers/items';
+//import { Items } from '../providers/items';
 import { Settings } from '../providers/settings';
-import { User } from '../providers/user';
+//import { User } from '../providers/user';
 
 import { Camera } from '@ionic-native/camera';
 import { GoogleMaps } from '@ionic-native/google-maps';
@@ -73,11 +62,6 @@ export function provideSettings(storage: Storage) {
 @NgModule({
   declarations: [
     MyApp,
-    CardsPage,
-    ContentPage,
-    ItemCreatePage,
-    ItemDetailPage,
-    ListMasterPage,
     ListProductPage,
     ProductDetailPage,
     ListMicroclassPage,
@@ -87,13 +71,8 @@ export function provideSettings(storage: Storage) {
     ListCategoryProductPage,
     MySettingPage,
     LoginPage,
-    MapPage,
-    MenuPage,
-    SearchPage,
-    SettingsPage,
     SignupPage,
     TabsPage,
-    TutorialPage,
     WelcomePage
   ],
   imports: [
@@ -112,11 +91,6 @@ export function provideSettings(storage: Storage) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    CardsPage,
-    ContentPage,
-    ItemCreatePage,
-    ItemDetailPage,
-    ListMasterPage,
     ListProductPage,
     ProductDetailPage,
     ListMicroclassPage,
@@ -126,19 +100,12 @@ export function provideSettings(storage: Storage) {
     ListCategoryProductPage,
     MySettingPage,
     LoginPage,
-    MapPage,
-    MenuPage,
-    SearchPage,
-    SettingsPage,
     SignupPage,
     TabsPage,
-    TutorialPage,
     WelcomePage
   ],
   providers: [
     Api,
-    Items,
-    User,
     Camera,
     GoogleMaps,
     SplashScreen,
