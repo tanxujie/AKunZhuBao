@@ -21,7 +21,8 @@ import { MicroclassvideoDetailPage } from '../pages/microclassvideo-detail/micro
 // category & product by category
 import { ListCategoryPage } from '../pages/list-category/list-category';
 import { ListCategoryProductPage } from '../pages/list-category-product/list-category-product';
-
+// my setting
+import { MySettingPage } from '../pages/my-setting/my-setting';
 import { LoginPage } from '../pages/login/login';
 import { MapPage } from '../pages/map/map';
 import { MenuPage } from '../pages/menu/menu';
@@ -84,6 +85,7 @@ export function provideSettings(storage: Storage) {
     MicroclassvideoDetailPage,
     ListCategoryPage,
     ListCategoryProductPage,
+    MySettingPage,
     LoginPage,
     MapPage,
     MenuPage,
@@ -122,6 +124,7 @@ export function provideSettings(storage: Storage) {
     MicroclassvideoDetailPage,
     ListCategoryPage,
     ListCategoryProductPage,
+    MySettingPage,
     LoginPage,
     MapPage,
     MenuPage,

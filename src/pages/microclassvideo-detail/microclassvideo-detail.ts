@@ -71,7 +71,7 @@ export class MicroclassvideoDetailPage {
     }, function () {
       alert("Success");
     }, function (reason) {
-      alert("Share " + this.item.imageName + " Failed: " + reason);
+      alert("Share Timeline Failed: " + reason);
     });
   }
 }

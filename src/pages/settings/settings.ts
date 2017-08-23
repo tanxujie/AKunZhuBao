@@ -41,6 +41,7 @@ export class SettingsPage {
     public translate: TranslateService) {
   }
 
+  /*
   _buildForm() {
     let group: any = {
       option1: [this.options.option1],
@@ -63,16 +64,16 @@ export class SettingsPage {
     this.form.valueChanges.subscribe((v) => {
       this.settings.merge(this.form.value);
     });
-  }
+  }*/
 
   ionViewDidLoad() {
     // Build an empty form for the template to render
-    this.form = this.formBuilder.group({});
+    //this.form = this.formBuilder.group({});
   }
 
   ionViewWillEnter() {
     // Build an empty form for the template to render
-    this.form = this.formBuilder.group({});
+    /*this.form = this.formBuilder.group({});
 
     this.page = this.navParams.get('page') || this.page;
     this.pageTitleKey = this.navParams.get('pageTitleKey') || this.pageTitleKey;
@@ -86,7 +87,7 @@ export class SettingsPage {
       this.options = this.settings.allSettings;
 
       this._buildForm();
-    });
+    });*/
   }
 
   ngOnChanges() {
