@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Product } from '../../models/product';
 import { ProductPair } from '../../models/productpair';
 import { ProductDetailPage } from '../product-detail/product-detail';
@@ -10,8 +10,6 @@ import { ProductProvider } from '../../providers/product/product';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-
-//@IonicPage()
 @Component({
   selector: 'page-list-product',
   templateUrl: 'list-product.html',

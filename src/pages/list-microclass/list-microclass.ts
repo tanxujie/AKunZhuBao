@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { MicroClass } from '../../models/microclass';
 import { MicroClassVideo } from '../../models/microclassvideo';
 import { MicroClassProvider } from '../../providers/micro-class/micro-class';
@@ -10,8 +10,6 @@ import { ListMicroclassvideoPage } from '../list-microclassvideo/list-microclass
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-
-//@IonicPage()
 @Component({
   selector: 'page-list-microclass',
   templateUrl: 'list-microclass.html',
@@ -22,15 +20,6 @@ export class ListMicroclassPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public mcProvider: MicroClassProvider) {
     this.mcProvider.query().subscribe(data => this.resolve(data), err => this.reject(err));
-    /*let mcv = new MicroClassVideo();
-    mcv.title = 'Test Video';
-    mcv.description = 'Test Video Description';
-    mcv.videoSrc = 'http://192.168.1.101:8100/pages/list-microclass/WeChatSight72.mp4';
-    let mc = new MicroClass();
-    mc.title = 'Test MicroClass';
-    mc.description = 'Test MicroClass Description';
-    mc.microClassVideos.push(mcv);
-    this.currentMicroclasses.push(mc);*/
   }
 
   ionViewDidLoad() {

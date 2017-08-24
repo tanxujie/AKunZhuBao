@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
-declare let Wechat: any;
+//declare let Wechat: any;
 
 /**
  * Generated class for the MicroclassvideoDetailPage page.
@@ -9,8 +9,6 @@ declare let Wechat: any;
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-
-//@IonicPage()
 @Component({
   selector: 'page-microclassvideo-detail',
   templateUrl: 'microclassvideo-detail.html',
@@ -24,54 +22,6 @@ export class MicroclassvideoDetailPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MicroclassvideoDetailPage');
-  }
-
-  shareWxSession() {
-    /*Wechat.isInstalled(function (installed) {
-      alert("Wechat installed: " + (installed ? "Yes" : "No"));
-    }, function (reason) {
-      alert("Failed: " + reason);
-    });*/
-
-    Wechat.share({
-      message: {
-        title: "Video",
-        description: '',
-        media: {
-          type: Wechat.Type.VIDEO,
-          video: this.currentVideoSrc
-        }
-      },
-      scene: Wechat.Scene.SESSION   // share to Session
-    }, function () {
-      alert("Success");
-    }, function (reason) {
-      alert("Share Session Failed: " + reason);
-    });
-  }
-
-  shareWxTimeLine() {
-    /*Wechat.isInstalled(function (installed) {
-      alert("Wechat installed: " + (installed ? "Yes" : "No"));
-    }, function (reason) {
-      alert("Failed: " + reason);
-    });*/
-
-    Wechat.share({
-      message: {
-        title: '',
-        description: '',
-        media: {
-          type: Wechat.Type.VIDEO,
-          video: this.currentVideoSrc
-        }
-      },
-      scene: Wechat.Scene.TIMELINE   // share to Timeline
-    }, function () {
-      alert("Success");
-    }, function (reason) {
-      alert("Share Timeline Failed: " + reason);
-    });
+    console.log('Loading Video : ' + this.currentVideoSrc);
   }
 }

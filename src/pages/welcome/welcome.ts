@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
-import { LoginPage } from '../login/login';
-import { SignupPage } from '../signup/signup';
+//import { LoginPage } from '../login/login';
+//import { SignupPage } from '../signup/signup';
 import { TabsPage } from '../tabs/tabs';
 /**
  * The Welcome Page is a splash page that quickly describes the app,
@@ -20,7 +19,7 @@ export class WelcomePage {
     if (this.checkLoginToken()) {
       this.navCtrl.push(TabsPage);
     } else {
-      this.navCtrl.push(LoginPage);
+      //this.navCtrl.push(LoginPage);
     }
   }
 

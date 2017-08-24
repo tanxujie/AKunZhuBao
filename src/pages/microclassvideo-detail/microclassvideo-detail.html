@@ -8,14 +8,10 @@
   <ion-navbar>
     <ion-title>{{ 'MICROCLASS' | translate }}</ion-title>
   </ion-navbar>
-  <button ion-button small icon-end (click)="shareWxSession()">发送给朋友</button>
-  <button ion-button small icon-end (click)="shareWxTimeLine()">分享朋友圈</button>
 </ion-header>
-<ion-content padding>
-  <!--
-  <video src="{{currentVideoSrc}}"></video>
-  -->
-  <video fullscreen="fullscreen" autoplay="true" controls>
-    <source src="{{ currentVideoSrc }}" type="video/mp4">
+<ion-content>
+  <video autoplay="true" webkit-playsinline="webkit-playsinline" controls loop 
+      preload="metadata" x-webkit-airplay="allow" webkit-playsinline="webkit-playsinline" >
+    <source type="video/mp4" src="{{currentVideoSrc}}"/>
   </video>
 </ion-content>
