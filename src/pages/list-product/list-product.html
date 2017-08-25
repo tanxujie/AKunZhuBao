@@ -15,8 +15,8 @@
 <ion-content padding>
   <ion-list no-lines>
     <ion-item *ngFor="let cp of currentProducts">
-      <ion-row>
-        <ion-col left>
+      <ion-row style="height:300px;">
+        <ion-col left style="width:50%;">
           <button ion-item *ngIf="cp.hasLeft" (click)="openDetail(cp.left)">
             <ion-card>
               <ion-card-header>
