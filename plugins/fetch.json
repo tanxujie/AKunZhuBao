@@ -56,5 +56,13 @@
         "variables": {
             "WECHATAPPID": "wx102748d52ba61822"
         }
+    },
+    "com.hutchind.cordova.plugins.streamingmedia": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-streaming-media"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

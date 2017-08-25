@@ -56,6 +56,14 @@ module.exports = [
         "clobbers": [
             "Wechat"
         ]
+    },
+    {
+        "id": "com.hutchind.cordova.plugins.streamingmedia.StreamingMedia",
+        "file": "plugins/com.hutchind.cordova.plugins.streamingmedia/www/StreamingMedia.js",
+        "pluginId": "com.hutchind.cordova.plugins.streamingmedia",
+        "clobbers": [
+            "streamingMedia"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -67,7 +75,8 @@ module.exports.metadata =
     "cordova-plugin-statusbar": "2.2.2",
     "cordova-plugin-whitelist": "1.3.1",
     "ionic-plugin-keyboard": "2.2.1",
-    "cordova-plugin-wechat": "2.0.0"
+    "cordova-plugin-wechat": "2.0.0",
+    "com.hutchind.cordova.plugins.streamingmedia": "0.1.4"
 };
 // BOTTOM OF METADATA
 });

@@ -28,6 +28,9 @@
         "cordova-plugin-wechat": {
             "WECHATAPPID": "wx102748d52ba61822",
             "PACKAGE_NAME": "com.akunzhubao"
+        },
+        "com.hutchind.cordova.plugins.streamingmedia": {
+            "PACKAGE_NAME": "com.akunzhubao"
         }
     },
     "dependent_plugins": {}

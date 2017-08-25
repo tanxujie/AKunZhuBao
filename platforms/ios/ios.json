@@ -43,6 +43,10 @@
                         {
                             "xml": "<preference name=\"WECHATAPPID\" value=\"wx102748d52ba61822\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"StreamingMedia\"><param name=\"ios-package\" value=\"StreamingMedia\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -92,6 +96,9 @@
         },
         "cordova-plugin-wechat": {
             "WECHATAPPID": "wx102748d52ba61822",
+            "PACKAGE_NAME": "com.akunzhubao"
+        },
+        "com.hutchind.cordova.plugins.streamingmedia": {
             "PACKAGE_NAME": "com.akunzhubao"
         }
     },
@@ -153,6 +160,14 @@
             "clobbers": [
                 "Wechat"
             ]
+        },
+        {
+            "id": "com.hutchind.cordova.plugins.streamingmedia.StreamingMedia",
+            "file": "plugins/com.hutchind.cordova.plugins.streamingmedia/www/StreamingMedia.js",
+            "pluginId": "com.hutchind.cordova.plugins.streamingmedia",
+            "clobbers": [
+                "streamingMedia"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -162,6 +177,7 @@
         "cordova-plugin-statusbar": "2.2.2",
         "cordova-plugin-whitelist": "1.3.1",
         "ionic-plugin-keyboard": "2.2.1",
-        "cordova-plugin-wechat": "2.0.0"
+        "cordova-plugin-wechat": "2.0.0",
+        "com.hutchind.cordova.plugins.streamingmedia": "0.1.4"
     }
 }
