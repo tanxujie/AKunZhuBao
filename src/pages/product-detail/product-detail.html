@@ -6,6 +6,8 @@
 -->
 <ion-header>
   <ion-navbar>
+    <button ion-button ion-start (click)="shareWXTimeLine()"><ion-icon name="share"></ion-icon>{{'WECHAT_SHARE_TIMELINE'|translate}}</button>
+    <button ion-button ion-end (click)="shareWXSession()"><ion-icon name="share"></ion-icon>{{'WECHAT_SHARE_SESSION'|translate}}</button>
   </ion-navbar>
 </ion-header>
 <ion-content padding>

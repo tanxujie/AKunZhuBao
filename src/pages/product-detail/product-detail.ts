@@ -25,4 +25,12 @@ export class ProductDetailPage {
     console.log('ionViewDidLoad ProductDetailPage');
     //this.slides.startAutoplay();
   }
+
+  shareWXTimeLine() {
+    alert("TimeLine");
+  }
+
+  shareWXSession() {
+    alert("Session");
+  }
 }
