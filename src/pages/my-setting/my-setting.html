@@ -10,78 +10,56 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <ion-list>
-    <ion-item-sliding>
+  <ion-list no-lines>
       <button ion-item (click)="openMyself()">
-        <ion-item>
           <ion-avatar item-start>
-            <img src="../../assets/img/ian-avatar.png"/>
+            <img src="assets/img/my-information.png"/>
           </ion-avatar>
           <h2>{{ accountNo }}</h2>
-        </ion-item>
       </button>
-    </ion-item-sliding>
   </ion-list>
-  <ion-list>
-    <ion-item-sliding>
+  <ion-list no-lines>
       <button ion-item (click)="openAgents()">
-        <ion-item>
           <ion-avatar item-start>
-            <img src="../../assets/img/ian-avatar.png"/>
+            <img src="assets/img/daili.png"/>
           </ion-avatar>
           <h2>{{ 'AGENTS' | translate }}</h2>
-        </ion-item>
         <ion-badge item-end>1人</ion-badge>
       </button>
       <button ion-item (click)="openKunFriends()">
-        <ion-item>
           <ion-avatar item-start>
-            <img src="../../assets/img/ian-avatar.png"/>
+            <img src="assets/img/kunyou.png"/>
           </ion-avatar>
           <h2>{{ 'KUN_FRIENDS' | translate }}</h2>
           <ion-badge item-end>2人</ion-badge>
-        </ion-item>
       </button>
-    </ion-item-sliding>
   </ion-list>
-  <ion-list>
-    <ion-item-sliding>
+  <ion-list no-lines>
       <button ion-item >
-        <ion-item>
           <ion-avatar item-start>
-            <img src="../../assets/img/ian-avatar.png"/>
+            <img src="assets/img/contact.png"/>
           </ion-avatar>
           <h2>{{ 'SERVICE_HOT_LINE' | translate }}</h2>
-        </ion-item>
       </button>
       <button ion-item >
-        <ion-item>
           <ion-avatar item-start>
-            <img src="../../assets/img/ian-avatar.png"/>
+            <img src="assets/img/company-information.png"/>
           </ion-avatar>
           <h2>{{ 'ABOUT_COMPANY' | translate }}</h2>
-        </ion-item>
       </button>
       <button ion-item >
-        <ion-item>
           <ion-avatar item-start>
-            <img src="../../assets/img/ian-avatar.png"/>
+            <img src="assets/img/about.png"/>
           </ion-avatar>
           <h2>{{ 'ABOUT_AKUZHUBAO' | translate }}</h2>
-        </ion-item>
       </button>
-    </ion-item-sliding>
   </ion-list>
-  <ion-list>
-    <ion-item-sliding>
+  <ion-list no-lines>
       <button ion-item >
-        <ion-item>
           <ion-avatar item-start>
-            <img src="../../assets/img/ian-avatar.png"/>
+            <img src="assets/img/setting.png"/>
           </ion-avatar>
           <h2>{{ 'SETTING' | translate }}</h2>
-        </ion-item>
       </button>
-    </ion-item-sliding>
   </ion-list>
 </ion-content>
