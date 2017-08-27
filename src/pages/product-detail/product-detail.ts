@@ -1,8 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-//import { CallNumber } from '@ionic-native/we-chat';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Product } from '../../models/product';
-
+// WeChat plugin global variable
 declare let Wechat;
 
 /**
@@ -21,58 +20,87 @@ export class ProductDetailPage {
 
   currentProduct: Product;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertController: AlertController) {
     this.currentProduct = navParams.get('product');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductDetailPage');
-    //this.slides.startAutoplay();
   }
 
-  shareWXTimeLine() {
+  public shareWXTimeLine() {
+    let slf = this;
+    Wechat.isInstalled(function(installed){
+      if (!!installed) {
+        slf._shareWXTimeLine();
+      } else {
+        slf._showMessage('您还没有安装微信');
+      }
+    }, function(reason){
+      slf._showMessage('分享朋友圈发生错误：'  + reason);
+    });
+  }
+
+  public shareWXSession() {
+    let slf = this;
+    Wechat.isInstalled(function(installed){
+      if (!!installed) {
+        slf._shareWXSession();
+      } else {
+        slf._showMessage('您还没有安装微信');
+      }
+    }, function(reason){
+      slf._showMessage('发送朋友发生错误：'  + reason);
+    });
+  }
+
+  private _shareWXTimeLine() {
+    let slf = this;
     Wechat.share({
       message: {
         title: this.currentProduct.code + ":" + this.currentProduct.name,
         description: (this.currentProduct.description || ''),
-        //thumb: "www/img/thumbnail.png",
-        //mediaTagName: "TEST-TAG-001",
-        //messageExt: "这是第三方带的测试字段",
-        //messageAction: "<action>dotalist</action>",
         media: {
           type: Wechat.Type.IMAGE,
           image: this.currentProduct.imageSrc
         }
       },
-      //text: "Just a test for session",
       scene: Wechat.Scene.TIMELINE   // share to Timeline
     }, function () {
-      alert("分享朋友圈成功");
+      slf._showMessage('分享朋友圈成功');
     }, function (reason) {
-      alert("分享朋友圈失败");
+      slf._showMessage('分享朋友圈失败');
     });
   }
 
-  shareWXSession() {
+  private _shareWXSession() {
+    let slf = this;
     Wechat.share({
-      //text: "Just a test for session",
       message: {
         title: this.currentProduct.code + ":" + this.currentProduct.name,
         description: (this.currentProduct.description|| ''),
-        //thumb: "www/img/thumbnail.png",
-        //mediaTagName: "TEST-TAG-001",
-        //messageExt: "这是第三方带的测试字段",
-        //messageAction: "<action>dotalist</action>",
         media: {
           type: Wechat.Type.IMAGE,
           image: this.currentProduct.imageSrc
         }
       },
-      scene: Wechat.Scene.SESSION   // share to Timeline
+      scene: Wechat.Scene.SESSION   // share to Session
     }, function () {
-      alert("发送朋友成功");
+      slf._showMessage('发送朋友成功');
     }, function (reason) {
-      alert("发送朋友失败");
+      slf._showMessage('发送朋友失败');
     });
+  }
+
+  /*
+  * 显示消息
+  */
+  private _showMessage(msg: string) {
+    let alert = this.alertController.create({
+        title: "提示",
+        subTitle: msg,
+        buttons: ['OK']
+    });
+    alert.present();
   }
 }
