@@ -41,13 +41,13 @@
           </ion-avatar>
           <h2>{{ 'SERVICE_HOT_LINE' | translate }}</h2>
       </button>
-      <button ion-item >
+      <button ion-item (click)="openCompanyInfo()">
           <ion-avatar item-start>
             <img src="assets/img/company-information.png"/>
           </ion-avatar>
           <h2>{{ 'ABOUT_COMPANY' | translate }}</h2>
       </button>
-      <button ion-item >
+      <button ion-item (click)="openAbout()">
           <ion-avatar item-start>
             <img src="assets/img/about.png"/>
           </ion-avatar>
@@ -55,7 +55,7 @@
       </button>
   </ion-list>
   <ion-list no-lines>
-      <button ion-item >
+      <button ion-item (click)="openSelfSettings()">
           <ion-avatar item-start>
             <img src="assets/img/setting.png"/>
           </ion-avatar>
