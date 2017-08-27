@@ -17,6 +17,12 @@ import { ListCategoryPage } from '../pages/list-category/list-category';
 import { ListCategoryProductPage } from '../pages/list-category-product/list-category-product';
 // my setting
 import { MySettingPage } from '../pages/my-setting/my-setting';
+import { SelfInformationPage } from '../pages/self-information/self-information'
+import { AgentPage } from '../pages/agent/agent'
+import { KunFriendsPage } from '../pages/kun-friends/kun-friends'
+import { CompanyInfoPage } from '../pages/company-info/company-info'
+import { AboutPage } from '../pages/about/about'
+import { SelfSettingsPage } from '../pages/self-settings/self-settings'
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -72,6 +78,12 @@ export function provideSettings(storage: Storage) {
     ListCategoryPage,
     ListCategoryProductPage,
     MySettingPage,
+    SelfInformationPage,
+    AgentPage,
+    KunFriendsPage,
+    CompanyInfoPage,
+    AboutPage,
+    SelfSettingsPage,
     LoginPage,
     SignupPage,
     TabsPage,
@@ -101,6 +113,12 @@ export function provideSettings(storage: Storage) {
     ListCategoryPage,
     ListCategoryProductPage,
     MySettingPage,
+    SelfInformationPage,
+    AgentPage,
+    KunFriendsPage,
+    CompanyInfoPage,
+    AboutPage,
+    SelfSettingsPage,
     LoginPage,
     SignupPage,
     TabsPage,

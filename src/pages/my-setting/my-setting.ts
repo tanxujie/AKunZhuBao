@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
+import { SelfInformationPage } from '../self-information/self-information'
+import { AgentPage } from '../agent/agent'
+import { KunFriendsPage } from '../kun-friends/kun-friends'
+import { CompanyInfoPage } from '../company-info/company-info'
+import { AboutPage } from '../about/about'
+import { SelfSettingsPage } from '../self-settings/self-settings'
 
 /**
  * Generated class for the MySettingPage page.
@@ -25,19 +31,31 @@ export class MySettingPage {
   }
 
   openMyself() {
-    alert('This is me.');
+    this.navCtrl.push(SelfInformationPage);
   }
 
   openAgents() {
-
+    this.navCtrl.push(AgentPage);
   }
 
   openKunFriends() {
+    this.navCtrl.push(KunFriendsPage);
+  }
+  openCompanyInfo() {
+    this.navCtrl.push(CompanyInfoPage);
   }
 
   callHotLine() {
     this.callNumber.callNumber("13335193164", true)
       .then(() => console.log('succeed call.'))
       .catch((err) => console.log('failed call:' + err));
+  }
+
+  openAbout() {
+    this.navCtrl.push(AboutPage);
+  }
+
+  openSelfSettings() {
+    this.navCtrl.push(SelfSettingsPage);
   }
 }
