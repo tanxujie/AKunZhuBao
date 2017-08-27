@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { CallNumber } from '@ionic-native/call-number';
 
 /**
  * Generated class for the MySettingPage page.
@@ -15,7 +16,7 @@ export class MySettingPage {
 
   accountNo: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public callNumber: CallNumber) {
     this.accountNo = '12345678';
   }
 
@@ -32,6 +33,11 @@ export class MySettingPage {
   }
 
   openKunFriends() {
+  }
 
+  callHotLine() {
+    this.callNumber.callNumber("13335193164", true)
+      .then(() => console.log('succeed call.'))
+      .catch((err) => console.log('failed call:' + err));
   }
 }

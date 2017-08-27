@@ -31,6 +31,9 @@
         },
         "com.hutchind.cordova.plugins.streamingmedia": {
             "PACKAGE_NAME": "com.akunzhubao"
+        },
+        "mx.ferreyra.callnumber": {
+            "PACKAGE_NAME": "com.akunzhubao"
         }
     },
     "dependent_plugins": {}
