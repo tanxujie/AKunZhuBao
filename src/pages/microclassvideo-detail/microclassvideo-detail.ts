@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 
-//declare let Wechat: any;
-//declare let streamingMedia: any;
+// WeChat plugin global variable
+declare let Wechat;
 /**
  * Generated class for the MicroclassvideoDetailPage page.
  *
@@ -18,17 +17,87 @@ export class MicroclassvideoDetailPage {
 
   currentVideoSrc: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private streamingMedia: StreamingMedia) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertController: AlertController) {
     this.currentVideoSrc = navParams.get('VideoSrc');
-    /*let options: StreamingVideoOptions = {
-      successCallback: () => { console.log('Video played') },
-      errorCallback: (e) => { console.log('Error streaming'+ e) },
-      orientation: 'landscape'
-    };
-    streamingMedia.playVideo(this.currentVideoSrc, options);*/
   }
 
   ionViewDidLoad() {
     console.log('Loading Video : ' + this.currentVideoSrc);
+  }
+
+  public shareWXTimeLine() {
+    let slf = this;
+    Wechat.isInstalled(function(installed){
+      if (!!installed) {
+        slf._shareWXTimeLine();
+      } else {
+        slf._showMessage('您还没有安装微信');
+      }
+    }, function(reason){
+      slf._showMessage('分享朋友圈发生错误：'  + reason);
+    });
+  }
+
+  public shareWXSession() {
+    let slf = this;
+    Wechat.isInstalled(function(installed){
+      if (!!installed) {
+        slf._shareWXSession();
+      } else {
+        slf._showMessage('您还没有安装微信');
+      }
+    }, function(reason){
+      slf._showMessage('发送朋友发生错误：'  + reason);
+    });
+  }
+
+  private _shareWXTimeLine() {
+    let slf = this;
+    Wechat.share({
+      message: {
+        title: '小视频',
+        description: '测试小视频',
+        media: {
+          type: Wechat.Type.VIDEO,
+          videoUrl: this.currentVideoSrc
+        }
+      },
+      scene: Wechat.Scene.TIMELINE   // share to Timeline
+    }, function () {
+      slf._showMessage('分享朋友圈成功');
+    }, function (reason) {
+      slf._showMessage('分享朋友圈失败');
+    });
+  }
+
+  private _shareWXSession() {
+    let slf = this;
+    Wechat.share({
+      message: {
+        title: '小视频',
+        description: '测试小视频',
+        media: {
+          type: Wechat.Type.VIDEO,
+          videoUrl: this.currentVideoSrc
+        }
+      },
+      scene: Wechat.Scene.SESSION   // share to Session
+    }, function () {
+      slf._showMessage('发送朋友成功');
+    }, function (reason) {
+      slf._showMessage('发送朋友失败');
+    });
+  }
+
+  /*
+  * 显示消息
+  */
+  private _showMessage(msg: string) {
+    let alert = this.alertController.create({
+        title: "提示",
+        subTitle: msg,
+        buttons: ['OK']
+    });
+    alert.present();
   }
 }
