@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+//import { CallNumber } from '@ionic-native/we-chat';
 import { Product } from '../../models/product';
 
 declare let Wechat;

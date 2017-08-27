@@ -33,6 +33,8 @@ import { GoogleMaps } from '@ionic-native/google-maps';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { StreamingMedia } from '@ionic-native/streaming-media';
+import { CallNumber } from '@ionic-native/call-number';
+//import { WeChat } from '@ionic-native/wechat';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -112,6 +114,7 @@ export function provideSettings(storage: Storage) {
     SplashScreen,
     StatusBar,
     StreamingMedia,
+    CallNumber,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
