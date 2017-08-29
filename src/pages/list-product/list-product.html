@@ -15,15 +15,15 @@
 <ion-content padding>
   <ion-list no-lines>
     <ion-item *ngFor="let cp of currentProducts">
-      <ion-row style="height:300px;">
-        <ion-col left style="width:50%;">
+      <ion-row>
+        <ion-col left>
           <button ion-item *ngIf="cp.hasLeft" (click)="openDetail(cp.left)">
-            <ion-card>
-              <ion-card-header>
+            <ion-card class="card">
+              <ion-card-header class="card-header">
                 <h2>{{cp.left.code}} : {{cp.left.name}}</h2>
               </ion-card-header>
-              <ion-card-content>
-                <img [src]="cp.left.imageSrc" />
+              <ion-card-content class="card-content">
+                <img [src]="cp.left.imageSrc" class="card-image"/>
               </ion-card-content>
             </ion-card>
           </button>
@@ -31,11 +31,11 @@
         <ion-col right>
           <button ion-item *ngIf="cp.hasRight" (click)="openDetail(cp.right)">
             <ion-card>
-              <ion-card-header>
+              <ion-card-header class="card-header">
                 <h2>{{cp.right.code}} : {{cp.right.name}}</h2>
               </ion-card-header>
-              <ion-card-content>
-                <img [src]="cp.right.imageSrc" />
+              <ion-card-content class="card-content">
+                <img [src]="cp.right.imageSrc" class="card-image"/>
               </ion-card-content>
             </ion-card>
           </button>
