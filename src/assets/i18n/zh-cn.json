@@ -21,9 +21,13 @@
   "PRIMARY_PRICE": "一级价格",
   "WECHAT_SHARE_SESSION":"发给朋友",
   "WECHAT_SHARE_TIMELINE":"分享朋友圈",
-
+  "MICROCLASS_DETAIL":"课堂详情",
   "MAP_TITLE": "地图",
-
+  "NEW_PRODUCT":"新品",
+  "BY_EXPERT":"名家",
+  "RECOMANDED":"推荐",
+  "FEICUI":"翡翠",
+  "BY_HANDMADE":"手工",
   "TUTORIAL_SKIP_BUTTON" : "跳过",
   "TUTORIAL_CONTINUE_BUTTON" : "继续",
 

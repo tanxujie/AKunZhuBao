@@ -11,12 +11,23 @@
       <button ion-button small round>{{ 'CATEGORY_TITLE' | translate }}</button>
     </ion-buttons>
   </ion-navbar>
+  <ion-navbar>
+    <ion-toolbar>
+      <ion-segment color="primary">
+        <ion-segment-button value="newProduct" (ionSelect)=true>{{'NEW_PRODUCT' | translate}}</ion-segment-button>
+        <ion-segment-button value="byExpert">{{'BY_EXPERT' | translate}}</ion-segment-button>
+        <ion-segment-button value="recommanded">{{'RECOMANDED' | translate}}</ion-segment-button>
+        <ion-segment-button value="feicui">{{'FEICUI' | translate}}</ion-segment-button>
+        <ion-segment-button value="byHandMade">{{'BY_HANDMADE' | translate}}</ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+  </ion-navbar>
 </ion-header>
 <ion-content padding>
   <ion-list no-lines>
-    <ion-item *ngFor="let cp of currentProducts">
-      <ion-row>
-        <ion-col left>
+    <ion-item *ngFor="let cp of currentProducts" detail-none>
+      <ion-row nowrap align-items-start justify-content-center>
+        <ion-col left align-self-center>
           <button ion-item *ngIf="cp.hasLeft" (click)="openDetail(cp.left)">
             <ion-card class="card">
               <ion-card-header class="card-header">
@@ -28,7 +39,7 @@
             </ion-card>
           </button>
         </ion-col>
-        <ion-col right>
+        <ion-col right align-self-center>
           <button ion-item *ngIf="cp.hasRight" (click)="openDetail(cp.right)">
             <ion-card>
               <ion-card-header class="card-header">
