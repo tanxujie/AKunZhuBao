@@ -7,7 +7,7 @@
 <ion-header>
   <ion-navbar>
     <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
-    <ion-buttons start>
+    <ion-buttons end>
       <button ion-button small round>{{ 'CATEGORY_TITLE' | translate }}</button>
     </ion-buttons>
   </ion-navbar>
@@ -25,28 +25,34 @@
 </ion-header>
 <ion-content padding>
   <ion-list no-lines>
-    <ion-item *ngFor="let cp of currentProducts" detail-none>
-      <ion-row nowrap align-items-start justify-content-center>
-        <ion-col left align-self-center>
-          <button ion-item *ngIf="cp.hasLeft" (click)="openDetail(cp.left)">
+    <ion-item *ngFor="let cp of currentProducts">
+      <ion-row align-items-start justify-content-center>
+        <ion-col left align-self-right>
+          <button ion-item *ngIf="cp.hasLeft" (click)="openDetail(cp.left)" detail-none>
             <ion-card class="card">
               <ion-card-header class="card-header">
                 <h2>{{cp.left.code}} : {{cp.left.name}}</h2>
               </ion-card-header>
               <ion-card-content class="card-content">
+                <ion-img width="180" height="180" [src]="cp.left.imageSrc"></ion-img>
+                <!--
                 <img [src]="cp.left.imageSrc" class="card-image"/>
+                -->
               </ion-card-content>
             </ion-card>
           </button>
         </ion-col>
-        <ion-col right align-self-center>
-          <button ion-item *ngIf="cp.hasRight" (click)="openDetail(cp.right)">
+        <ion-col right align-self-left>
+          <button ion-item *ngIf="cp.hasRight" (click)="openDetail(cp.right)" detail-none>
             <ion-card>
               <ion-card-header class="card-header">
                 <h2>{{cp.right.code}} : {{cp.right.name}}</h2>
               </ion-card-header>
               <ion-card-content class="card-content">
+                <ion-img width="180" height="180" [src]="cp.right.imageSrc"></ion-img>
+                <!--
                 <img [src]="cp.right.imageSrc" class="card-image"/>
+                -->
               </ion-card-content>
             </ion-card>
           </button>

@@ -25,7 +25,6 @@ export class ListProductPage {
   }
 
   ionViewDidLoad() {
-    //console.log('ionViewDidLoad ListProductPage');
   }
 
   search(ent: any) {
