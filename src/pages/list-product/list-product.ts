@@ -17,6 +17,7 @@ import { ProductProvider } from '../../providers/product/product';
 export class ListProductPage {
 
   currentProducts: ProductPair[] = [];
+  currentPage: number = 1;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public pdProvider: ProductProvider) {
     this.pdProvider.query().subscribe(
@@ -37,8 +38,23 @@ export class ListProductPage {
     this.navCtrl.push(ProductDetailPage, { product: pd });
   }
 
+  doRefresh(refresher) {
+    this.pdProvider.query({page: this.currentPage}).subscribe(
+      data => {refresher.complete();this.resolveRefresh(data);}, 
+      err => {refresher.complete();this.reject(err);});
+  }
+
   private resolve(data) {
     this.currentProducts.length = 0;
+    if (data.success) {
+      let cnt = data.data.length;
+      for (let i = 0; i < cnt; i++) {
+        this.currentProducts.push(new ProductPair(data.data[i]));
+      }
+    }
+  }
+
+  private resolveRefresh(data) {
     if (data.success) {
       let cnt = data.data.length;
       for (let i = 0; i < cnt; i++) {
