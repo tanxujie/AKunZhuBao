@@ -28,11 +28,16 @@ export class ListProductPage {
   orderBy: string = '';
   orderDirection: string = '';
 
+  subCondition: string = '';
+  subOrderBy: string = '';
+
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
               public loadingCtrl: LoadingController, 
               public pdProvider: ProductProvider) {
+    this.subCondition = 'newProduct';
+    this.subOrderBy = 'default';
     this.condition = '';
     this.doSearch();
   }
