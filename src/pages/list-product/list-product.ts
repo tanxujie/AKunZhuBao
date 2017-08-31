@@ -25,6 +25,9 @@ export class ListProductPage {
   usingEmerald: boolean = false;
   handmade: boolean = false;
 
+  orderBy: string = '';
+  orderDirection: string = '';
+
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
@@ -97,6 +100,32 @@ export class ListProductPage {
     this.doSearch({condition : this.condition });
   }
 
+  selectDefault() {
+    this.orderBy = '';
+    this.orderDirection = '';
+    this.doSearch({condition : this.condition });
+  }
+
+  selectPrice() {
+    this.orderBy = 'ex_factory_price';
+    if (this.orderDirection == '' || this.orderDirection == 'DESC') {
+      this.orderDirection = 'ASC';
+    } else {
+      this.orderDirection = 'DESC';
+    }
+    this.doSearch({condition : this.condition });
+  }
+
+  selectPopularity() {
+    this.orderBy = '';
+    if (this.orderDirection == '' || this.orderDirection == 'DESC') {
+      this.orderDirection = 'ASC';
+    } else {
+      this.orderDirection = 'DESC';
+    }
+    this.doSearch({condition : this.condition });
+  }
+
   private doSearch(params?: any) {
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
@@ -110,7 +139,9 @@ export class ListProductPage {
       byExpert: this.byExpert,
       recommended: this.recommended,
       usingEmerald: this.usingEmerald,
-      handmade: this.handmade
+      handmade: this.handmade,
+      orderBy: this.orderBy,
+      orderDirection: this.orderDirection
     };
     if (params) {
       for(let k in params) {

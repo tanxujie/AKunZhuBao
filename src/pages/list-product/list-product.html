@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
+    <ion-searchbar (ionInput)="search($event)" placeholder="{{'SERACH_BABY' | translate }}"></ion-searchbar>
     <ion-buttons end>
       <button ion-button small round>{{ 'CATEGORY_TITLE' | translate }}</button>
     </ion-buttons>
@@ -19,6 +19,13 @@
         <ion-segment-button value="recommended" (ionSelect)="selectRecommended()">{{'RECOMANDED' | translate}}</ion-segment-button>
         <ion-segment-button value="usingEmerald" (ionSelect)="selectUsingEmerald()">{{'FEICUI' | translate}}</ion-segment-button>
         <ion-segment-button value="handmade" (ionSelect)="selectHandmade()">{{'BY_HANDMADE' | translate}}</ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-segment color="primary">
+        <ion-segment-button value="default" (ionSelect)="selectDefault()">{{'ORDERBY_DEFAULT' | translate}}</ion-segment-button>
+        <ion-segment-button value="price" (ionSelect)="selectPrice()">{{'ORDERBY_PRICE' | translate}}</ion-segment-button>
+        <ion-segment-button value="popularity" (ionSelect)="selectPopularity()">{{'ORDERBY_POPULARITY' | translate}}</ion-segment-button>
       </ion-segment>
     </ion-toolbar>
   </ion-navbar>
@@ -42,7 +49,7 @@
                 <h2>{{cp.left.code}} : {{cp.left.name}}</h2>
               </ion-card-header>
  -->
-            <img [src]="cp.left.imageSrc" style="width:180px;height:180px;"/>
+            <img [src]="cp.left.imageSrc" style="width:200px;height:200px;"/>
             <!--
               <ion-img width="180" height="180" [src]="cp.left.imageSrc"></ion-img>
               -->
@@ -60,7 +67,7 @@
         <ion-col right align-self-left>
           <button ion-item *ngIf="cp.hasRight" (click)="openDetail(cp.right)" detail-none>
             <ion-card text-left>
-              <img [src]="cp.right.imageSrc" style="width:180px;height:180px;"/>
+              <img [src]="cp.right.imageSrc" style="width:200px;height:200px;"/>
               <!--
               <ion-img width="180" height="180" [src]="cp.right.imageSrc"></ion-img>
               -->
