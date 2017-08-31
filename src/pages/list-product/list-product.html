@@ -14,11 +14,11 @@
   <ion-navbar>
     <ion-toolbar>
       <ion-segment color="primary">
-        <ion-segment-button value="newProduct" (ionSelect)=true>{{'NEW_PRODUCT' | translate}}</ion-segment-button>
-        <ion-segment-button value="byExpert">{{'BY_EXPERT' | translate}}</ion-segment-button>
-        <ion-segment-button value="recommanded">{{'RECOMANDED' | translate}}</ion-segment-button>
-        <ion-segment-button value="feicui">{{'FEICUI' | translate}}</ion-segment-button>
-        <ion-segment-button value="byHandMade">{{'BY_HANDMADE' | translate}}</ion-segment-button>
+        <ion-segment-button value="newProduct" (ionSelect)="selectNewProduct()">{{'NEW_PRODUCT' | translate}}</ion-segment-button>
+        <ion-segment-button value="byExpert" (ionSelect)="selectByExpert()">{{'BY_EXPERT' | translate}}</ion-segment-button>
+        <ion-segment-button value="recommended" (ionSelect)="selectRecommended()">{{'RECOMANDED' | translate}}</ion-segment-button>
+        <ion-segment-button value="usingEmerald" (ionSelect)="selectUsingEmerald()">{{'FEICUI' | translate}}</ion-segment-button>
+        <ion-segment-button value="handmade" (ionSelect)="selectHandmade()">{{'BY_HANDMADE' | translate}}</ion-segment-button>
       </ion-segment>
     </ion-toolbar>
   </ion-navbar>

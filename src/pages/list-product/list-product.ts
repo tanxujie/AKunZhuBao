@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, Loading } from 'ionic-angular';
 import { Product } from '../../models/product';
 import { ProductPair } from '../../models/productpair';
 import { ProductDetailPage } from '../product-detail/product-detail';
@@ -18,20 +18,28 @@ export class ListProductPage {
 
   currentProducts: ProductPair[] = [];
   currentPage: number = 1;
+  condition: string = '';
+  newProduct: boolean = false; // default is true
+  byExpert: boolean = false;
+  recommended: boolean = false;
+  usingEmerald: boolean = false;
+  handmade: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public pdProvider: ProductProvider) {
-    this.pdProvider.query().subscribe(
-      data => this.resolve(data), 
-      err => this.reject(err));
+
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              public loadingCtrl: LoadingController, 
+              public pdProvider: ProductProvider) {
+    this.condition = '';
+    this.doSearch();
   }
 
   ionViewDidLoad() {
   }
 
   search(ent: any) {
-    this.pdProvider
-      .query({ condition : ent.target.value })
-      .subscribe(data => this.resolve(data), err => this.reject(err));
+    this.condition = ent.target.value || '';
+    this.doSearch({condition : this.condition });
   }
 
   openDetail(pd: Product) {
@@ -40,8 +48,80 @@ export class ListProductPage {
 
   doRefresh(refresher) {
     this.pdProvider.query({page: this.currentPage}).subscribe(
-      data => {refresher.complete();this.resolveRefresh(data);}, 
-      err => {refresher.complete();this.reject(err);});
+      data => { refresher.complete();this.resolveRefresh(data);}, 
+      err => { refresher.complete();this.reject(err);});
+  }
+
+  selectNewProduct() {
+    this.newProduct = true;
+    this.byExpert = false;
+    this.recommended = false;
+    this.usingEmerald = false;
+    this.handmade = false;
+    this.doSearch({condition : this.condition });
+  }
+
+  selectByExpert() {
+    this.newProduct = false;
+    this.byExpert = true;
+    this.recommended = false;
+    this.usingEmerald = false;
+    this.handmade = false;
+    this.doSearch({condition : this.condition });
+  }
+
+  selectRecommended() {
+    this.newProduct = false;
+    this.byExpert = false;
+    this.recommended = true;
+    this.usingEmerald = false;
+    this.handmade = false;
+    this.doSearch({condition : this.condition });
+  }
+
+  selectUsingEmerald() {
+    this.newProduct = false;
+    this.byExpert = false;
+    this.recommended = false;
+    this.usingEmerald = true;
+    this.handmade = false;
+    this.doSearch({condition : this.condition });
+  }
+
+  selectHandmade() {
+    this.newProduct = false;
+    this.byExpert = false;
+    this.recommended = false;
+    this.usingEmerald = false;
+    this.handmade = true;
+    this.doSearch({condition : this.condition });
+  }
+
+  private doSearch(params?: any) {
+    let loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      content: '查询中...',
+      dismissOnPageChange: true,
+      showBackdrop: true
+    });
+    loading.present();
+    let p: any = {
+      newProduct: this.newProduct,
+      byExpert: this.byExpert,
+      recommended: this.recommended,
+      usingEmerald: this.usingEmerald,
+      handmade: this.handmade
+    };
+    if (params) {
+      for(let k in params) {
+        p[k] = params[k];
+      }
+    }
+    this.pdProvider
+      .query(p)
+      .subscribe(
+        data => { loading.dismiss(); this.resolve(data); }, 
+        err => { loading.dismiss(); this.reject(err); });
   }
 
   private resolve(data) {

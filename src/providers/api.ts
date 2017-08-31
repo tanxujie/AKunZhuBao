@@ -7,8 +7,8 @@ import 'rxjs/add/operator/map';
  */
 @Injectable()
 export class Api {
-  //url: string = 'http://192.168.1.105:8080';
-  url: string = 'http://123.56.11.216:80';
+  private url: string = 'http://192.168.1.105:8080';
+  //url: string = 'http://123.56.11.216:80';
 
   constructor(public http: Http) {
   }
@@ -28,8 +28,6 @@ export class Api {
       // a search field set in options.
       options.search = !options.search && p || options.search;
     }
-
-    console.log(this.url + '/' + endpoint);
     return this.http.get(this.url + '/' + endpoint, options);
   }
 
