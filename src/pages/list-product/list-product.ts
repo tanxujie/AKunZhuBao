@@ -17,7 +17,7 @@ import { ProductProvider } from '../../providers/product/product';
 export class ListProductPage {
 
   currentProducts: ProductPair[] = [];
-  currentPage: number = 1;
+  page: number = 0;
   condition: string = '';
   newProduct: boolean = false; // default is true
   byExpert: boolean = false;
@@ -37,7 +37,9 @@ export class ListProductPage {
               public loadingCtrl: LoadingController, 
               public pdProvider: ProductProvider) {
     this.subCondition = 'newProduct';
+    this.newProduct = true;
     this.subOrderBy = 'default';
+    this.page = 0;
     this.condition = '';
     this.doSearch();
   }
@@ -55,7 +57,7 @@ export class ListProductPage {
   }
 
   doRefresh(refresher) {
-    this.pdProvider.query({page: this.currentPage}).subscribe(
+    this.pdProvider.query({page: this.page + 1}).subscribe(
       data => { refresher.complete();this.resolveRefresh(data);}, 
       err => { refresher.complete();this.reject(err);});
   }
@@ -172,6 +174,7 @@ export class ListProductPage {
 
   private resolveRefresh(data) {
     if (data.success) {
+      this.page++;
       let cnt = data.data.length;
       for (let i = 0; i < cnt; i++) {
         this.currentProducts.push(new ProductPair(data.data[i]));

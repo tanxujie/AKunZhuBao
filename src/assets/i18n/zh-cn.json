@@ -34,6 +34,7 @@
   "ORDERBY_PRICE":"价格",
   "ORDERBY_POPULARITY":"人气",
   "SERACH_BABY":"搜索宝贝",
+  "SAVE_BUTTON":"保存",
 
   "TUTORIAL_SLIDE1_TITLE": "欢迎使用Ionic Super Starter",
   "TUTORIAL_SLIDE1_DESCRIPTION": "<b> Ionic Super Starter </b>是准备了许多编译完成的页面和插件、功能完备的Ionic开始。",

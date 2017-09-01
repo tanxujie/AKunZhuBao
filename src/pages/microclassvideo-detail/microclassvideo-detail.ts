@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { PhotoLibrary } from '@ionic-native/photo-library';
 
 // WeChat plugin global variable
 declare let Wechat;
@@ -17,12 +18,18 @@ export class MicroclassvideoDetailPage {
 
   currentVideoSrc: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertController: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public photoLibrary: PhotoLibrary, public alertController: AlertController) {
     this.currentVideoSrc = navParams.get('VideoSrc');
   }
 
   ionViewDidLoad() {
     console.log('Loading Video : ' + this.currentVideoSrc);
+  }
+
+  public saveVideo() {
+    this.photoLibrary.requestAuthorization().then(() => {
+      this.photoLibrary.saveVideo(this.currentVideoSrc, '视频');
+    }).catch(err => console.log(err));
   }
 
   public shareWXTimeLine() {

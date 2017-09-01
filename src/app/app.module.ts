@@ -40,6 +40,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { StreamingMedia } from '@ionic-native/streaming-media';
 import { CallNumber } from '@ionic-native/call-number';
+import { PhotoLibrary } from '@ionic-native/photo-library';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -132,6 +133,7 @@ export function provideSettings(storage: Storage) {
     StatusBar,
     StreamingMedia,
     CallNumber,
+    PhotoLibrary,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },

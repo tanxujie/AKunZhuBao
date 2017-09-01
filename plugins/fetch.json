@@ -72,5 +72,39 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-plugin-photo-library": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-photo-library"
+        },
+        "is_top_level": true,
+        "variables": {
+            "PHOTO_LIBRARY_USAGE_DESCRIPTION": "To choose photos"
+        }
+    },
+    "cordova-plugin-file": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-file@4.3.2"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "cordova-plugin-compat": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-compat@^1.0.0"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "cordova-plugin-add-swift-support": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-add-swift-support@1.6.0"
+        },
+        "is_top_level": false,
+        "variables": {}
     }
 }

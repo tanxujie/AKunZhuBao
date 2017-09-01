@@ -34,7 +34,21 @@
         },
         "mx.ferreyra.callnumber": {
             "PACKAGE_NAME": "com.akunzhubao"
+        },
+        "cordova-plugin-photo-library": {
+            "PHOTO_LIBRARY_USAGE_DESCRIPTION": "To choose photos",
+            "PACKAGE_NAME": "com.akunzhubao"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.akunzhubao"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.akunzhubao"
+        },
+        "cordova-plugin-add-swift-support": {
+            "PACKAGE_NAME": "com.akunzhubao"
+        }
+    }
 }
