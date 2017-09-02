@@ -59,6 +59,10 @@
                         {
                             "xml": "<feature name=\"PhotoLibrary\"><param name=\"ios-package\" value=\"PhotoLibrary\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"FileTransfer\"><param name=\"ios-package\" value=\"CDVFileTransfer\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -133,6 +137,9 @@
         },
         "cordova-plugin-photo-library": {
             "PHOTO_LIBRARY_USAGE_DESCRIPTION": "To choose photos",
+            "PACKAGE_NAME": "com.akunzhubao"
+        },
+        "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.akunzhubao"
         }
     },
@@ -401,6 +408,22 @@
             "id": "cordova-plugin-photo-library.async_map",
             "file": "plugins/cordova-plugin-photo-library/www/async/dist/async.min.map",
             "pluginId": "cordova-plugin-photo-library"
+        },
+        {
+            "id": "cordova-plugin-file-transfer.FileTransferError",
+            "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
+            "pluginId": "cordova-plugin-file-transfer",
+            "clobbers": [
+                "window.FileTransferError"
+            ]
+        },
+        {
+            "id": "cordova-plugin-file-transfer.FileTransfer",
+            "file": "plugins/cordova-plugin-file-transfer/www/FileTransfer.js",
+            "pluginId": "cordova-plugin-file-transfer",
+            "clobbers": [
+                "window.FileTransfer"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -416,6 +439,7 @@
         "cordova-plugin-compat": "1.1.0",
         "cordova-plugin-file": "4.3.2",
         "cordova-plugin-add-swift-support": "1.6.0",
-        "cordova-plugin-photo-library": "2.1.0"
+        "cordova-plugin-photo-library": "2.1.0",
+        "cordova-plugin-file-transfer": "1.6.3"
     }
 }

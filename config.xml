@@ -80,6 +80,8 @@
     <plugin name="com.hutchind.cordova.plugins.streamingmedia" spec="~0.1.4" />
     <plugin name="cordova-plugin-console" spec="^1.0.5" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
+    <plugin name="cordova-plugin-file" spec="^4.3.2" />
+    <plugin name="cordova-plugin-file-transfer" spec="^1.6.3" />
     <plugin name="cordova-plugin-photo-library" spec="^2.1.0">
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="To choose photos" />
     </plugin>

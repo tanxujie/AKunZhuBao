@@ -86,9 +86,9 @@
     "cordova-plugin-file": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-file@4.3.2"
+            "id": "cordova-plugin-file@^4.3.2"
         },
-        "is_top_level": false,
+        "is_top_level": true,
         "variables": {}
     },
     "cordova-plugin-compat": {
@@ -105,6 +105,14 @@
             "id": "cordova-plugin-add-swift-support@1.6.0"
         },
         "is_top_level": false,
+        "variables": {}
+    },
+    "cordova-plugin-file-transfer": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-file-transfer"
+        },
+        "is_top_level": true,
         "variables": {}
     }
 }

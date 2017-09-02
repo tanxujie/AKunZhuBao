@@ -12,7 +12,7 @@
 <ion-content padding>
   <ion-list>
     <ion-item-sliding *ngFor="let microclassVideo of currentMicroClassVideos">
-      <button ion-item (click)="openMicroClassVideo(microclassVideo.videoSrc)">
+      <button ion-item (click)="openMicroClassVideo(microclassVideo)">
         <h2>{{ microclassVideo.title }}</h2>
         <p>{{ microclassVideo.description }}</p>
       </button>
