@@ -29,12 +29,18 @@ export class ProductDetailPage {
     console.log('ionViewDidLoad ProductDetailPage');
   }
 
-  public saveImages() {
+  public downloadImages() {
+    if (this.currentProduct.imageSrcs == null 
+      || this.currentProduct.imageSrcs.length == 0) {
+      this._showMessage("下载图片不存在");
+      return;
+    }
     this.photoLibrary.requestAuthorization({read: true, write: true}).then(() => {
       for (let imgSrc of this.currentProduct.imageSrcs) {
         this.photoLibrary.saveImage(imgSrc, '阿坤珠宝');
       }
-    }).catch(err => console.log(err));
+      this._showMessage("图片以下载到相册'阿坤珠宝'");
+    }).catch(err => console.log("Save-Image failed. Caused By : " + err));
   }
 
   public shareWXTimeLine() {
