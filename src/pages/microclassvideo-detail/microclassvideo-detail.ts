@@ -30,7 +30,7 @@ export class MicroclassvideoDetailPage {
     //this.photoLibrary.requestAuthorization(function(){}, function(err){}, {});
     this.photoLibrary.requestAuthorization({read: true, write: true}).then(() => {
       console.log(">> TO Save Image >> " + this.currentVideoSrc);
-      this.photoLibrary.saveVideo(this.currentVideoSrc, '阿坤珠宝');
+      this.photoLibrary.saveVideo("http://123.56.11.216:80/" + this.currentVideoSrc, '视频');
     }).catch(err => console.log("Save Video URL: " + this.currentVideoSrc + "; Caused by : " + err));
   }
 
