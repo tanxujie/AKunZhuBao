@@ -6,6 +6,7 @@
 -->
 <ion-header>
   <ion-navbar color="primary">
+    <button ion-button ion-end (click)="saveImages()"><ion-icon name="share"></ion-icon>Save Images</button>
     <button ion-button small ion-start (click)="shareWXTimeLine()"><ion-icon name="share"></ion-icon>{{'WECHAT_SHARE_TIMELINE'|translate}}</button>
     <button ion-button small ion-end (click)="shareWXSession()"><ion-icon name="share"></ion-icon>{{'WECHAT_SHARE_SESSION'|translate}}</button>
   </ion-navbar>

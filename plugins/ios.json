@@ -38,13 +38,16 @@
         "cordova-plugin-photo-library": {
             "PHOTO_LIBRARY_USAGE_DESCRIPTION": "To choose photos",
             "PACKAGE_NAME": "com.akunzhubao"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.akunzhubao"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.akunzhubao"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "com.akunzhubao"
-        },
-        "cordova-plugin-file": {
             "PACKAGE_NAME": "com.akunzhubao"
         },
         "cordova-plugin-add-swift-support": {

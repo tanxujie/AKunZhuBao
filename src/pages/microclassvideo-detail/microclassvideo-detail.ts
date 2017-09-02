@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { PhotoLibrary } from '@ionic-native/photo-library';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { MicroClassVideo } from '../../models/microclassvideo';
 
 // WeChat plugin global variable
 declare let Wechat;
@@ -16,20 +19,38 @@ declare let Wechat;
 })
 export class MicroclassvideoDetailPage {
 
-  currentVideoSrc: string;
+  currentMicroClassVideo: MicroClassVideo;
+  fileTransfer: FileTransferObject;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public photoLibrary: PhotoLibrary, public alertController: AlertController) {
-    this.currentVideoSrc = navParams.get('VideoSrc');
+  constructor(private navCtrl: NavController, private navParams: NavParams, private photoLibrary: PhotoLibrary, private transfer: FileTransfer, private file: File, private alertController: AlertController) {
+    this.currentMicroClassVideo = navParams.get('MicroClassVideo');
+    this.fileTransfer = this.transfer.create();
   }
 
   ionViewDidLoad() {
-    console.log('Loading Video : ' + this.currentVideoSrc);
+    //console.log('Loading Video : ' + this.currentMicroClassVideo.videoSrc);
   }
 
   public saveVideo() {
-    this.photoLibrary.requestAuthorization().then(() => {
-      this.photoLibrary.saveVideo(this.currentVideoSrc, '视频');
-    }).catch(err => console.log(err));
+    this.photoLibrary.requestAuthorization({read: true, write: true}).then(() => {
+      //let fileTransfer: FileTransferObject = this.transfer.create();
+      // cdvfile://localhost/persistent/img/AKunZhuBao.mp4
+      this.fileTransfer.download(this.currentMicroClassVideo.videoSrc, this.file.tempDirectory + "AKunZhuBao.mp4")
+        .then((entry) => {
+          let fileUrl = entry.toURL();
+          console.log('download complete : ' + fileUrl);
+          this.photoLibrary.saveVideo(fileUrl, '阿坤珠宝').then(()=>{
+            // remove file
+            this.file.removeFile(this.file.tempDirectory, "AKunZhuBao.mp4")
+              .then(()=>console.log("Remove-Video succeeded."), (err)=> console.log("Remove-Video failed. Caused By : " + err));
+            this._showMessage("视频已下载到本地相册'阿坤珠宝'");
+          }, (err)=>{
+            console.log("Save-Video failed. Caused By : " + err);
+            this._showMessage("视频已下载失败");
+          });
+        }, 
+        (err)=>{ console.log("Download-Video failed. Caused By : " + err);});
+    }).catch((err) => console.log("Save Video URL: " + this.currentMicroClassVideo.videoSrc + "; Caused by : " + err));
   }
 
   public shareWXTimeLine() {
@@ -54,7 +75,8 @@ export class MicroclassvideoDetailPage {
         slf._showMessage('您还没有安装微信');
       }
     }, function(reason){
-      slf._showMessage('发送朋友发生错误：'  + reason);
+      console.log('发送朋友发生错误：'  + reason);
+      slf._showMessage('发送朋友发生错误');
     });
   }
 
@@ -66,7 +88,7 @@ export class MicroclassvideoDetailPage {
         description: '测试小视频',
         media: {
           type: Wechat.Type.VIDEO,
-          videoUrl: this.currentVideoSrc
+          videoUrl: this.currentMicroClassVideo.videoSrc
         }
       },
       scene: Wechat.Scene.TIMELINE   // share to Timeline
@@ -85,7 +107,7 @@ export class MicroclassvideoDetailPage {
         description: '测试小视频',
         media: {
           type: Wechat.Type.VIDEO,
-          videoUrl: this.currentVideoSrc
+          videoUrl: this.currentMicroClassVideo.videoSrc
         }
       },
       scene: Wechat.Scene.SESSION   // share to Session

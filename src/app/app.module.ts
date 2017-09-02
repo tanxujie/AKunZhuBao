@@ -41,6 +41,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { StreamingMedia } from '@ionic-native/streaming-media';
 import { CallNumber } from '@ionic-native/call-number';
 import { PhotoLibrary } from '@ionic-native/photo-library';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -134,6 +136,8 @@ export function provideSettings(storage: Storage) {
     StreamingMedia,
     CallNumber,
     PhotoLibrary,
+    File,
+    FileTransfer,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },

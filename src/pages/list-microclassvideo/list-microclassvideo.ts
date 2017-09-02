@@ -22,7 +22,7 @@ export class ListMicroclassvideoPage {
     console.log('ionViewDidLoad ListMicroclassvideoPage');
   }
 
-  openMicroClassVideo(videoSrc) {
-    this.navCtrl.push(MicroclassvideoDetailPage, {'VideoSrc': videoSrc});
+  openMicroClassVideo(microClassVideo) {
+    this.navCtrl.push(MicroclassvideoDetailPage, {'MicroClassVideo': microClassVideo});
   }
 }
