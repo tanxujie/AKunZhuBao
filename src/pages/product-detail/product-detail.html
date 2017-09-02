@@ -6,9 +6,8 @@
 -->
 <ion-header>
   <ion-navbar color="primary">
-    <button ion-button ion-end (click)="downloadImages()"><ion-icon name="download"></ion-icon>Download</button>
-    <button ion-button small ion-start (click)="shareWXTimeLine()"><ion-icon name="share"></ion-icon>{{'WECHAT_SHARE_TIMELINE'|translate}}</button>
-    <button ion-button small ion-end (click)="shareWXSession()"><ion-icon name="share"></ion-icon>{{'WECHAT_SHARE_SESSION'|translate}}</button>
+    <ion-title text-center>{{ 'PRODUCT_DETAIL_TITLE' | translate }}</ion-title>
+    <button ion-button small ion-start (click)="shareImages()"><ion-icon name="share"></ion-icon>{{'SHARE_BUTTON'|translate}}</button>
   </ion-navbar>
 </ion-header>
 <ion-content padding>

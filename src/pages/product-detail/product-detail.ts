@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { PhotoLibrary } from '@ionic-native/photo-library';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { ActionSheetController } from 'ionic-angular';
 import { Product } from '../../models/product';
 // WeChat plugin global variable
 declare let Wechat;
@@ -21,15 +22,46 @@ export class ProductDetailPage {
 
   currentProduct: Product;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public photoLibrary: PhotoLibrary, public alertController: AlertController) {
+  constructor(private navCtrl: NavController, 
+              private navParams: NavParams, 
+              private photoLibrary: PhotoLibrary, 
+              private alertController: AlertController,
+              private actionSheetCtrl: ActionSheetController) {
     this.currentProduct = navParams.get('product');
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProductDetailPage');
+    //console.log('ionViewDidLoad ProductDetailPage');
   }
 
-  public downloadImages() {
+  public shareImages() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: '分享图片',
+      buttons:[
+        {
+          text: '分享朋友圈',
+          handler: () => {
+            this.shareWXTimeLine();
+          }
+        },
+        {
+          text: '发送给朋友',
+          handler: () => {
+            this.shareWXSession();
+          }
+        },
+        {
+          text: '下载图片',
+          handler: () => {
+            this.downloadImages();
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  private downloadImages() {
     if (this.currentProduct.imageSrcs == null 
       || this.currentProduct.imageSrcs.length == 0) {
       this._showMessage("下载图片不存在");
@@ -43,7 +75,7 @@ export class ProductDetailPage {
     }).catch(err => console.log("Save-Image failed. Caused By : " + err));
   }
 
-  public shareWXTimeLine() {
+  private shareWXTimeLine() {
     let slf = this;
     Wechat.isInstalled(function(installed){
       if (!!installed) {
@@ -56,7 +88,7 @@ export class ProductDetailPage {
     });
   }
 
-  public shareWXSession() {
+  private shareWXSession() {
     let slf = this;
     Wechat.isInstalled(function(installed){
       if (!!installed) {

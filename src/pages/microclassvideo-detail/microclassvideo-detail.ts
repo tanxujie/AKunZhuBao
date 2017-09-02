@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { PhotoLibrary } from '@ionic-native/photo-library';
+import { ActionSheetController } from 'ionic-angular';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { MicroClassVideo } from '../../models/microclassvideo';
@@ -22,7 +23,13 @@ export class MicroclassvideoDetailPage {
   currentMicroClassVideo: MicroClassVideo;
   fileTransfer: FileTransferObject;
 
-  constructor(private navCtrl: NavController, private navParams: NavParams, private photoLibrary: PhotoLibrary, private transfer: FileTransfer, private file: File, private alertController: AlertController) {
+  constructor(private navCtrl: NavController, 
+              private navParams: NavParams, 
+              private photoLibrary: PhotoLibrary, 
+              private transfer: FileTransfer, 
+              private file: File, 
+              private alertController: AlertController,
+              private actionSheetCtrl: ActionSheetController) {
     this.currentMicroClassVideo = navParams.get('MicroClassVideo');
     this.fileTransfer = this.transfer.create();
   }
@@ -31,7 +38,34 @@ export class MicroclassvideoDetailPage {
     //console.log('Loading Video : ' + this.currentMicroClassVideo.videoSrc);
   }
 
-  public saveVideo() {
+  public shareVideo() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: '分享视频',
+      buttons:[
+        {
+          text: '分享朋友圈',
+          handler: () => {
+            this.shareWXTimeLine();
+          }
+        },
+        {
+          text: '发送给朋友',
+          handler: () => {
+            this.shareWXSession();
+          }
+        },
+        {
+          text: '下载视频',
+          handler: () => {
+            this.downloadVideo();
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  private downloadVideo() {
     this.photoLibrary.requestAuthorization({read: true, write: true}).then(() => {
       //let fileTransfer: FileTransferObject = this.transfer.create();
       // cdvfile://localhost/persistent/img/AKunZhuBao.mp4
@@ -53,7 +87,7 @@ export class MicroclassvideoDetailPage {
     }).catch((err) => console.log("Save Video URL: " + this.currentMicroClassVideo.videoSrc + "; Caused by : " + err));
   }
 
-  public shareWXTimeLine() {
+  private shareWXTimeLine() {
     let slf = this;
     Wechat.isInstalled(function(installed){
       if (!!installed) {
@@ -66,7 +100,7 @@ export class MicroclassvideoDetailPage {
     });
   }
 
-  public shareWXSession() {
+  private shareWXSession() {
     let slf = this;
     Wechat.isInstalled(function(installed){
       if (!!installed) {
