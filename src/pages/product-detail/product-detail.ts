@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { PhotoLibrary } from '@ionic-native/photo-library';
 import { Product } from '../../models/product';
 // WeChat plugin global variable
 declare let Wechat;
@@ -20,12 +21,20 @@ export class ProductDetailPage {
 
   currentProduct: Product;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertController: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public photoLibrary: PhotoLibrary, public alertController: AlertController) {
     this.currentProduct = navParams.get('product');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductDetailPage');
+  }
+
+  public saveImages() {
+    this.photoLibrary.requestAuthorization({read: true, write: true}).then(() => {
+      for (let imgSrc of this.currentProduct.imageSrcs) {
+        this.photoLibrary.saveImage(imgSrc, '阿坤珠宝');
+      }
+    }).catch(err => console.log(err));
   }
 
   public shareWXTimeLine() {

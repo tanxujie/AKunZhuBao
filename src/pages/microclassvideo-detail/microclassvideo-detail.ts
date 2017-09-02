@@ -27,9 +27,11 @@ export class MicroclassvideoDetailPage {
   }
 
   public saveVideo() {
-    this.photoLibrary.requestAuthorization().then(() => {
-      this.photoLibrary.saveVideo(this.currentVideoSrc, '视频');
-    }).catch(err => console.log(err));
+    //this.photoLibrary.requestAuthorization(function(){}, function(err){}, {});
+    this.photoLibrary.requestAuthorization({read: true, write: true}).then(() => {
+      console.log(">> TO Save Image >> " + this.currentVideoSrc);
+      this.photoLibrary.saveVideo(this.currentVideoSrc, '阿坤珠宝');
+    }).catch(err => console.log("Save Video URL: " + this.currentVideoSrc + "; Caused by : " + err));
   }
 
   public shareWXTimeLine() {
