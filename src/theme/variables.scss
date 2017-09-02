@@ -24,10 +24,11 @@ $background-color:  #fff;
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 
+//颠倒primary和danger的颜色值，目的是修改默认颜色为红色
 $colors: (
-  primary:    #488aff,
+  primary:    #f53d3d,
   secondary:  #32db64,
-  danger:     #f53d3d,
+  danger:     #488aff,
   light:      #f4f4f4,
   dark:       #222
 );

@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-searchbar (ionInput)="search($event)" placeholder="{{'SERACH_BABY' | translate }}"></ion-searchbar>
     <ion-buttons end>
       <button ion-button small round>{{ 'CATEGORY_TITLE' | translate }}</button>
@@ -47,11 +47,11 @@
                 <h2>{{cp.left.code}} : {{cp.left.name}}</h2>
               </ion-card-header>
  -->
-            <img [src]="cp.left.imageSrc" style="width:auto;height:200px;"/>
+            <img [src]="cp.left.imageSrc" style="width:auto;height:auto;"/>
             <!--
               <ion-img width="180" height="180" [src]="cp.left.imageSrc"></ion-img>
               -->
-              <ion-card-content class="card-content" style="width:auto;height:50px;">
+              <ion-card-content class="card-content" style="width:auto;height:auto;">
                 <ion-row>
                   <ion-col text-right>
                     <h2>{{cp.left.code}} : {{cp.left.name}}</h2>
@@ -63,11 +63,11 @@
         </ion-col>
         <ion-col right align-self-left no-padding>
             <ion-card text-left *ngIf="cp.hasRight" (click)="openDetail(cp.right)" detail-none>
-              <img [src]="cp.right.imageSrc" style="width:auto;height:200px;"/>
+              <img [src]="cp.right.imageSrc" style="width:auto;height:auto;"/>
               <!--
               <ion-img width="180" height="180" [src]="cp.right.imageSrc"></ion-img>
               -->
-              <ion-card-content class="card-content" style="width:auto;height:50px;">
+              <ion-card-content class="card-content" style="width:auto;height:auto;">
                 <ion-row>
                   <ion-col text-left>
                     <h2>{{cp.right.code}} : {{cp.right.name}}</h2>
