@@ -46,7 +46,7 @@ export class MySettingPage {
   }
 
   callHotLine() {
-    this.callNumber.callNumber("13335193164", true)
+    this.callNumber.callNumber("15053340877", true)
       .then(() => console.log('succeed call.'))
       .catch((err) => console.log('failed call:' + err));
   }
