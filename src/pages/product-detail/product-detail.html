@@ -19,6 +19,11 @@
         </ion-slide>
       </ion-item>
     </ion-list>
+    <ion-slide>
+    <video autoplay="true" controls loop>
+      <source type="video/mp4" src="{{currentProduct.videoSrc}}"/>
+    </video>
+    </ion-slide>
   </ion-slides>
   <div>
     [{{currentProduct.code}} : {{currentProduct.name}}] {{currentProduct.description}}

@@ -25,6 +25,8 @@ export class Product {
     // all product image's srcs
     imageSrcs: string[];
 
+    videoSrc: string;
+
     constructor(private params?: any) {
         if (params) {
             this.id = params['id'];
@@ -47,6 +49,7 @@ export class Product {
             this.circleRation = params['circleRation'] || '';
             this.imageSrc = params['imageSrc'] || '';
             this.imageSrcs = params['imageSrcs'] || '';
+            this.videoSrc = params['videoSrc']||'';
         }
     }
 }

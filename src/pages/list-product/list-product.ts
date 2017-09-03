@@ -19,11 +19,13 @@ export class ListProductPage {
   currentProducts: ProductPair[] = [];
   page: number = 0;
   condition: string = '';
+
   newProduct: boolean = false; // default is true
-  byExpert: boolean = false;
-  recommended: boolean = false;
-  usingEmerald: boolean = false;
-  handmade: boolean = false;
+  handOn: boolean = false;
+  waterDrop: boolean = false;
+  nothingCards: boolean = false;
+  products108: boolean = false;
+  engraving: boolean = false;
 
   orderBy: string = '';
   orderDirection: string = '';
@@ -64,46 +66,61 @@ export class ListProductPage {
 
   selectNewProduct() {
     this.newProduct = true;
-    this.byExpert = false;
-    this.recommended = false;
-    this.usingEmerald = false;
-    this.handmade = false;
+    this.handOn = false;
+    this.waterDrop = false;
+    this.nothingCards = false;
+    this.products108 = false;
+    this.engraving = false;
     this.doSearch({condition : this.condition });
   }
 
-  selectByExpert() {
+  selectHandOn() {
     this.newProduct = false;
-    this.byExpert = true;
-    this.recommended = false;
-    this.usingEmerald = false;
-    this.handmade = false;
+    this.handOn = true;
+    this.waterDrop = false;
+    this.nothingCards = false;
+    this.products108 = false;
+    this.engraving = false;
     this.doSearch({condition : this.condition });
   }
 
-  selectRecommended() {
+  selectWaterDrop() {
     this.newProduct = false;
-    this.byExpert = false;
-    this.recommended = true;
-    this.usingEmerald = false;
-    this.handmade = false;
+    this.handOn = false;
+    this.waterDrop = true;
+    this.nothingCards = false;
+    this.products108 = false;
+    this.engraving = false;
     this.doSearch({condition : this.condition });
   }
 
-  selectUsingEmerald() {
+  selectNothingCards() {
     this.newProduct = false;
-    this.byExpert = false;
-    this.recommended = false;
-    this.usingEmerald = true;
-    this.handmade = false;
+    this.handOn = false;
+    this.waterDrop = false;
+    this.nothingCards = true;
+    this.products108 = false;
+    this.engraving = false;
     this.doSearch({condition : this.condition });
   }
 
-  selectHandmade() {
+  select108Product() {
     this.newProduct = false;
-    this.byExpert = false;
-    this.recommended = false;
-    this.usingEmerald = false;
-    this.handmade = true;
+    this.handOn = false;
+    this.waterDrop = false;
+    this.nothingCards = false;
+    this.products108 = true;
+    this.engraving = false;
+    this.doSearch({condition : this.condition });
+  }
+
+  selectEngraving() {
+    this.newProduct = false;
+    this.handOn = false;
+    this.waterDrop = false;
+    this.nothingCards = false;
+    this.products108 = false;
+    this.engraving = true;
     this.doSearch({condition : this.condition });
   }
 
@@ -133,6 +150,16 @@ export class ListProductPage {
     this.doSearch({condition : this.condition });
   }
 
+  selectPriceRange() {
+    this.orderBy = '';
+    if (this.orderDirection == '' || this.orderDirection == 'DESC') {
+      this.orderDirection = 'ASC';
+    } else {
+      this.orderDirection = 'DESC';
+    }
+    this.doSearch({condition : this.condition });
+  }
+
   private doSearch(params?: any) {
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
@@ -143,10 +170,11 @@ export class ListProductPage {
     loading.present();
     let p: any = {
       newProduct: this.newProduct,
-      byExpert: this.byExpert,
-      recommended: this.recommended,
-      usingEmerald: this.usingEmerald,
-      handmade: this.handmade,
+      handOn: this.handOn,
+      waterDrop: this.waterDrop,
+      nothingCards: this.nothingCards,
+      products108: this.products108,
+      engraving: this.engraving,
       orderBy: this.orderBy,
       orderDirection: this.orderDirection
     };

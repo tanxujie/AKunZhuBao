@@ -15,10 +15,11 @@
     <ion-toolbar>
       <ion-segment color="primary" [(ngModel)]="subCondition">
         <ion-segment-button value="newProduct" (ionSelect)="selectNewProduct()">{{'NEW_PRODUCT' | translate}}</ion-segment-button>
-        <ion-segment-button value="byExpert" (ionSelect)="selectByExpert()">{{'BY_EXPERT' | translate}}</ion-segment-button>
-        <ion-segment-button value="recommended" (ionSelect)="selectRecommended()">{{'RECOMANDED' | translate}}</ion-segment-button>
-        <ion-segment-button value="usingEmerald" (ionSelect)="selectUsingEmerald()">{{'FEICUI' | translate}}</ion-segment-button>
-        <ion-segment-button value="handmade" (ionSelect)="selectHandmade()">{{'BY_HANDMADE' | translate}}</ion-segment-button>
+        <ion-segment-button value="handOn" (ionSelect)="selectHandOn()">{{'HAND_ON' | translate}}</ion-segment-button>
+        <ion-segment-button value="waterDrop" (ionSelect)="selectWaterDrop()">{{'WATER_DROP' | translate}}</ion-segment-button>
+        <ion-segment-button value="nothingCards" (ionSelect)="selectNothingCards()">{{'NOTHING_CARDS' | translate}}</ion-segment-button>
+        <ion-segment-button value="products108" (ionSelect)="select108Product()">{{'108PRODUCTS' | translate}}</ion-segment-button>
+        <ion-segment-button value="engraving" (ionSelect)="selectEngraving()">{{'ENGRAVING' | translate}}</ion-segment-button>
       </ion-segment>
     </ion-toolbar>
     <ion-toolbar>
@@ -26,6 +27,7 @@
         <ion-segment-button value="default" (ionSelect)="selectDefault()">{{'ORDERBY_DEFAULT' | translate}}</ion-segment-button>
         <ion-segment-button value="price" (ionSelect)="selectPrice()">{{'ORDERBY_PRICE' | translate}}</ion-segment-button>
         <ion-segment-button value="popularity" (ionSelect)="selectPopularity()">{{'ORDERBY_POPULARITY' | translate}}</ion-segment-button>
+        <ion-segment-button value="priceRange" (ionSelect)="selectPriceRange()">{{'PRICE_RANGE' | translate}}</ion-segment-button>
       </ion-segment>
     </ion-toolbar>
   </ion-navbar>
