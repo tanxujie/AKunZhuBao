@@ -127,7 +127,7 @@ export class ListProductPage {
 
   selectDefault() {
     this.orderBy = 'created_time';
-    this.orderDirection = 'DESC';//默认按创建时间降序排列
+    this.orderDirection = 'DESC';
     this.doSearch({condition : this.condition });
   }
 
