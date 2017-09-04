@@ -13,11 +13,9 @@
 <ion-content padding>
   <ion-slides pager autoplay style="height:65%;">
     <ion-list *ngFor="let imgSrc of currentProduct.imageSrcs">
-      <ion-item>
         <ion-slide>
           <img [src]="imgSrc"/>
         </ion-slide>
-      </ion-item>
     </ion-list>
     <ion-slide *ngIf="currentProduct.hasVideo">
     <video autoplay="true" controls loop>
