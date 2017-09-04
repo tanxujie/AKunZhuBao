@@ -62,6 +62,7 @@ export class ProductDetailPage {
   }
 
   private downloadImages() {
+    let slf = this;
     if (this.currentProduct.imageSrcs == null 
       || this.currentProduct.imageSrcs.length == 0) {
       this._showMessage("下载图片不存在");
@@ -71,7 +72,21 @@ export class ProductDetailPage {
       for (let imgSrc of this.currentProduct.imageSrcs) {
         this.photoLibrary.saveImage(imgSrc, '阿坤珠宝');
       }
-      this._showMessage("图片以下载到相册'阿坤珠宝'");
+      //this._showMessage("图片以下载到相册'阿坤珠宝'");
+      let alert = this.alertController.create({
+        title: "提示",
+        subTitle: "图片以下载到相册'阿坤珠宝'",
+        buttons: [{
+          text: 'OK',
+          handler: ()=> {
+            let url = "weixin://";
+            Wechat.jumpToWechat(url, function(){}, function(){
+              slf._showMessage("跳转微信失败");
+            });
+          }
+        }]
+    });
+    alert.present();
     }).catch(err => console.log("Save-Image failed. Caused By : " + err));
   }
 
