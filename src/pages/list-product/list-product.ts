@@ -50,6 +50,7 @@ export class ListProductPage {
   }
 
   search(ent: any) {
+    //if (ent.keycod)
     this.condition = ent.target.value || '';
     this.doSearch({condition : this.condition });
   }
@@ -125,8 +126,8 @@ export class ListProductPage {
   }
 
   selectDefault() {
-    this.orderBy = '';
-    this.orderDirection = '';
+    this.orderBy = 'created_time';
+    this.orderDirection = 'DESC';//默认按创建时间降序排列
     this.doSearch({condition : this.condition });
   }
 
@@ -151,7 +152,7 @@ export class ListProductPage {
   }
 
   selectPriceRange() {
-    this.orderBy = '';
+    this.orderBy = 'price_range_from';
     if (this.orderDirection == '' || this.orderDirection == 'DESC') {
       this.orderDirection = 'ASC';
     } else {

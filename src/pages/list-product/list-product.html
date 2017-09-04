@@ -6,7 +6,9 @@
 -->
 <ion-header>
   <ion-navbar color="primary">
-    <ion-searchbar (ionInput)="search($event)" placeholder="{{'SERACH_BABY' | translate }}"></ion-searchbar>
+    <form>
+      <ion-searchbar debounce="600" (ionInput)="search($event)" placeholder="{{'SERACH_BABY' | translate }}"></ion-searchbar>
+    </form>
     <ion-buttons end>
       <button ion-button small round>{{ 'CATEGORY_TITLE' | translate }}</button>
     </ion-buttons>
@@ -55,12 +57,11 @@
               -->
               <ion-card-content class="card-content" style="width:auto;height:auto;">
                 <ion-row>
-                  <ion-col text-right>
+                  <ion-col text-left>
                     <h2>{{cp.left.code}} : {{cp.left.name}}</h2>
                   </ion-col>
                 </ion-row>          
               </ion-card-content>
-  
             </ion-card>
         </ion-col>
         <ion-col right align-self-left no-padding>
