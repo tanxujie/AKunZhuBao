@@ -19,7 +19,7 @@
         </ion-slide>
       </ion-item>
     </ion-list>
-    <ion-slide *ngIf="currentProduct.videoSrc != null">
+    <ion-slide *ngIf="currentProduct.hasVideo">
     <video autoplay="true" controls loop>
       <source type="video/mp4" src="{{currentProduct.videoSrc}}"/>
     </video>
