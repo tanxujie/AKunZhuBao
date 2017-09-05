@@ -55,7 +55,7 @@ export class MicroclassvideoDetailPage {
           }
         },
         {
-          text: '下载视频',
+          text: '手工分享',
           handler: () => {
             this.downloadVideo();
           }
@@ -78,6 +78,12 @@ export class MicroclassvideoDetailPage {
             this.file.removeFile(this.file.tempDirectory, "AKunZhuBao.mp4")
               .then(()=>console.log("Remove-Video succeeded."), (err)=> console.log("Remove-Video failed. Caused By : " + err));
             this._showMessage("视频已下载到本地相册'阿坤珠宝'");
+            // jump to wechat
+            let url = "weixin://";
+            Wechat.jumpToWechat(url, function(){}, function(){
+              this._showMessage("跳转微信失败");
+            });
+            
           }, (err)=>{
             console.log("Save-Video failed. Caused By : " + err);
             this._showMessage("视频已下载失败");
