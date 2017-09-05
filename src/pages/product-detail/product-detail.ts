@@ -51,7 +51,7 @@ export class ProductDetailPage {
           }
         },
         {
-          text: '多图分享',
+          text: '手工分享',
           handler: () => {
             this.downloadImages();
           }
