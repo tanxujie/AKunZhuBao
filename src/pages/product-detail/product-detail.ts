@@ -75,7 +75,7 @@ export class ProductDetailPage {
       //this._showMessage("图片以下载到相册'阿坤珠宝'");
       let alert = this.alertController.create({
         title: "提示",
-        subTitle: "图片以下载到相册'阿坤珠宝'",
+        subTitle: "图片已下载到相册'阿坤珠宝'",
         buttons: [{
           text: 'OK',
           handler: ()=> {
