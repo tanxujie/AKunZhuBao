@@ -7,7 +7,7 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title text-center>{{ 'PRODUCT_DETAIL_TITLE' | translate }}</ion-title>
-    <button ion-button small ion-start (click)="shareImages()"><ion-icon name="share"></ion-icon>{{'SHARE_BUTTON'|translate}}</button>
+    <button ion-button small ion-end (click)="shareImages()"><ion-icon name="share"></ion-icon>{{'SHARE_BUTTON'|translate}}</button>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
@@ -50,10 +50,12 @@
     <ion-card class="card" *ngFor="let imgSrc of currentProduct.imageSrcs">
       <img [src]="imgSrc" style="width:auto;height:auto;"/>
     </ion-card>
-    <ion-card *ngIf="currentProduct.hasVideo">
-    <video width="auto" height="450px" controls>
+    <!--
+    <ion-card *ngIf="currentProduct.hasVideo" style="width:auto; height:450px;">
+    <video controls>
       <source type="video/mp4" src="{{currentProduct.videoSrc}}"/>
     </video>
     </ion-card>
+  -->
   </div>
 </ion-content>
