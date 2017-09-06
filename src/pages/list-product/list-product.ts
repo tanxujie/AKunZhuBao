@@ -62,9 +62,36 @@ export class ListProductPage {
   }
 
   doRefresh(refresher) {
-    this.pdProvider.query({page: this.page + 1}).subscribe(
-      data => { refresher.complete();this.resolveRefresh(data);}, 
+    let p: any = {
+      newProduct: this.newProduct,
+      handOn: this.handOn,
+      waterDrop: this.waterDrop,
+      nothingCards: this.nothingCards,
+      products108: this.products108,
+      engraving: this.engraving,
+      orderBy: this.orderBy,
+      orderDirection: this.orderDirection
+    };
+    this.pdProvider.query(p).subscribe(
+      data => { refresher.complete();this.resolve(data);}, 
       err => { refresher.complete();this.reject(err);});
+  }
+
+  doInfinite(infiniteScroll) {
+    let p: any = {
+      newProduct: this.newProduct,
+      handOn: this.handOn,
+      waterDrop: this.waterDrop,
+      nothingCards: this.nothingCards,
+      products108: this.products108,
+      engraving: this.engraving,
+      orderBy: this.orderBy,
+      orderDirection: this.orderDirection,
+      page: this.page + 1
+    };
+    this.pdProvider.query(p).subscribe(
+      data => { infiniteScroll.complete();this.resolveInfiniteScroll(data);}, 
+      err => { infiniteScroll.complete();this.reject(err);});
   }
 
   selectNewProduct() {
@@ -203,7 +230,7 @@ export class ListProductPage {
     }
   }
 
-  private resolveRefresh(data) {
+  private resolveInfiniteScroll(data) {
     if (data.success) {
       this.page++;
       let cnt = data.data.length;

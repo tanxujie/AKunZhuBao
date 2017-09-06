@@ -81,4 +81,9 @@
         </ion-col>
       </ion-row>
   </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles"
+                                     loadingText="加载更多数据...">
+        </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
