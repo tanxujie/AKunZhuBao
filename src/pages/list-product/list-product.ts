@@ -50,7 +50,9 @@ export class ListProductPage {
   }
 
   search(ent: any) {
-    //if (ent.keycod)
+    /*for (let key in ent) {
+      console.log("Key: " + key + "; Value : " + ent[key]);
+    }*/
     this.condition = ent.target.value || '';
     this.doSearch({condition : this.condition });
   }
