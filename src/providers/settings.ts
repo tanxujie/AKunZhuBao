@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { Storage } from '@ionic/storage';
 
 /**
@@ -59,8 +58,16 @@ export class Settings {
   getValue(key: string) {
     return this.storage.get(this.SETTINGS_KEY)
       .then(settings => {
-        return settings[key];
+        if (settings) {
+          return settings[key];
+        } else {
+          return null;
+        }
       });
+  }
+
+  clear() {
+    this.storage.remove(this.SETTINGS_KEY);
   }
 
   save() {
