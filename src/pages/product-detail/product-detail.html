@@ -18,13 +18,14 @@
         </ion-slide>
     </ion-list>
     <ion-slide *ngIf="currentProduct.hasVideo">
-    <video autoplay="true" controls loop>
+    <video autoplay="false" controls loop>
       <source type="video/mp4" src="{{currentProduct.videoSrc}}"/>
     </video>
     </ion-slide>
   </ion-slides>
+  <div style="height:16px;width:100%;">商品信息</div>
   <div>
-    [{{currentProduct.code}} : {{currentProduct.name}}] {{currentProduct.description}}
+    【{{currentProduct.code}}】{{currentProduct.name}} {{currentProduct.description}}
     <p>
       {{'EX_FACTORY_PRICE'|translate}} : {{currentProduct.exFactoryPrice}}
     </p>
@@ -34,5 +35,25 @@
     <p>
       {{'PRIMARY_PRICE'|translate}} : {{currentProduct.primaryPrice}}
     </p>
+  </div>
+  <div style="height:16px;width:100%;">购买方式</div>
+  <div>
+    <p>
+      {{'PHONE_NUMBER' | translate }}: {{currentProduct.phoneNumber}}
+    </p>
+    <p>
+      {{'WECHAT_NUMBER' | translate}}:{{currentProduct.wechatNumber}}
+    </p>
+  </div>
+  <div style="height:16px;width:100%;">图片</div>
+  <div>
+    <ion-card class="card" *ngFor="let imgSrc of currentProduct.imageSrcs">
+      <img [src]="imgSrc" style="width:auto;height:auto;"/>
+    </ion-card>
+    <ion-card *ngIf="currentProduct.hasVideo">
+    <video autoplay="false" controls loop>
+      <source type="video/mp4" src="{{currentProduct.videoSrc}}"/>
+    </video>
+    </ion-card>
   </div>
 </ion-content>

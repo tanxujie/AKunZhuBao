@@ -6,9 +6,9 @@ export class Product {
     majorCategoryName: string;
     minorCategoryName: string;
     description: string;
-    exFactoryPrice: number;
-    favorablePrice: number;
-    primaryPrice: number;
+    exFactoryPrice: string;
+    favorablePrice: string;
+    primaryPrice: string;
     phoneNumber: string;
     wechatNumber: string;
     color: string;
@@ -25,6 +25,7 @@ export class Product {
     // all product image's srcs
     imageSrcs: string[];
 
+    hasVideo: boolean;
     videoSrc: string;
 
     constructor(private params?: any) {
@@ -49,6 +50,7 @@ export class Product {
             this.circleRation = params['circleRation'] || '';
             this.imageSrc = params['imageSrc'] || '';
             this.imageSrcs = params['imageSrcs'] || '';
+            this.hasVideo = params['hasVideo'];
             this.videoSrc = params['videoSrc']||'';
         }
     }

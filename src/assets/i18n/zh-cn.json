@@ -39,6 +39,8 @@
   "SAVE_BUTTON":"保存",
   "SHARE_BUTTON": "分享",
   "PRODUCT_DETAIL_TITLE":"产品详情",
+  "PHONE_NUMBER":"电话",
+  "WECHAT_NUMBER":"微信",
 
   "TUTORIAL_SLIDE1_TITLE": "欢迎使用Ionic Super Starter",
   "TUTORIAL_SLIDE1_DESCRIPTION": "<b> Ionic Super Starter </b>是准备了许多编译完成的页面和插件、功能完备的Ionic开始。",
