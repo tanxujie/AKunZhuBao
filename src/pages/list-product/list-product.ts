@@ -166,7 +166,7 @@ export class ListProductPage {
   private doSearch(params?: any) {
     let loading = this.loadingCtrl.create({
       spinner: 'bubbles',
-      content: '查询中...',
+      content: '加载中...',
       dismissOnPageChange: true,
       showBackdrop: true
     });
