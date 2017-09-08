@@ -9,13 +9,6 @@
     <form>
       <ion-searchbar [(ngModel)]="condition" [ngModelOptions]="{standalone: true}" placeholder="{{'SERACH_BABY' | translate }}"></ion-searchbar>
       <button style="visibility:hidden;width:0%;height:0%;" ion-button (click)="search($event)"></button>
-      <!--
-      <ion-searchbar debounce="600" (ionInput)="search($event)" placeholder="{{'SERACH_BABY' | translate }}"></ion-searchbar>
-      -->
-    <!--
-      <input type="search" placeholder="{{'SERACH_BABY' | translate }}" ng-model="condition"/>
-      <button ng-click="search($event)">Search</button>
-      -->
     </form>
     <ion-buttons end>
       <button ion-button small round>{{ 'CATEGORY_TITLE' | translate }}</button>
@@ -54,15 +47,7 @@
       <ion-row align-items-start justify-content-center *ngFor="let cp of currentProducts">
         <ion-col left align-self-right no-padding>
             <ion-card class="card" text-right *ngIf="cp.hasLeft" (click)="openDetail(cp.left)" detail-none>
-                            <!--
-              <ion-card-header class="card-header">
-                <h2>{{cp.left.code}} : {{cp.left.name}}</h2>
-              </ion-card-header>
- -->
             <img [src]="cp.left.imageSrc" style="width:auto;height:auto;"/>
-            <!--
-              <ion-img width="180" height="180" [src]="cp.left.imageSrc"></ion-img>
-              -->
               <ion-card-content class="card-content" style="width:auto;height:auto;">
                 <ion-row>
                   <ion-col text-left>
@@ -75,9 +60,6 @@
         <ion-col right align-self-left no-padding>
             <ion-card text-left *ngIf="cp.hasRight" (click)="openDetail(cp.right)" detail-none>
               <img [src]="cp.right.imageSrc" style="width:auto;height:auto;"/>
-              <!--
-              <ion-img width="180" height="180" [src]="cp.right.imageSrc"></ion-img>
-              -->
               <ion-card-content class="card-content" style="width:auto;height:auto;">
                 <ion-row>
                   <ion-col text-left>
