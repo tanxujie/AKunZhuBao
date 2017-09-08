@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
-import { SelfInformationPage } from '../self-information/self-information'
-import { AgentPage } from '../agent/agent'
-import { KunFriendsPage } from '../kun-friends/kun-friends'
-import { CompanyInfoPage } from '../company-info/company-info'
-import { AboutPage } from '../about/about'
-import { SelfSettingsPage } from '../self-settings/self-settings'
+import { SelfInformationPage } from '../self-information/self-information';
+import { AgentPage } from '../agent/agent';
+import { KunFriendsPage } from '../kun-friends/kun-friends';
+import { CompanyInfoPage } from '../company-info/company-info';
+import { AboutPage } from '../about/about';
+import { SelfSettingsPage } from '../self-settings/self-settings';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the MySettingPage page.
@@ -57,5 +58,9 @@ export class MySettingPage {
 
   openSelfSettings() {
     this.navCtrl.push(SelfSettingsPage);
+  }
+
+  logout() {
+    this.navCtrl.push(LoginPage);
   }
 }
