@@ -15,8 +15,8 @@ export class Product {
     category: string;
     style: string;
     theme: string;
-    priceRangeFrom: number;
-    priceRangeTo: number;
+    priceRangeFrom: string;
+    priceRangeTo: string;
     circleRation: string;
 
     // image src
@@ -36,17 +36,17 @@ export class Product {
             this.majorCategoryName = params['majorCategoryName']||'';
             this.minorCategoryName = params['minorCategoryName'] || '';
             this.description = params['description'] || '';
-            this.exFactoryPrice = params['exFactoryPrice'] || 0;
-            this.favorablePrice = params['favorablePrice'] || 0;
-            this.primaryPrice = params['primaryPrice'] || 0;
+            this.exFactoryPrice = params['exFactoryPriceStr'] || '';
+            this.favorablePrice = params['favorablePriceStr'] || '';
+            this.primaryPrice = params['primaryPriceStr'] || '';
             this.phoneNumber = params['phoneNumber'] || '';
             this.wechatNumber = params['wechatNumber'] || '';
             this.color = params['color'] || '';
             this.category = params['category'] || '';
             this.style = params['style'] || '';
             this.theme = params['theme'] || '';
-            this.priceRangeFrom = params['priceRangeFrom'] || 0;
-            this.priceRangeTo = params['priceRangeTo'] || 0;
+            this.priceRangeFrom = params['priceRangeFromStr'] || '';
+            this.priceRangeTo = params['priceRangeToStr'] || '';
             this.circleRation = params['circleRation'] || '';
             this.imageSrc = params['imageSrc'] || '';
             this.imageSrcs = params['imageSrcs'] || '';
