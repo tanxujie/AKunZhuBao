@@ -50,11 +50,6 @@ export class ListProductPage {
   }
 
   search(ent: any) {
-    /*for (let key in ent) {
-      console.log("Key: " + key + "; Value : " + ent[key]);
-    }*/
-    //this.condition = ent.target.value || '';
-    console.log("Search Condition: " + this.condition);
     this.doSearch({condition : this.condition });
   }
 

@@ -7,7 +7,7 @@
 <ion-header>
   <ion-navbar color="primary">
     <form>
-      <ion-searchbar [(ngModel)]="condition" [ngModelOptions]="{standalone: true}" placeholder="{{'SERACH_BABY' | translate }}"></ion-searchbar>
+      <ion-searchbar [(ngModel)]="condition" [ngModelOptions]="{standalone: true}" (ionCancel)="search($event)"> placeholder="{{'SERACH_BABY' | translate }}"></ion-searchbar>
       <button style="visibility:hidden;width:0%;height:0%;" ion-button (click)="search($event)"></button>
     </form>
     <ion-buttons end>
