@@ -7,7 +7,15 @@
 <ion-header>
   <ion-navbar color="primary">
     <form>
+      <ion-searchbar [(ngModel)]="condition" [ngModelOptions]="{standalone: true}" placeholder="{{'SERACH_BABY' | translate }}"></ion-searchbar>
+      <button style="visibility:hidden;width:0%;height:0%;" ion-button (click)="search($event)"></button>
+      <!--
       <ion-searchbar debounce="600" (ionInput)="search($event)" placeholder="{{'SERACH_BABY' | translate }}"></ion-searchbar>
+      -->
+    <!--
+      <input type="search" placeholder="{{'SERACH_BABY' | translate }}" ng-model="condition"/>
+      <button ng-click="search($event)">Search</button>
+      -->
     </form>
     <ion-buttons end>
       <button ion-button small round>{{ 'CATEGORY_TITLE' | translate }}</button>

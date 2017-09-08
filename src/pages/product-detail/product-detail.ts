@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { PhotoLibrary } from '@ionic-native/photo-library';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
-import { ActionSheetController } from 'ionic-angular';
+import { ActionSheetController, Slides } from 'ionic-angular';
 import { Product } from '../../models/product';
 // WeChat plugin global variable
 declare let Wechat;
@@ -18,7 +18,7 @@ declare let Wechat;
 })
 export class ProductDetailPage {
 
-  @ViewChild('ionSlides') slides;
+  @ViewChild(Slides) slides: Slides;
 
   currentProduct: Product;
 
@@ -118,40 +118,86 @@ export class ProductDetailPage {
 
   private _shareWXTimeLine() {
     let slf = this;
-    Wechat.share({
-      message: {
-        title: this.currentProduct.code + ":" + this.currentProduct.name,
-        description: (this.currentProduct.description || ''),
-        media: {
-          type: Wechat.Type.IMAGE,
-          image: this.currentProduct.imageSrc
-        }
-      },
-      scene: Wechat.Scene.TIMELINE   // share to Timeline
-    }, function () {
-      slf._showMessage('分享朋友圈成功');
-    }, function (reason) {
-      slf._showMessage('分享朋友圈失败');
-    });
+    let activeIdx: number = this.slides.getActiveIndex();
+    let imgCnt: number = 0;
+    if (this.currentProduct.imageSrcs && this.currentProduct.imageSrcs.length) {
+      imgCnt = this.currentProduct.imageSrcs.length;
+    }
+    if (activeIdx < imgCnt) {
+      Wechat.share({
+        message: {
+          title: slf.currentProduct.code + ":" + slf.currentProduct.name,
+          description: (slf.currentProduct.description || ''),
+          media: {
+            type: Wechat.Type.IMAGE,
+            image: slf.currentProduct.imageSrcs[activeIdx]
+          }
+        },
+        scene: Wechat.Scene.TIMELINE   // share to Timeline
+      }, function () {
+        slf._showMessage('分享朋友圈成功');
+      }, function (reason) {
+        slf._showMessage('分享朋友圈失败');
+      });
+    } else {
+      Wechat.share({
+        message: {
+          title: slf.currentProduct.code + ":" + slf.currentProduct.name,
+          description: (slf.currentProduct.description || ''),
+          media: {
+            type: Wechat.Type.VIDEO,
+            videoUrl: slf.currentProduct.videoSrc
+          }
+        },
+        scene: Wechat.Scene.TIMELINE   // share to Timeline
+      }, function () {
+        slf._showMessage('分享朋友圈成功');
+      }, function (reason) {
+        slf._showMessage('分享朋友圈失败');
+      });
+    }
   }
 
   private _shareWXSession() {
     let slf = this;
-    Wechat.share({
-      message: {
-        title: this.currentProduct.code + ":" + this.currentProduct.name,
-        description: (this.currentProduct.description|| ''),
-        media: {
-          type: Wechat.Type.IMAGE,
-          image: this.currentProduct.imageSrc
-        }
-      },
-      scene: Wechat.Scene.SESSION   // share to Session
-    }, function () {
-      slf._showMessage('发送朋友成功');
-    }, function (reason) {
-      slf._showMessage('发送朋友失败');
-    });
+    let activeIdx: number = this.slides.getActiveIndex();
+    let imgCnt: number = 0;
+    if (this.currentProduct.imageSrcs && this.currentProduct.imageSrcs.length) {
+      imgCnt = this.currentProduct.imageSrcs.length;
+    }
+    if (activeIdx < imgCnt) {
+      Wechat.share({
+        message: {
+          title: slf.currentProduct.code + ":" + slf.currentProduct.name,
+          description: (slf.currentProduct.description || ''),
+          media: {
+            type: Wechat.Type.IMAGE,
+            image: slf.currentProduct.imageSrcs[activeIdx]
+          }
+        },
+        scene: Wechat.Scene.SESSION   // share to session
+      }, function () {
+        slf._showMessage('发送给朋友成功');
+      }, function (reason) {
+        slf._showMessage('发送给朋友失败');
+      });
+    } else {
+      Wechat.share({
+        message: {
+          title: slf.currentProduct.code + ":" + slf.currentProduct.name,
+          description: (slf.currentProduct.description || ''),
+          media: {
+            type: Wechat.Type.VIDEO,
+            videoUrl: slf.currentProduct.videoSrc
+          }
+        },
+        scene: Wechat.Scene.SESSION   // share to session
+      }, function () {
+        slf._showMessage('发送给朋友成功');
+      }, function (reason) {
+        slf._showMessage('发送给朋友失败');
+      });
+    }
   }
 
   /*
