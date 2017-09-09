@@ -72,7 +72,6 @@ export class MicroclassvideoDetailPage {
       this.fileTransfer.download(this.currentMicroClassVideo.videoSrc, this.file.tempDirectory + "AKunZhuBao.mp4")
         .then((entry) => {
           let fileUrl = entry.toURL();
-          console.log('download complete : ' + fileUrl);
           this.photoLibrary.saveVideo(fileUrl, '阿坤珠宝').then(()=>{
             // remove file
             this.file.removeFile(this.file.tempDirectory, "AKunZhuBao.mp4")
@@ -83,9 +82,7 @@ export class MicroclassvideoDetailPage {
             Wechat.jumpToWechat(url, function(){}, function(){
               this._showMessage("跳转微信失败");
             });
-            
           }, (err)=>{
-            console.log("Save-Video failed. Caused By : " + err);
             this._showMessage("视频已下载失败");
           });
         }, 

@@ -1,5 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { PhotoLibrary } from '@ionic-native/photo-library';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { ActionSheetController, Slides } from 'ionic-angular';
 import { Product } from '../../models/product';
@@ -17,23 +19,29 @@ declare let Wechat;
   templateUrl: 'product-detail.html',
 })
 export class ProductDetailPage {
-
   @ViewChild(Slides) slides: Slides;
-
   currentProduct: Product;
+  fileTransfer: FileTransferObject;
 
   constructor(private navCtrl: NavController, 
               private navParams: NavParams, 
               private photoLibrary: PhotoLibrary, 
+              private transfer: FileTransfer, 
+              private file: File, 
               private alertController: AlertController,
               private actionSheetCtrl: ActionSheetController) {
     this.currentProduct = navParams.get('product');
+    this.fileTransfer = this.transfer.create();
   }
 
-  ionViewDidLoad() {
-    //console.log('ionViewDidLoad ProductDetailPage');
-  }
+  /**
+   * Function after view was loaded.
+   */
+  ionViewDidLoad() {}
 
+  /**
+   * Share selected image to Wechat TimeLine, Session or Download to local photo folder
+   */
   public shareImages() {
     let actionSheet = this.actionSheetCtrl.create({
       title: '分享图片',
@@ -53,7 +61,7 @@ export class ProductDetailPage {
         {
           text: '手工分享',
           handler: () => {
-            this.downloadImages();
+            this.downloadImagesAndVideo();
           }
         }
       ]
@@ -61,35 +69,9 @@ export class ProductDetailPage {
     actionSheet.present();
   }
 
-  private downloadImages() {
-    let slf = this;
-    if (this.currentProduct.imageSrcs == null 
-      || this.currentProduct.imageSrcs.length == 0) {
-      this._showMessage("下载图片不存在");
-      return;
-    }
-    this.photoLibrary.requestAuthorization({read: true, write: true}).then(() => {
-      for (let imgSrc of this.currentProduct.imageSrcs) {
-        this.photoLibrary.saveImage(imgSrc, '阿坤珠宝');
-      }
-      //this._showMessage("图片以下载到相册'阿坤珠宝'");
-      let alert = this.alertController.create({
-        title: "提示",
-        subTitle: "图片已下载到相册'阿坤珠宝'",
-        buttons: [{
-          text: 'OK',
-          handler: ()=> {
-            let url = "weixin://";
-            Wechat.jumpToWechat(url, function(){}, function(){
-              slf._showMessage("跳转微信失败");
-            });
-          }
-        }]
-    });
-    alert.present();
-    }).catch(err => console.log("Save-Image failed. Caused By : " + err));
-  }
-
+  /*
+  * Share selected image or video to wechat timeline.
+  */
   private shareWXTimeLine() {
     let slf = this;
     Wechat.isInstalled(function(installed){
@@ -99,10 +81,13 @@ export class ProductDetailPage {
         slf._showMessage('您还没有安装微信');
       }
     }, function(reason){
-      slf._showMessage('分享朋友圈发生错误：'  + reason);
+      slf._showMessage('分享朋友圈失败');
     });
   }
 
+  /*
+  * Share selected image or video to wechat session
+  */
   private shareWXSession() {
     let slf = this;
     Wechat.isInstalled(function(installed){
@@ -112,8 +97,50 @@ export class ProductDetailPage {
         slf._showMessage('您还没有安装微信');
       }
     }, function(reason){
-      slf._showMessage('发送朋友发生错误：'  + reason);
+      slf._showMessage('发送到朋友失败');
     });
+  }
+
+  private downloadImagesAndVideo() {
+    //let slf = this;
+    this.photoLibrary.requestAuthorization({read: true, write: true}).then(() => {
+      // download images
+      if (this.currentProduct.imageSrcs && this.currentProduct.imageSrcs.length > 0) {
+        for (let imgSrc of this.currentProduct.imageSrcs) {
+          this.photoLibrary.saveImage(imgSrc, '阿坤珠宝');
+        }
+      }
+
+      // download video
+      this.fileTransfer.download(this.currentProduct.videoSrc, this.file.tempDirectory + "AKunZhuBao.mp4")
+        .then((entry)=>{
+          this.photoLibrary.saveVideo(entry.toURL(), '阿坤珠宝').then(()=>{
+            // remove file
+            this.file.removeFile(this.file.tempDirectory, 'AKunZhuBao.mp4')
+              .then(()=>console.log('Remove-Video succeeded.'), (err)=> console.log('Remove-Video failed. Caused By : ' + err));
+            this._showMessage("视频已下载到本地相册'阿坤珠宝'");
+            Wechat.jumpToWechat("weixin://", function(){}, function(){ this._showMessage('跳转微信失败');});
+          }, ()=>{
+            this._showMessage('视频已下载失败');
+          });
+        }, (err)=>{
+          console.log("FileTransfer Download failed. Caused by : " + err);
+        }).catch((err)=>{ console.log("FileTransfer Download failed. Caused by : " + err); });
+
+      let alert = this.alertController.create({
+        title: "提示",
+        subTitle: "图片已下载到相册'阿坤珠宝'",
+        buttons: [{
+          text: 'OK',
+          handler: ()=> {
+            Wechat.jumpToWechat("weixin://", function(){}, function(){
+              this._showMessage('跳转微信失败');
+            });
+          }
+        }]
+      });
+      alert.present();
+    }).catch(err => console.log("Save Images&Video failed. Caused By : " + err));
   }
 
   private _shareWXTimeLine() {
