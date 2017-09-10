@@ -78,6 +78,7 @@
     </platform>
     <engine name="ios" spec="^4.4.0" />
     <plugin name="com.hutchind.cordova.plugins.streamingmedia" spec="~0.1.4" />
+    <plugin name="cordova-clipboard" spec="^1.0.0" />
     <plugin name="cordova-plugin-console" spec="^1.0.5" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
     <plugin name="cordova-plugin-file" spec="^4.3.2" />

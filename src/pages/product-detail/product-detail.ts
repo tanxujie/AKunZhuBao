@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { PhotoLibrary } from '@ionic-native/photo-library';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
+import { Clipboard } from '@ionic-native/clipboard';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { ActionSheetController, Slides } from 'ionic-angular';
 import { Product } from '../../models/product';
@@ -28,6 +29,7 @@ export class ProductDetailPage {
               private photoLibrary: PhotoLibrary, 
               private transfer: FileTransfer, 
               private file: File, 
+              private clipboard: Clipboard,
               private alertController: AlertController,
               private actionSheetCtrl: ActionSheetController) {
     this.currentProduct = navParams.get('product');
@@ -150,6 +152,8 @@ export class ProductDetailPage {
     if (this.currentProduct.imageSrcs && this.currentProduct.imageSrcs.length) {
       imgCnt = this.currentProduct.imageSrcs.length;
     }
+    // copy product code, name and description to clipboard
+    slf.clipboard.copy("【" + slf.currentProduct.code + "】:" + (slf.currentProduct.name||'') + (slf.currentProduct.description||''));
     if (activeIdx < imgCnt) {
       Wechat.share({
         message: {
@@ -192,6 +196,8 @@ export class ProductDetailPage {
     if (this.currentProduct.imageSrcs && this.currentProduct.imageSrcs.length) {
       imgCnt = this.currentProduct.imageSrcs.length;
     }
+    // copy product code, name and description to clipboard
+    slf.clipboard.copy("【" + slf.currentProduct.code + "】:" + (slf.currentProduct.name||'') + (slf.currentProduct.description||''));
     if (activeIdx < imgCnt) {
       Wechat.share({
         message: {

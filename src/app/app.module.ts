@@ -43,6 +43,7 @@ import { CallNumber } from '@ionic-native/call-number';
 import { PhotoLibrary } from '@ionic-native/photo-library';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
+import { Clipboard } from '@ionic-native/clipboard';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -138,6 +139,7 @@ export function provideSettings(storage: Storage) {
     PhotoLibrary,
     File,
     FileTransfer,
+    Clipboard,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },

@@ -279,6 +279,14 @@ module.exports = [
         "clobbers": [
             "window.FileTransfer"
         ]
+    },
+    {
+        "id": "cordova-clipboard.Clipboard",
+        "file": "plugins/cordova-clipboard/www/clipboard.js",
+        "pluginId": "cordova-clipboard",
+        "clobbers": [
+            "cordova.plugins.clipboard"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -297,7 +305,8 @@ module.exports.metadata =
     "cordova-plugin-file": "4.3.2",
     "cordova-plugin-add-swift-support": "1.6.0",
     "cordova-plugin-photo-library": "2.1.0",
-    "cordova-plugin-file-transfer": "1.6.3"
+    "cordova-plugin-file-transfer": "1.6.3",
+    "cordova-clipboard": "1.0.0"
 };
 // BOTTOM OF METADATA
 });

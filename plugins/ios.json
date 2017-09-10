@@ -44,6 +44,9 @@
         },
         "cordova-plugin-file": {
             "PACKAGE_NAME": "com.akunzhubao"
+        },
+        "cordova-clipboard": {
+            "PACKAGE_NAME": "com.akunzhubao"
         }
     },
     "dependent_plugins": {
