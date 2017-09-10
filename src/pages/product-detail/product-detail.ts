@@ -153,7 +153,7 @@ export class ProductDetailPage {
     if (activeIdx < imgCnt) {
       Wechat.share({
         message: {
-          title: slf.currentProduct.code + ":" + slf.currentProduct.name,
+          title: "【" + slf.currentProduct.code + "】:" + slf.currentProduct.name,
           description: (slf.currentProduct.description || ''),
           media: {
             type: Wechat.Type.IMAGE,
@@ -169,7 +169,7 @@ export class ProductDetailPage {
     } else {
       Wechat.share({
         message: {
-          title: slf.currentProduct.code + ":" + slf.currentProduct.name,
+          title: "【" + slf.currentProduct.code + "】:" + slf.currentProduct.name,
           description: (slf.currentProduct.description || ''),
           media: {
             type: Wechat.Type.VIDEO,
@@ -195,7 +195,7 @@ export class ProductDetailPage {
     if (activeIdx < imgCnt) {
       Wechat.share({
         message: {
-          title: slf.currentProduct.code + ":" + slf.currentProduct.name,
+          title: "【" + slf.currentProduct.code + "】:" + slf.currentProduct.name,
           description: (slf.currentProduct.description || ''),
           media: {
             type: Wechat.Type.IMAGE,
@@ -211,7 +211,7 @@ export class ProductDetailPage {
     } else {
       Wechat.share({
         message: {
-          title: slf.currentProduct.code + ":" + slf.currentProduct.name,
+          title: "【" + slf.currentProduct.code + "】:" + slf.currentProduct.name,
           description: (slf.currentProduct.description || ''),
           media: {
             type: Wechat.Type.VIDEO,
