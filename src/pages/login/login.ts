@@ -30,12 +30,13 @@ export class LoginPage {
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
     });
-    this.settings.getValue("REMEMBER_ACCOUNT").then(res => {
-      if (res && !!res.rememberMe) {
+    this.settings.getValue("ACCOUNT_REMEMBER_INFO").then(res => {
+      if (res && !!res.rememberPassword) {
         this.phoneNumber = res.phoneNumber;
         this.password = res.password;
+        this.rememberPassword = true;
       }
-    }, err=>{});
+    }, err=>{console.log(err);});
   }
 
   // Attempt to login in through our User service
@@ -44,8 +45,20 @@ export class LoginPage {
       .map(resp => resp.json())
       .subscribe(res => {
         if (res.success) {
-          this.settings.setValue("ACCOUNT_AUTH_TOKEN", res.data);
-          this.navCtrl.push(MainPage);
+          this.settings.load().then(()=>{
+            if (!!this.rememberPassword) {
+              let rememberInfo = {
+                rememberPassword: true,
+                phoneNumber: this.phoneNumber,
+                password: this.password
+              };
+              this.settings.setValue("ACCOUNT_REMEMBER_INFO", rememberInfo);
+            } else {
+              this.settings.clear();
+            }
+            this.settings.setValue("ACCOUNT_AUTH_TOKEN", res.data);
+            this.navCtrl.push(MainPage);
+          }, err=>console.log(err));
         } else {
           this.settings.clear();
           this._showLoginFailure();

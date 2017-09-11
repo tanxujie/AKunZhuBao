@@ -16,20 +16,20 @@ import { LoginPage } from '../login/login';
 export class WelcomePage {
 
   constructor(private navCtrl: NavController, private settings: Settings) { 
-    if (this.checkLoginToken()) {// TODO
-      this.navCtrl.push(TabsPage);
-    } else {
-      this.navCtrl.push(LoginPage);
-    }
+    this.checkLoginToken();
   }
 
   checkLoginToken() {
-    let accountAuthToken: any = this.settings.getValue("ACCOUNT_AUTH_TOKEN");
-    if (accountAuthToken) {
-      this.settings.clear();
-      return false;
-    } else {
-      return true;
-    }
+    this.settings.getValue("ACCOUNT_AUTH_TOKEN").then((res)=>{
+      if (res) {
+        this.navCtrl.push(TabsPage);
+      } else {
+        this.settings.clear();
+        this.navCtrl.push(LoginPage);
+      }
+    }, err=>{ 
+        this.settings.clear();
+        this.navCtrl.push(LoginPage);
+    });
   }
 }

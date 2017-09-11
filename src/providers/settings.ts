@@ -27,7 +27,7 @@ export class Settings {
           this.settings = val;
         })
       }
-    });
+    }).catch(err => console.log(err));
   }
 
   _mergeDefaults(defaults: any) {
@@ -67,6 +67,7 @@ export class Settings {
   }
 
   clear() {
+    this.settings = {};
     this.storage.remove(this.SETTINGS_KEY);
   }
 
