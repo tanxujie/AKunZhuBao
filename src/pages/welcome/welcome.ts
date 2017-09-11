@@ -16,7 +16,7 @@ import { LoginPage } from '../login/login';
 export class WelcomePage {
 
   constructor(private navCtrl: NavController, private settings: Settings) { 
-    if (!this.checkLoginToken()) {// TODO
+    if (this.checkLoginToken()) {// TODO
       this.navCtrl.push(TabsPage);
     } else {
       this.navCtrl.push(LoginPage);
@@ -24,8 +24,8 @@ export class WelcomePage {
   }
 
   checkLoginToken() {
-    let userInfo: any = this.settings.getValue("USER_INFO");
-    if (!userInfo || !userInfo.token) {
+    let accountAuthToken: any = this.settings.getValue("ACCOUNT_AUTH_TOKEN");
+    if (accountAuthToken) {
       this.settings.clear();
       return false;
     } else {

@@ -7,9 +7,9 @@ import 'rxjs/add/operator/map';
  */
 @Injectable()
 export class Api {
-  //private url: string = 'http://192.168.1.105:8080';
+  private url: string = 'http://192.168.1.105:8080';
   //private url: string = 'http://123.56.11.216:80';
-  private url: string = 'http://www.akunzhubao.com/';
+  //private url: string = 'http://www.akunzhubao.com/';
 
   constructor(public http: Http) {
   }

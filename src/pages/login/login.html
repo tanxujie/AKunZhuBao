@@ -8,19 +8,19 @@
       </ion-item>
       <ion-item>
         <ion-label fixed>{{ 'PHONENUMBER' | translate }}</ion-label>
-        <ion-input type="number" [(ngModel)]="account.phonenumber" name="phonenumber"></ion-input>
+        <ion-input type="number" [(ngModel)]="phoneNumber" name="phoneNumber"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
-        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+        <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label fixed>{{ 'REMEMBER_PASSWORD' | translate }}</ion-label>
-        <ion-checkbox name="rememberPassword" checked="true" [(ngModel)]="account.rememberPassword"></ion-checkbox>
+        <ion-checkbox name="rememberPassword" checked="true" [(ngModel)]="rememberPassword"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label fixed>{{ 'AUTO_LOGIN' | translate }}</ion-label>
-        <ion-checkbox name="autoLogin" checked="true" [(ngModel)]="account.autoLogin"></ion-checkbox>
+        <ion-checkbox name="autoLogin" checked="true" [(ngModel)]="autoLogin"></ion-checkbox>
       </ion-item>
       <ion-item>
         <a href="">{{ 'FORGET_PASSWORD' | translate }}</a>
