@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, URLSearchParams } from '@angular/http';
+import { Settings } from '../providers/settings';
 import 'rxjs/add/operator/map';
 
 /**
@@ -11,7 +12,7 @@ export class Api {
   //private url: string = 'http://123.56.11.216:80';
   //private url: string = 'http://www.akunzhubao.com/';
 
-  constructor(public http: Http) {
+  constructor(public http: Http, private settings: Settings) {
   }
 
   get(endpoint: string, params?: any, options?: RequestOptions) {
@@ -19,6 +20,10 @@ export class Api {
       options = new RequestOptions();
     }
 
+    if (!params) {
+      params = {};
+    }
+    params['authToken'] = this.settings.getValue('ACCOUNT_AUTH_TOKEN');
     // Support easy query params for GET requests
     if (params) {
       let p = new URLSearchParams();
