@@ -7,7 +7,9 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title text-center>{{ 'MICROCLASS' | translate }}</ion-title>
-    <button ion-button small ion-start (click)="shareVideo()"><ion-icon name="share"></ion-icon>{{'SHARE_BUTTON'|translate}}</button>
+    <ion-buttons end>
+      <button ion-button small ion-start (click)="shareVideo()"><ion-icon name="share"></ion-icon>{{'SHARE_BUTTON'|translate}}</button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content>
