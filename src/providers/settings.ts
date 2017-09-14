@@ -8,28 +8,21 @@ import { Storage } from '@ionic/storage';
 export class Settings {
   private SETTINGS_KEY: string = '_settings';
 
-  settings: any;
+  //settings: any;
 
-  _defaults: any;
-  _readyPromise: Promise<any>;
-
-  constructor(public storage: Storage, defaults: any) {
-    this._defaults = defaults;
+  constructor(public storage: Storage) {
   }
 
+  /*
   load() {
     return this.storage.get(this.SETTINGS_KEY).then((value) => {
       if (value) {
         this.settings = value;
-        return this._mergeDefaults(this._defaults);
-      } else {
-        return this.setAll(this._defaults).then((val) => {
-          this.settings = val;
-        })
       }
     }).catch(err => console.log(err));
-  }
+  }*/
 
+  /*
   _mergeDefaults(defaults: any) {
     for (let k in defaults) {
       if (!(k in this.settings)) {
@@ -44,18 +37,23 @@ export class Settings {
       this.settings[k] = settings[k];
     }
     return this.save();
+  }*/
+
+  public setValue(key: string, value: any) {
+    this.storage.get(this.SETTINGS_KEY).then(settings => {
+      if (!settings) {
+        settings = {};
+      }
+      settings[key] = value;
+      this.storage.set(this.SETTINGS_KEY, settings);
+    }, err=>console.log(err)).catch(ex => console.log(ex));
   }
 
-  setValue(key: string, value: any) {
-    this.settings[key] = value;
-    return this.storage.set(this.SETTINGS_KEY, this.settings);
+  public setAll(value: any) {
+    this.storage.set(this.SETTINGS_KEY, value);
   }
 
-  setAll(value: any) {
-    return this.storage.set(this.SETTINGS_KEY, value);
-  }
-
-  getValue(key: string) {
+  public getValue(key: string) {
     return this.storage.get(this.SETTINGS_KEY)
       .then(settings => {
         if (settings) {
@@ -67,15 +65,15 @@ export class Settings {
   }
 
   clear() {
-    this.settings = {};
     this.storage.remove(this.SETTINGS_KEY);
   }
 
+  /*
   save() {
     return this.setAll(this.settings);
   }
 
   get allSettings() {
     return this.settings;
-  }
+  }*/
 }

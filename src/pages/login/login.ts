@@ -30,7 +30,7 @@ export class LoginPage {
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
     });
-    this.settings.getValue("ACCOUNT_REMEMBER_INFO").then(res => {
+    this.settings.getValue("LOGIN_SETTING").then(res => {
       if (res && !!res.rememberPassword) {
         this.phoneNumber = res.phoneNumber;
         this.password = res.password;
@@ -45,6 +45,24 @@ export class LoginPage {
       .map(resp => resp.json())
       .subscribe(res => {
         if (res.success) {
+          let loginSettings = {
+            phoneNumber: this.phoneNumber
+          };
+          if (this.rememberPassword) {
+            loginSettings['password'] = this.password;
+            loginSettings['rememberPassword'] = true;
+          }
+          if (this.autoLogin) {
+            loginSettings['autoLogin'] = true;
+          }
+          let values = {
+            "LOGIN_ACCOUNT": res.data,
+            "AUTH_TOKEN": res.data.authToken,
+            "LOGIN_SETTING": loginSettings
+          };
+          this.settings.setAll(values);
+          this.navCtrl.push(MainPage);
+          /*
           this.settings.load().then(()=>{
             if (!!this.rememberPassword) {
               let rememberInfo = {
@@ -59,6 +77,7 @@ export class LoginPage {
             this.settings.setValue("ACCOUNT_AUTH_TOKEN", res.data);
             this.navCtrl.push(MainPage);
           }, err=>console.log(err));
+          */
         } else {
           this.settings.clear();
           this._showLoginFailure();

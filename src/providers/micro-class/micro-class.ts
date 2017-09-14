@@ -13,10 +13,10 @@ import { Api } from '../api';
 export class MicroClassProvider {
 
   constructor(public http: Http, public api: Api) {
-    console.log('Hello MicroClassProvider Provider');
+    //console.log('Hello MicroClassProvider Provider');
   }
 
   query(params?: any) {
-    return this.api.get('microclass/app/search', params).map(resp => resp.json()); 
+    return this.api.get('app/microclass/search', params).map(resp => resp.json()); 
   }
 }

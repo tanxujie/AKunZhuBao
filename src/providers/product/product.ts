@@ -12,10 +12,10 @@ import { Api } from '../api';
 @Injectable()
 export class ProductProvider {
   constructor(public http: Http, public api: Api) {
-    console.log('Hello ProductProvider Provider');
+    //console.log('Hello ProductProvider Provider');
   }
 
   query(params?: any) {
-    return this.api.get('product/app/search', params).map(resp => resp.json());
+    return this.api.get('app/product/search', params).map(resp => resp.json());
   }
 }

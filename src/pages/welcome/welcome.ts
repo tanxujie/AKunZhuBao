@@ -16,11 +16,20 @@ import { LoginPage } from '../login/login';
 export class WelcomePage {
 
   constructor(private navCtrl: NavController, private settings: Settings) { 
-    this.checkLoginToken();
+    this.settings.getValue("LOGIN_SETTING")
+      .then(res => {
+        // 仅在自动登录设置时，执行自动登录
+        if (res && !!res.autoLogin) {
+          this.checkLoginToken();
+        } else {
+          this.navCtrl.push(LoginPage);
+        }
+      }, err=>{}).catch(ex => {});
   }
 
   checkLoginToken() {
-    this.settings.getValue("ACCOUNT_AUTH_TOKEN").then((res)=>{
+    this.settings.getValue("AUTH_TOKEN")
+      .then((res) => {
       if (res) {
         this.navCtrl.push(TabsPage);
       } else {
