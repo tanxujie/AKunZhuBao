@@ -27,6 +27,7 @@ export class Api {
     this.settings.getValue('AUTH_TOKEN').then(resp => {
       params['authToken'] = resp;
     });*/
+    params['authToken'] = this.settings.getValue('AUTH_TOKEN');
     // Support easy query params for GET requests
     if (params) {
       let p = new URLSearchParams();

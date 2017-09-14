@@ -15,16 +15,17 @@ import { LoginPage } from '../login/login';
 })
 export class WelcomePage {
 
-  constructor(private navCtrl: NavController, private settings: Settings) { 
-    this.settings.getValue("LOGIN_SETTING")
-      .then(res => {
+  constructor(private navCtrl: NavController, private settings: Settings) {
+    this.settings.load().then(()=>{ 
+    let res = this.settings.getValue("LOGIN_SETTING");
+      //if(res) {
         // 仅在自动登录设置时，执行自动登录
         if (res && !!res.autoLogin) {
           this.checkLoginToken();
         } else {
           this.navCtrl.push(LoginPage);
         }
-      }, err=>{}).catch(ex => {});
+      });
   }
 
   checkLoginToken() {

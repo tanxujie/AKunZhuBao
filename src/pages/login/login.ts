@@ -30,13 +30,12 @@ export class LoginPage {
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
     });
-    this.settings.getValue("LOGIN_SETTING").then(res => {
-      if (res && !!res.rememberPassword) {
+    let res = this.settings.getValue("LOGIN_SETTING");
+    if (res && !!res.rememberPassword) {
         this.phoneNumber = res.phoneNumber;
         this.password = res.password;
         this.rememberPassword = true;
-      }
-    }, err=>{console.log(err);});
+    }
   }
 
   // Attempt to login in through our User service
