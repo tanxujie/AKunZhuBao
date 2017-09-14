@@ -4,6 +4,7 @@ import { Product } from '../../models/product';
 import { ProductPair } from '../../models/productpair';
 import { ProductDetailPage } from '../product-detail/product-detail';
 import { ProductProvider } from '../../providers/product/product';
+import { ListCategoryPage } from '../list-category/list-category';
 /**
  * Generated class for the ListProductPage page.
  *
@@ -184,6 +185,10 @@ export class ListProductPage {
       this.orderDirection = 'DESC';
     }
     this.doSearch({condition : this.condition });
+  }
+  
+  showcategory() {
+    this.navCtrl.push(ListCategoryPage);
   }
 
   private doSearch(params?: any) {
