@@ -23,10 +23,10 @@
       <ion-col>手机号</ion-col>
       <ion-col>微信</ion-col>
     </ion-row>
-    <ion-row *ngFor="let cp of currentProducts">
-      <ion-col>姓名/登录</ion-col>
-      <ion-col>手机号</ion-col>
-      <ion-col>微信</ion-col>
+    <ion-row *ngFor="let agent of currentAgents">
+      <ion-col>{{ agent.name }}</ion-col>
+      <ion-col>{{ agent.phoneNumber }}</ion-col>
+      <ion-col>{{ agent.wechatNumber }}</ion-col>
     </ion-row>
   </ion-list>
 </ion-content>

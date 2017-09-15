@@ -59,6 +59,7 @@ export class MySettingPage {
   }
 
   logout() {
-    this.navCtrl.push(LoginPage);
+    //this.navCtrl.push(LoginPage);
+    this.navCtrl.first();
   }
 }

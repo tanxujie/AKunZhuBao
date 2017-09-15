@@ -1,0 +1,33 @@
+<!--
+  Generated template for the AgenteditPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>代理</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-list no-lines>
+    <ion-item>
+      <ion-icon name="phone-portrait"></ion-icon>
+      <ion-input type="tel" placeholder="请输入手机号" [(ngModel)]="phoneNumber"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="person"></ion-icon>
+      <ion-input type="text" placeholder="请输入姓名" [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="chatbubbles"></ion-icon>
+      <ion-input type="text" placeholder="请输入微信号" [(ngModel)]="wechatNumber" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>注意：密码和手机号默认一致</ion-label>
+    </ion-item>
+    <ion-item>
+      <button ion-button full (click)="addAgent()">追加代理</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

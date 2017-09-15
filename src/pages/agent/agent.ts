@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, Loading } from 'ionic-angular';
 import { AgentProvider } from '../../providers/agent/agent';
+import { AgenteditPage } from '../agentedit/agentedit';
 import { Agent } from '../../models/agent';
 /**
  * Generated class for the AgentPage page.
@@ -17,14 +18,18 @@ export class AgentPage {
   currentAgents: Agent[] = [];
   condition: string = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public loadingCtrl: LoadingController,  public agentProvider: AgentProvider) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public loadingCtrl: LoadingController,  
+    public agentProvider: AgentProvider) {
   }
 
   ionViewDidLoad() {
   }
 
   openAgent() {
-
+    this.navCtrl.push(AgenteditPage);
   }
 
   search(event:any) {

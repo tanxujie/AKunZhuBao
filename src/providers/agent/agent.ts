@@ -16,7 +16,11 @@ export class AgentProvider {
     //console.log('Hello AgentProvider Provider');
   }
 
-    query(params?: any) {
+  query(params?: any) {
     return this.api.get('app/user/searchLowerAgents', params).map(resp => resp.json());
+  }
+
+  save(params?: any) {
+    return this.api.post('app/user/saveLowerAgent', params).map(resp => resp.json());
   }
 }
