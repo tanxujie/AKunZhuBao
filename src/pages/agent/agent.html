@@ -5,25 +5,28 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar color="primary">
     <ion-title text-center>代理</ion-title>
+    <ion-buttons end>
+      <button ion-button small round (click)="openAgent()">开户</button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
-  <form>
-    <!--
-    <ion-searchbar debounce="600" (ionInput)="" placeholder="搜索代理"></ion-searchbar>
-    -->
-  </form>
+    <form>
+      <ion-searchbar [(ngModel)]="condition" [ngModelOptions]="{standalone: true}" (ionCancel)="search($event)"> placeholder="搜索代理"></ion-searchbar>
+      <button style="visibility:hidden;width:0%;height:0%;" ion-button (click)="search($event)"></button>
+    </form>
   <ion-list text-center>
   	<ion-row>
       <ion-col>姓名/登录</ion-col>
       <ion-col>手机号</ion-col>
       <ion-col>微信</ion-col>
-  	</ion-row>
+    </ion-row>
+    <ion-row *ngFor="let cp of currentProducts">
+      <ion-col>姓名/登录</ion-col>
+      <ion-col>手机号</ion-col>
+      <ion-col>微信</ion-col>
+    </ion-row>
   </ion-list>
 </ion-content>

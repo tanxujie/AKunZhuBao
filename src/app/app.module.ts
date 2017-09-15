@@ -49,6 +49,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ProductProvider } from '../providers/product/product';
 import { MicroClassProvider } from '../providers/micro-class/micro-class';
+import { AgentProvider } from '../providers/agent/agent';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -139,7 +140,8 @@ export function provideSettings(storage: Storage) {
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ProductProvider,
-    MicroClassProvider
+    MicroClassProvider,
+    AgentProvider
   ]
 })
 export class AppModule { }
