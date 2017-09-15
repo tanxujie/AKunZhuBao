@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Settings } from '../../providers/settings';
 
 /**
  * Generated class for the SelfInformationPage page.
@@ -13,11 +14,19 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class SelfInformationPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  phoneNumber:string;
+  aliasName: string;
+  wechatNumber: string;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private settings: Settings) {
+    let vals = settings.getValue("LOGIN_ACCOUNT");
+    if (vals) {
+      this.phoneNumber = vals.phoneNumber;
+      this.aliasName = vals.wechatNumber;
+      this.wechatNumber = vals.wechatNumber;
+    }
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SelfInformationPage');
+    //console.log('ionViewDidLoad SelfInformationPage');
   }
-
 }
