@@ -24,11 +24,9 @@ export class MySettingPage {
   accountNo: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public callNumber: CallNumber) {
-    this.accountNo = '12345678';
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MySettingPage');
   }
 
   openMyself() {

@@ -15,9 +15,9 @@ export class Settings {
   }
 
   load() {
-    return this.storage.get(this.SETTINGS_KEY).then((value) => {
-      if (value) {
-        this.settings = value;
+    return this.storage.get(this.SETTINGS_KEY).then((val) => {
+      if (val) {
+        this.settings = val;
       } else {
         this.settings = {};
       }

@@ -16,9 +16,9 @@ import { LoginPage } from '../login/login';
 export class WelcomePage {
 
   constructor(private navCtrl: NavController, private settings: Settings) {
-    this.settings.load().then(()=>{ 
-    let res = this.settings.getValue("LOGIN_SETTING");
-      //if(res) {
+    this.navCtrl.push(TabsPage);
+    /*this.settings.load().then(()=>{ 
+      this.settings.getValue("LOGIN_SETTING").then((res)=>{
         // 仅在自动登录设置时，执行自动登录
         if (res && !!res.autoLogin) {
           this.checkLoginToken();
@@ -26,6 +26,7 @@ export class WelcomePage {
           this.navCtrl.push(LoginPage);
         }
       });
+    });*/
   }
 
   checkLoginToken() {
