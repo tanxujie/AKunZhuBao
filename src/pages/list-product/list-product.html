@@ -11,7 +11,7 @@
       <button style="visibility:hidden;width:0%;height:0%;" ion-button (click)="search($event)"></button>
     </form>
     <ion-buttons end>
-      <button ion-button small round>{{ 'CATEGORY_TITLE' | translate }}</button>
+      <button ion-button small round (click)="showcategory()">{{ 'CATEGORY_TITLE' | translate }}</button>
     </ion-buttons>
   </ion-navbar>
   <ion-navbar>
