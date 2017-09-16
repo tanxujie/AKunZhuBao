@@ -53,7 +53,9 @@
       {{'BABY_INNER_DETAIL' | translate}}
     </p>
     <p>
+      <font color="#f53d3d">
       {{currentProduct.innerDetail}}
+      </font>
     </p>
     <ion-card class="card" *ngFor="let imgSrc of currentProduct.imageSrcs">
       <img [src]="imgSrc" style="width:auto;height:auto;"/>
