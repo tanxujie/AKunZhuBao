@@ -18,7 +18,6 @@ export class LoginPage {
   password: string;
   rememberPassword:boolean;
   autoLogin: boolean;
-
   // Our translated text strings
   private loginErrorString: string;
 
@@ -61,22 +60,6 @@ export class LoginPage {
           };
           this.settings.setAll(values);
           this.navCtrl.push(MainPage);
-          /*
-          this.settings.load().then(()=>{
-            if (!!this.rememberPassword) {
-              let rememberInfo = {
-                rememberPassword: true,
-                phoneNumber: this.phoneNumber,
-                password: this.password
-              };
-              this.settings.setValue("ACCOUNT_REMEMBER_INFO", rememberInfo);
-            } else {
-              this.settings.clear();
-            }
-            this.settings.setValue("ACCOUNT_AUTH_TOKEN", res.data);
-            this.navCtrl.push(MainPage);
-          }, err=>console.log(err));
-          */
         } else {
           this.settings.clear();
           this._showLoginFailure();

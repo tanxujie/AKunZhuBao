@@ -9,6 +9,8 @@ import { AboutPage } from '../about/about';
 import { SelfSettingsPage } from '../self-settings/self-settings';
 import { LoginPage } from '../login/login';
 import { AgentProvider } from '../../providers/agent/agent';
+import { Settings } from '../../providers/settings';
+import { Api } from '../../providers/api';
 
 /**
  * Generated class for the MySettingPage page.
@@ -21,20 +23,27 @@ import { AgentProvider } from '../../providers/agent/agent';
   templateUrl: 'my-setting.html',
 })
 export class MySettingPage {
-
   lowerAgentCount: number = 0;
-  accountNo: string;
+  accountId: number = 0;
+  accountPhoneNumber: string;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     public callNumber: CallNumber,
-    public agentProvider: AgentProvider) {
+    public agentProvider: AgentProvider,
+    public settings: Settings, 
+    public api: Api) {
+      let accountInfo = this.settings.getValue("LOGIN_ACCOUNT");
+      if (accountInfo) {
+        this.accountId = accountInfo.id;
+        this.accountPhoneNumber = accountInfo.phoneNumber;
+      }
   }
 
   ionViewWillEnter() {
     // get lower-agent count
     let params = {
-      supperAgentId: 1
+      supperAgentId: this.accountId
     };
     this.agentProvider.count(params).subscribe((resp)=>{
       if (resp&& resp.success) {
@@ -76,7 +85,12 @@ export class MySettingPage {
   }
 
   logout() {
-    //this.navCtrl.push(LoginPage);
-    this.navCtrl.first();
+    let authToken = this.settings.getValue("AUTH_TOKEN");
+    this.api.get('/app/logout', {authToken: authToken}).map(r=>r.json()).subscribe((res)=>{
+      if (res && res.success) {
+        this.settings.clear();
+        this.navCtrl.push(LoginPage);
+      }
+    }, err=>console.log(err));
   }
 }

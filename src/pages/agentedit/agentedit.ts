@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AgentProvider } from '../../providers/agent/agent';
 import { AgentPage } from '../agent/agent';
-
+import { Settings } from '../../providers/settings';
 /**
  * Generated class for the AgenteditPage page.
  *
@@ -15,11 +15,19 @@ import { AgentPage } from '../agent/agent';
 })
 export class AgenteditPage {
 
+  accountId: number;
   phoneNumber: string;
   wechatNumber: string;
   name: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public agentProvider: AgentProvider) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              public agentProvider: AgentProvider,
+              public settings: Settings) {
+    let accountInfo = this.settings.getValue("LOGIN_ACCOUNT");
+      if (accountInfo) {
+        this.accountId = accountInfo.id;
+    }
   }
 
   ionViewDidLoad() {
@@ -27,6 +35,7 @@ export class AgenteditPage {
 
   addAgent() {
     let params = {
+      superAgentId: this.accountId,
       phoneNumber: this.phoneNumber,
       wechatNumber: this.wechatNumber,
       name: this.name

@@ -5,7 +5,6 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar color="primary">
     <ion-title text-center>个人信息</ion-title>
   </ion-navbar>
@@ -21,8 +20,8 @@
     </ion-item>
   </ion-list>
   <ion-list no-lines>
-    <ion-item detail-none><ion-label>昵称:</ion-label>{{aliasName}}</ion-item>
-    <ion-item detail-none><ion-label>微信</ion-label>{{wechatNumber}}</ion-item>
+    <ion-item detail-none><ion-label>姓名: {{name}}</ion-label></ion-item>
+    <ion-item detail-none><ion-label>微信: {{wechatNumber}}</ion-label></ion-item>
     <button ion-item detail-none>密码修改</button>
   </ion-list>
   <ion-list no-lines>
