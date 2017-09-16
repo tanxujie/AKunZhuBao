@@ -23,16 +23,21 @@ export class AgentPage {
     public navParams: NavParams,
     public loadingCtrl: LoadingController,  
     public agentProvider: AgentProvider) {
+      //this.search();
+  }
+
+  ionViewWillEnter() {
+    this.search();
   }
 
   ionViewDidLoad() {
   }
 
-  openAgent() {
+  public openAgent() {
     this.navCtrl.push(AgenteditPage);
   }
 
-  search(event:any) {
+  public search(event?:any) {
     let params = {
       supperAgentId: 1,
       condition: this.condition

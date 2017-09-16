@@ -8,6 +8,7 @@ import { CompanyInfoPage } from '../company-info/company-info';
 import { AboutPage } from '../about/about';
 import { SelfSettingsPage } from '../self-settings/self-settings';
 import { LoginPage } from '../login/login';
+import { AgentProvider } from '../../providers/agent/agent';
 
 /**
  * Generated class for the MySettingPage page.
@@ -21,9 +22,25 @@ import { LoginPage } from '../login/login';
 })
 export class MySettingPage {
 
+  lowerAgentCount: number = 0;
   accountNo: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public callNumber: CallNumber) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public callNumber: CallNumber,
+    public agentProvider: AgentProvider) {
+  }
+
+  ionViewWillEnter() {
+    // get lower-agent count
+    let params = {
+      supperAgentId: 1
+    };
+    this.agentProvider.count(params).subscribe((resp)=>{
+      if (resp&& resp.success) {
+        this.lowerAgentCount = resp.data;
+      }
+    }, err=> console.log(err));
   }
 
   ionViewDidLoad() {

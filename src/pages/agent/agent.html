@@ -14,7 +14,7 @@
 </ion-header>
 <ion-content padding>
     <form>
-      <ion-searchbar [(ngModel)]="condition" [ngModelOptions]="{standalone: true}" (ionCancel)="search($event)"> placeholder="搜索代理"></ion-searchbar>
+      <ion-searchbar [(ngModel)]="condition" [ngModelOptions]="{standalone: true}" showCancelButton="true" cancelButtonText="取消" (ionCancel)="search($event)"> placeholder="搜索代理"></ion-searchbar>
       <button style="visibility:hidden;width:0%;height:0%;" ion-button (click)="search($event)"></button>
     </form>
   <ion-list text-center>

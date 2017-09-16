@@ -20,6 +20,10 @@ export class AgentProvider {
     return this.api.get('app/user/searchLowerAgents', params).map(resp => resp.json());
   }
 
+  count(params?: any) {
+    return this.api.get('app/user/getLowerAgentCount', params).map(resp => resp.json());
+  }
+
   save(params?: any) {
     return this.api.post('app/user/saveLowerAgent', params).map(resp => resp.json());
   }
