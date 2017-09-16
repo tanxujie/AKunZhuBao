@@ -8,9 +8,9 @@ import 'rxjs/add/operator/map';
  */
 @Injectable()
 export class Api {
-  //private url: string = 'http://192.168.1.102:8080';
+  private url: string = 'http://192.168.1.102:8080';
   //private url: string = 'http://123.56.11.216:80';
-  private url: string = 'http://www.akunzhubao.com';
+  //private url: string = 'http://www.akunzhubao.com';
 
   constructor(public http: Http, private settings: Settings) {
   }
@@ -20,14 +20,12 @@ export class Api {
       options = new RequestOptions();
     }
 
-    /*if (!params) {
+    if (!params) {
       params = {};
-    }*/
-    /*
-    this.settings.getValue('AUTH_TOKEN').then(resp => {
-      params['authToken'] = resp;
-    });*/
-    //params['authToken'] = this.settings.getValue('AUTH_TOKEN');
+    }
+    if ('app/login' !== endpoint) {
+      params['authToken'] = this.settings.getValue('AUTH_TOKEN');
+    }
     // Support easy query params for GET requests
     if (params) {
       let p = new URLSearchParams();
@@ -42,10 +40,12 @@ export class Api {
   }
 
   post(endpoint: string, body: any, options?: RequestOptions) {
+    body['authToken'] = this.settings.getValue('AUTH_TOKEN');
     return this.http.post(this.url + '/' + endpoint, body, options);
   }
 
   put(endpoint: string, body: any, options?: RequestOptions) {
+    body['authToken'] = this.settings.getValue('AUTH_TOKEN');
     return this.http.put(this.url + '/' + endpoint, body, options);
   }
 
@@ -54,6 +54,7 @@ export class Api {
   }
 
   patch(endpoint: string, body: any, options?: RequestOptions) {
+    body['authToken'] = this.settings.getValue('AUTH_TOKEN');
     return this.http.put(this.url + '/' + endpoint, body, options);
   }
 }

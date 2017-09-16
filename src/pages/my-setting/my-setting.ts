@@ -10,6 +10,7 @@ import { SelfSettingsPage } from '../self-settings/self-settings';
 import { LoginPage } from '../login/login';
 import { AgentProvider } from '../../providers/agent/agent';
 import { Settings } from '../../providers/settings';
+import { Api } from '../../providers/api';
 
 /**
  * Generated class for the MySettingPage page.
@@ -30,7 +31,8 @@ export class MySettingPage {
     public navParams: NavParams, 
     public callNumber: CallNumber,
     public agentProvider: AgentProvider,
-    public settings: Settings) {
+    public settings: Settings, 
+    public api: Api) {
       let accountInfo = this.settings.getValue("LOGIN_ACCOUNT");
       if (accountInfo) {
         this.accountId = accountInfo.id;
@@ -83,8 +85,12 @@ export class MySettingPage {
   }
 
   logout() {
-    this.settings.clear();
-    this.navCtrl.push(LoginPage);
-    //this.navCtrl.first();
+    let authToken = this.settings.getValue("AUTH_TOKEN");
+    this.api.get('/app/logout', {authToken: authToken}).map(r=>r.json()).subscribe((res)=>{
+      if (res && res.success) {
+        this.settings.clear();
+        this.navCtrl.push(LoginPage);
+      }
+    }, err=>console.log(err));
   }
 }
