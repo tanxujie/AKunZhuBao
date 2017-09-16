@@ -3,6 +3,7 @@ import { NavController, NavParams, LoadingController, Loading } from 'ionic-angu
 import { AgentProvider } from '../../providers/agent/agent';
 import { AgenteditPage } from '../agentedit/agentedit';
 import { Agent } from '../../models/agent';
+import { Settings } from '../../providers/settings';
 /**
  * Generated class for the AgentPage page.
  *
@@ -15,6 +16,7 @@ import { Agent } from '../../models/agent';
 })
 export class AgentPage {
 
+  accountId: number;
   currentAgents: Agent[] = [];
   condition: string = '';
 
@@ -22,8 +24,12 @@ export class AgentPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public loadingCtrl: LoadingController,  
-    public agentProvider: AgentProvider) {
-      //this.search();
+    public agentProvider: AgentProvider,
+    public settings: Settings) {
+      let accountInfo = this.settings.getValue("LOGIN_ACCOUNT");
+      if (accountInfo) {
+        this.accountId = accountInfo.id;
+      }
   }
 
   ionViewWillEnter() {
@@ -39,7 +45,7 @@ export class AgentPage {
 
   public search(event?:any) {
     let params = {
-      supperAgentId: 1,
+      supperAgentId: this.accountId,
       condition: this.condition
     };
     this.doSearch(params);
