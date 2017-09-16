@@ -34,6 +34,8 @@ export class ListProductPage {
   subCondition: string = '';
   subOrderBy: string = '';
 
+  arrowIcon: string = '';
+
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
@@ -161,8 +163,10 @@ export class ListProductPage {
     this.orderBy = 'ex_factory_price';
     if (this.orderDirection == '' || this.orderDirection == 'DESC') {
       this.orderDirection = 'ASC';
+      this.arrowIcon = 'arrow-up';
     } else {
       this.orderDirection = 'DESC';
+      this.arrowIcon = 'arrow-down';
     }
     this.doSearch({condition : this.condition });
   }
