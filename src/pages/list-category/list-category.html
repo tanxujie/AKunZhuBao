@@ -15,16 +15,16 @@
   	  <h2><button ion-button round outline small>手串</button></h2>
   	</ion-item>
   	<ion-item text-wrap>
-      <ion-col><button ion-button round outline small>圆珠</button></ion-col>
-      <ion-col><button ion-button round outline small>随形</button></ion-col>
-      <ion-col><button ion-button round outline small>桶珠</button></ion-col>
-      <ion-col><button ion-button round outline small>枣珠</button></ion-col>
-      <ion-col><button ion-button round outline small>回纹珠</button></ion-col>
-      <ion-col><button ion-button round outline small>车轮珠</button></ion-col>
-      <ion-col><button ion-button round outline small>算盘珠</button></ion-col>
-      <ion-col><button ion-button round outline small>苹果珠</button></ion-col>
-      <ion-col><button ion-button round outline small>手排</button></ion-col>
-      <ion-col><button ion-button round outline small>角度珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory(2)">圆珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory(3)">随形</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory(4)">桶珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory(5)">枣珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">回纹珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">车轮珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">算盘珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">苹果珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">手排</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">角度珠</button></ion-col>
     </ion-item>
   </ion-list>
   <ion-list>
@@ -32,14 +32,14 @@
   	  <h2><button ion-button round outline small>项链</button></h2>
   	</ion-item>
   	<ion-item text-wrap>
-      <ion-col><button ion-button round outline small>圆珠</button></ion-col>
-      <ion-col><button ion-button round outline small>随形</button></ion-col>
-      <ion-col><button ion-button round outline small>桶珠</button></ion-col>
-      <ion-col><button ion-button round outline small>108颗</button></ion-col>
-      <ion-col><button ion-button round outline small>塔链</button></ion-col>
-      <ion-col><button ion-button round outline small>锁骨链</button></ion-col>
-      <ion-col><button ion-button round outline small>配链</button></ion-col>
-      <ion-col><button ion-button round outline small>角度珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">圆珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">随形</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">桶珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">108颗</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">塔链</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">锁骨链</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">配链</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">角度珠</button></ion-col>
     </ion-item>
   </ion-list>
   <ion-list>
@@ -47,13 +47,13 @@
   	  <h2><button ion-button round outline small>圆珠/桶珠</button></h2>
   	</ion-item>
   	<ion-item text-wrap>
-      <ion-col><button ion-button round outline small>苹果珠</button></ion-col>
-      <ion-col><button ion-button round outline small>圆珠</button></ion-col>
-      <ion-col><button ion-button round outline small>老型桶珠</button></ion-col>
-      <ion-col><button ion-button round outline small>天珠</button></ion-col>
-      <ion-col><button ion-button round outline small>桶珠</button></ion-col>
-      <ion-col><button ion-button round outline small>鼓珠</button></ion-col>
-      <ion-col><button ion-button round outline small>枣珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">苹果珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">圆珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">老型桶珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">天珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">桶珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">鼓珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">枣珠</button></ion-col>
     </ion-item>
   </ion-list>
   <ion-list>
@@ -61,12 +61,11 @@
   	  <h2><button ion-button round outline small>平安扣</button></h2>
   	</ion-item>
   	<ion-item text-wrap>
-      <ion-col><button ion-button round outline small>鱼眼扣</button></ion-col>
-      <ion-col><button ion-button round outline small>公主扣</button></ion-col>
-      <ion-col><button ion-button round outline small>子母扣</button></ion-col>
-      <ion-col><button ion-button round outline small>平安扣</button></ion-col>
-      <ion-col><button ion-button round outline small>面包圈</button></ion-col>
-      <ion-col><button ion-button round outline small>藏式平安扣</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">公主扣</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">子母扣</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">平安扣</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">面包圈</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">藏式平安扣</button></ion-col>
     </ion-item>
   </ion-list>
   <ion-list>
@@ -74,11 +73,11 @@
   	  <h2><button ion-button round outline small>吊坠</button></h2>
   	</ion-item>
   	<ion-item text-wrap>
-      <ion-col><button ion-button round outline small>水滴</button></ion-col>
-      <ion-col><button ion-button round outline small>随形</button></ion-col>
-      <ion-col><button ion-button round outline small>蛋面</button></ion-col>
-      <ion-col><button ion-button round outline small>镶嵌</button></ion-col>
-      <ion-col><button ion-button round outline small>柠檬片</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">水滴</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">随形</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">蛋面</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">镶嵌</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">柠檬片</button></ion-col>
     </ion-item>
   </ion-list>
   <ion-list>
@@ -86,9 +85,9 @@
   	  <h2><button ion-button round outline small>雕刻件</button></h2>
   	</ion-item>
   	<ion-item text-wrap>
-      <ion-col><button ion-button round outline small>阴雕</button></ion-col>
-      <ion-col><button ion-button round outline small>浮雕</button></ion-col>
-      <ion-col><button ion-button round outline small>立体雕</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">阴雕</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">浮雕</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">立体雕</button></ion-col>
     </ion-item>
   </ion-list>
   <ion-list>
@@ -96,10 +95,10 @@
   	  <h2><button ion-button round outline small>三通</button></h2>
   	</ion-item>
   	<ion-item text-wrap>
-      <ion-col><button ion-button round outline small>藏式</button></ion-col>
-      <ion-col><button ion-button round outline small>一体</button></ion-col>
-      <ion-col><button ion-button round outline small>圆珠</button></ion-col>
-      <ion-col><button ion-button round outline small>桶珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">藏式</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">一体</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">圆珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">桶珠</button></ion-col>
     </ion-item>
   </ion-list>
   <ion-list>
@@ -107,8 +106,8 @@
   	  <h2><button ion-button round outline small>戒指耳钉</button></h2>
   	</ion-item>
   	<ion-item text-wrap>
-      <ion-col><button ion-button round outline small>戒托</button></ion-col>
-      <ion-col><button ion-button round outline small>耳托</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">戒托</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">耳托</button></ion-col>
     </ion-item>
   </ion-list>
   <ion-list>
@@ -116,8 +115,8 @@
   	  <h2><button ion-button round outline small>佛珠配饰</button></h2>
   	</ion-item>
   	<ion-item text-wrap>
-      <ion-col><button ion-button round outline small>背云</button></ion-col>
-      <ion-col><button ion-button round outline small>隔片</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">背云</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">隔片</button></ion-col>
     </ion-item>
   </ion-list>
   <ion-list>
@@ -125,11 +124,11 @@
   	  <h2><button ion-button round outline small>老蜜蜡</button></h2>
   	</ion-item>
   	<ion-item text-wrap>
-      <ion-col><button ion-button round outline small>枣珠</button></ion-col>
-      <ion-col><button ion-button round outline small>桶珠</button></ion-col>
-      <ion-col><button ion-button round outline small>平安扣</button></ion-col>
-      <ion-col><button ion-button round outline small>圆珠</button></ion-col>
-      <ion-col><button ion-button round outline small>苹果珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">枣珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">桶珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">平安扣</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">圆珠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">苹果珠</button></ion-col>
     </ion-item>
   </ion-list>
   <ion-list>
@@ -137,7 +136,7 @@
   	  <h2><button ion-button round outline small>无事牌</button></h2>
   	</ion-item>
   	<ion-item text-wrap>
-      <ion-col><button ion-button round outline small>无事牌</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">无事牌</button></ion-col>
     </ion-item>
   </ion-list>
   <ion-list>
@@ -145,7 +144,7 @@
   	  <h2><button ion-button round outline small>手镯</button></h2>
   	</ion-item>
   	<ion-item text-wrap>
-      <ion-col><button ion-button round outline small>手镯</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">手镯</button></ion-col>
     </ion-item>
   </ion-list>
   <ion-list>
@@ -153,7 +152,7 @@
   	  <h2><button ion-button round outline small>车挂</button></h2>
   	</ion-item>
   	<ion-item text-wrap>
-      <ion-col><button ion-button round outline small>车挂</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">车挂</button></ion-col>
     </ion-item>
   </ion-list>
   <ion-list>
@@ -161,7 +160,7 @@
   	  <h2><button ion-button round outline small>翡翠</button></h2>
   	</ion-item>
   	<ion-item text-wrap>
-      <ion-col><button ion-button round outline small>翡翠</button></ion-col>
+      <ion-col><button ion-button round outline small (click)="openByMinorCategory()">翡翠</button></ion-col>
     </ion-item>
   </ion-list>
 </ion-content>

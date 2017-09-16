@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { ListCategoryProductPage } from '../list-category-product/list-category-product';
 
 /**
  * Generated class for the ListCategoryPage page.
@@ -17,7 +18,13 @@ export class ListCategoryPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListCategoryPage');
   }
 
+  openByMajorCategory(id:number) {
+    this.navCtrl.push(ListCategoryProductPage, { majorCategoryId: id});
+  }
+
+  openByMinorCategory(id:number) {
+    this.navCtrl.push(ListCategoryProductPage, { minorCategoryId: id});
+  }
 }
