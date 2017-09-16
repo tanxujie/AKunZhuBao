@@ -11,6 +11,7 @@ import { LoginPage } from '../login/login';
 import { AgentProvider } from '../../providers/agent/agent';
 import { Settings } from '../../providers/settings';
 import { Api } from '../../providers/api';
+import { App } from 'ionic-angular';  
 
 /**
  * Generated class for the MySettingPage page.
@@ -32,7 +33,8 @@ export class MySettingPage {
     public callNumber: CallNumber,
     public agentProvider: AgentProvider,
     public settings: Settings, 
-    public api: Api) {
+    public api: Api,
+    private app:App) {
       let accountInfo = this.settings.getValue("LOGIN_ACCOUNT");
       if (accountInfo) {
         this.accountId = accountInfo.id;
@@ -89,7 +91,8 @@ export class MySettingPage {
     this.api.get('/app/logout', {authToken: authToken}).map(r=>r.json()).subscribe((res)=>{
       if (res && res.success) {
         this.settings.clear();
-        this.navCtrl.push(LoginPage);
+        this.app.getRootNav().push(LoginPage);
+        //this.navCtrl.push(LoginPage);
       }
     }, err=>console.log(err));
   }
