@@ -86,4 +86,13 @@ export class User {
   _loggedIn(resp) {
     this._user = resp.user;
   }
+
+  modifyPassword(userId:number, oldPassword: string, newPassword: string) {
+    let params = {
+      userId: userId,
+      oldPassword: oldPassword,
+      newPassword: newPassword
+    };
+    return this.api.post('app/modifyPassword', params).map(resp => resp.json());
+  }
 }

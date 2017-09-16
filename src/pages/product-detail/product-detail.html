@@ -49,6 +49,12 @@
   </div>
   <p style="background-color:#f53d3d;color:#f4f4f4;">图片</p>
   <div>
+    <p>
+      {{'BABY_INNER_DETAIL' | translate}}
+    </p>
+    <p>
+      {{currentProduct.innerDetail}}
+    </p>
     <ion-card class="card" *ngFor="let imgSrc of currentProduct.imageSrcs">
       <img [src]="imgSrc" style="width:auto;height:auto;"/>
     </ion-card>

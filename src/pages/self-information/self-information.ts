@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Settings } from '../../providers/settings';
+import { PasswordeditPage } from '../passwordedit/passwordedit';
 
 /**
  * Generated class for the SelfInformationPage page.
@@ -29,5 +30,9 @@ export class SelfInformationPage {
   }
 
   ionViewDidLoad() {
+  }
+
+  openPasswordEdit() {
+    this.navCtrl.push(PasswordeditPage);
   }
 }

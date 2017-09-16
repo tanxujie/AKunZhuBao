@@ -28,12 +28,13 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
 import { WelcomePage } from '../pages/welcome/welcome';
+import { PasswordeditPage } from '../pages/passwordedit/passwordedit';
 
 import { Api } from '../providers/api';
 //import { Items } from '../mocks/providers/items';
 //import { Items } from '../providers/items';
 import { Settings } from '../providers/settings';
-//import { User } from '../providers/user';
+import { User } from '../providers/user';
 
 import { Camera } from '@ionic-native/camera';
 import { GoogleMaps } from '@ionic-native/google-maps';
@@ -89,7 +90,8 @@ export function provideSettings(storage: Storage) {
     LoginPage,
     SignupPage,
     TabsPage,
-    WelcomePage
+    WelcomePage,
+    PasswordeditPage
   ],
   imports: [
     BrowserModule,
@@ -125,7 +127,8 @@ export function provideSettings(storage: Storage) {
     LoginPage,
     SignupPage,
     TabsPage,
-    WelcomePage
+    WelcomePage,
+    PasswordeditPage
   ],
   providers: [
     Api,
@@ -144,7 +147,8 @@ export function provideSettings(storage: Storage) {
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ProductProvider,
     MicroClassProvider,
-    AgentProvider
+    AgentProvider,
+    User
   ]
 })
 export class AppModule { }
