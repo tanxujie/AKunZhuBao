@@ -22,7 +22,7 @@
   <ion-list no-lines>
     <ion-item detail-none><ion-label>姓名: {{name}}</ion-label></ion-item>
     <ion-item detail-none><ion-label>微信: {{wechatNumber}}</ion-label></ion-item>
-    <button ion-item detail-none>密码修改</button>
+    <button ion-item detail-none (click)="openPasswordEdit()">密码修改</button>
   </ion-list>
   <ion-list no-lines>
     <button ion-item detail-none>身份认证</button>

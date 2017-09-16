@@ -18,6 +18,7 @@ export class Product {
     priceRangeFrom: string;
     priceRangeTo: string;
     circleRation: string;
+    innerDetail: string;
 
     // image src
     imageSrc: string;
@@ -52,6 +53,7 @@ export class Product {
             this.imageSrcs = params['imageSrcs'] || '';
             this.hasVideo = params['hasVideo'];
             this.videoSrc = params['videoSrc']||'';
+            this.innerDetail = params['innerDetail']||'';
         }
     }
 }
