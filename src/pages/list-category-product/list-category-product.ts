@@ -44,6 +44,8 @@ export class ListCategoryProductPage {
 
   doRefresh(refresher) {
     let p: any = {
+      majorCategoryId: this.majorCategoryId,
+      minorCategoryId: this.minorCategoryId,
       orderBy: this.orderBy,
       orderDirection: this.orderDirection
     };
@@ -54,6 +56,8 @@ export class ListCategoryProductPage {
 
   doInfinite(infiniteScroll) {
     let p: any = {
+      majorCategoryId: this.majorCategoryId,
+      minorCategoryId: this.minorCategoryId,
       orderBy: this.orderBy,
       orderDirection: this.orderDirection,
       page: this.page + 1
