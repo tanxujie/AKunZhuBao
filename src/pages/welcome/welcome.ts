@@ -16,31 +16,31 @@ import { LoginPage } from '../login/login';
 export class WelcomePage {
 
   constructor(private navCtrl: NavController, private settings: Settings) {
-    this.navCtrl.push(TabsPage);
-    /*this.settings.load().then(()=>{ 
-      this.settings.getValue("LOGIN_SETTING").then((res)=>{
+    //this.navCtrl.push(TabsPage);
+    this.settings.load().then(()=>{ 
+      let res = this.settings.getValue("LOGIN_SETTING");
         // 仅在自动登录设置时，执行自动登录
         if (res && !!res.autoLogin) {
           this.checkLoginToken();
         } else {
           this.navCtrl.push(LoginPage);
         }
-      });
-    });*/
+     // });
+    });
   }
 
   checkLoginToken() {
-    this.settings.getValue("AUTH_TOKEN")
-      .then((res) => {
+    let res = this.settings.getValue("AUTH_TOKEN")
+      //.then((res) => {
       if (res) {
         this.navCtrl.push(TabsPage);
       } else {
         this.settings.clear();
         this.navCtrl.push(LoginPage);
       }
-    }, err=>{ 
+    /*}, err=>{ 
         this.settings.clear();
         this.navCtrl.push(LoginPage);
-    });
+    });*/
   }
 }

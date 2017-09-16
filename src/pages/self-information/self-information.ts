@@ -13,20 +13,21 @@ import { Settings } from '../../providers/settings';
   templateUrl: 'self-information.html',
 })
 export class SelfInformationPage {
-
+  name: string;
   phoneNumber:string;
   aliasName: string;
   wechatNumber: string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private settings: Settings) {
-    let vals = settings.getValue("LOGIN_ACCOUNT");
-    if (vals) {
-      this.phoneNumber = vals.phoneNumber;
-      this.aliasName = vals.wechatNumber;
-      this.wechatNumber = vals.wechatNumber;
+    let accountInfo = settings.getValue("LOGIN_ACCOUNT");
+    if (accountInfo) {
+      this.name = accountInfo.name;
+      this.phoneNumber = accountInfo.phoneNumber;
+      this.aliasName = accountInfo.wechatNumber;
+      this.wechatNumber = accountInfo.wechatNumber;
     }
   }
 
   ionViewDidLoad() {
-    //console.log('ionViewDidLoad SelfInformationPage');
   }
 }

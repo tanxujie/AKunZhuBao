@@ -7,11 +7,9 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class Settings {
   private SETTINGS_KEY: string = '_settings';
-
   settings: any;
 
   constructor(public storage: Storage) {
-    //this.load();
   }
 
   load() {
