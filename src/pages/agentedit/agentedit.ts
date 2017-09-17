@@ -54,7 +54,18 @@ export class AgenteditPage {
         this.name = '';
         this.phoneNumber = '';
         this.wechatNumber = '';
-        this._showMessage(resp.data);
+        let alert = this.alertController.create({
+          title: "提示",
+          subTitle: resp.data,
+          buttons: [{
+            text: 'OK',
+            handler: ()=>{
+              this.navCtrl.pop();
+            }
+          }]
+        });
+        alert.present();
+        //this._showMessage(resp.data);
         /*if (!!resp.success) {
           this.navCtrl.pop();
         }*/
