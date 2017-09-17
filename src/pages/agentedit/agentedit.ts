@@ -35,6 +35,14 @@ export class AgenteditPage {
   }
 
   public saveAgent() {
+    if (!this.phoneNumber) {
+      this._showMessage("请输入手机号码");
+      return;
+    }
+    if (!this.name) {
+      this._showMessage("请输入姓名");
+      return;
+    }
     let params = {
       superAgentId: this.accountId,
       phoneNumber: this.phoneNumber,
