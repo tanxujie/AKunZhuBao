@@ -51,6 +51,9 @@ export class AgenteditPage {
     };
     this.agentProvider.save(params).subscribe((resp)=>{
       if (resp) {
+        this.name = '';
+        this.phoneNumber = '';
+        this.wechatNumber = '';
         this._showMessage(resp.data);
         /*if (!!resp.success) {
           this.navCtrl.pop();
