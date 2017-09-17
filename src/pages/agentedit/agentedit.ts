@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { AgentProvider } from '../../providers/agent/agent';
 import { AgentPage } from '../agent/agent';
 import { Settings } from '../../providers/settings';
@@ -23,26 +23,43 @@ export class AgenteditPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
               public agentProvider: AgentProvider,
-              public settings: Settings) {
+              public settings: Settings,
+            public alertController: AlertController) {
     let accountInfo = this.settings.getValue("LOGIN_ACCOUNT");
-      if (accountInfo) {
-        this.accountId = accountInfo.id;
+    if (accountInfo) {
+      this.accountId = accountInfo.id;
     }
   }
 
   ionViewDidLoad() {
   }
 
-  addAgent() {
+  public saveAgent() {
     let params = {
       superAgentId: this.accountId,
       phoneNumber: this.phoneNumber,
       wechatNumber: this.wechatNumber,
       name: this.name
     };
-    this.agentProvider.save(params).subscribe(()=>{
-      //this.navCtrl.push(AgentPage);
-      this.navCtrl.pop();
+    this.agentProvider.save(params).subscribe((resp)=>{
+      if (resp) {
+        this._showMessage(resp.data);
+        /*if (!!resp.success) {
+          this.navCtrl.pop();
+        }*/
+      }
     }, err=>console.log(err));
+  }
+
+  /*
+  * 显示消息
+  */
+  private _showMessage(msg: string) {
+    let alert = this.alertController.create({
+        title: "提示",
+        subTitle: msg,
+        buttons: ['OK']
+    });
+    alert.present();
   }
 }

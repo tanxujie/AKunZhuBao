@@ -60,7 +60,7 @@ export class PasswordeditPage {
     }, err=> console.log(err));
   }
 
-    /*
+  /*
   * 显示消息
   */
   private _showMessage(msg: string) {
