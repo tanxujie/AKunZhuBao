@@ -73,8 +73,8 @@ export class LoginPage {
   private _showLoginFailure() {
     let toast = this.toastCtrl.create({
         message: this.loginErrorString,
-        duration: 3000,
-        position: 'middle'
+        duration: 5000,
+        position: 'bottom'
       });
     toast.present();
   }

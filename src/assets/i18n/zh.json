@@ -44,7 +44,7 @@
   "WELCOME_TITLE": "欢迎",
 
   "LOGIN_TITLE": "登录",
-  "LOGIN_ERROR": "不能登录。请确认账户信息再次登录。",
+  "LOGIN_ERROR": "登录失败。请确认账户信息再次登录。",
   "LOGIN_BUTTON": "登录",
   "SIGNUP_TITLE": "注册",
   "SIGNUP_ERROR": "不能生成账号。 请确认账户信息后重试。",
