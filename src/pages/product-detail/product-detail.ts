@@ -153,7 +153,8 @@ export class ProductDetailPage {
       imgCnt = this.currentProduct.imageSrcs.length;
     }
     // copy product code, name and description to clipboard
-    slf.clipboard.copy("【" + slf.currentProduct.code + "】:" + (slf.currentProduct.name||'') + (slf.currentProduct.description||''));
+    slf.clipboard.copy("【编号】：" + slf.currentProduct.code + "\r\n【说明】:" + (slf.currentProduct.name||'') 
+      + "\r\n【出厂价】：" + (slf.currentProduct.exFactoryPrice));
     if (activeIdx < imgCnt) {
       Wechat.share({
         message: {
@@ -197,7 +198,8 @@ export class ProductDetailPage {
       imgCnt = this.currentProduct.imageSrcs.length;
     }
     // copy product code, name and description to clipboard
-    slf.clipboard.copy("【" + slf.currentProduct.code + "】:" + (slf.currentProduct.name||'') + (slf.currentProduct.description||''));
+    slf.clipboard.copy("【编号】：" + slf.currentProduct.code + "\r\n【说明】:" + (slf.currentProduct.name||'') 
+      + "\r\n【出厂价】：" + (slf.currentProduct.exFactoryPrice));
     if (activeIdx < imgCnt) {
       Wechat.share({
         message: {
