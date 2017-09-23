@@ -7,33 +7,33 @@
 <ion-header>
   <ion-navbar color="primary">
     <form>
-      <ion-searchbar [(ngModel)]="condition" [ngModelOptions]="{standalone: true}" showCancelButton="true" cancelButtonText="取消" (ionCancel)="search($event)"> placeholder="{{'SERACH_BABY' | translate }}"></ion-searchbar>
+      <ion-searchbar [(ngModel)]="condition" [ngModelOptions]="{standalone: true}" showCancelButton="true" cancelButtonText="取消" (ionCancel)="search($event)"> placeholder="搜索宝贝"></ion-searchbar>
       <button style="visibility:hidden;width:0%;height:0%;" ion-button (click)="search($event)"></button>
     </form>
     <ion-buttons end>
-      <button ion-button small round (click)="showcategory()">{{ 'CATEGORY_TITLE' | translate }}</button>
+      <button ion-button small round (click)="showcategory()">分类</button>
     </ion-buttons>
   </ion-navbar>
   <ion-navbar>
     <ion-toolbar>
       <ion-segment color="primary" [(ngModel)]="subCondition">
-        <ion-segment-button value="newProduct" (ionSelect)="selectNewProduct()">{{'NEW_PRODUCT' | translate}}</ion-segment-button>
-        <ion-segment-button value="handOn" (ionSelect)="selectHandOn()">{{'HAND_ON' | translate}}</ion-segment-button>
-        <ion-segment-button value="waterDrop" (ionSelect)="selectWaterDrop()">{{'WATER_DROP' | translate}}</ion-segment-button>
-        <ion-segment-button value="nothingCards" (ionSelect)="selectNothingCards()">{{'NOTHING_CARDS' | translate}}</ion-segment-button>
-        <ion-segment-button value="products108" (ionSelect)="select108Product()">{{'108PRODUCTS' | translate}}</ion-segment-button>
-        <ion-segment-button value="engraving" (ionSelect)="selectEngraving()">{{'ENGRAVING' | translate}}</ion-segment-button>
+        <ion-segment-button value="newProduct" (ionSelect)="selectNewProduct()">新品</ion-segment-button>
+        <ion-segment-button value="handOn" (ionSelect)="selectHandOn()">手串</ion-segment-button>
+        <ion-segment-button value="waterDrop" (ionSelect)="selectWaterDrop()">水滴</ion-segment-button>
+        <ion-segment-button value="nothingCards" (ionSelect)="selectNothingCards()">无事牌</ion-segment-button>
+        <ion-segment-button value="products108" (ionSelect)="select108Product()">108产品</ion-segment-button>
+        <ion-segment-button value="engraving" (ionSelect)="selectEngraving()">雕刻件</ion-segment-button>
       </ion-segment>
     </ion-toolbar>
     <ion-toolbar>
       <ion-segment color="primary" [(ngModel)]="subOrderBy">
-        <ion-segment-button value="default" (ionSelect)="selectDefault()">{{'ORDERBY_DEFAULT' | translate}}</ion-segment-button>
+        <ion-segment-button value="default" (ionSelect)="selectDefault()">默认</ion-segment-button>
         <ion-segment-button value="price" (ionSelect)="selectPrice()">
-          {{'ORDERBY_PRICE' | translate}}
+          价格
           <ion-icon [name]="arrowIcon"></ion-icon>
         </ion-segment-button>
-        <ion-segment-button value="popularity" (ionSelect)="selectPopularity()">{{'ORDERBY_POPULARITY' | translate}}</ion-segment-button>
-        <ion-segment-button value="priceRange" (ionSelect)="selectPriceRange()">{{'PRICE_RANGE' | translate}}</ion-segment-button>
+        <ion-segment-button value="popularity" (ionSelect)="selectPopularity()">人气</ion-segment-button>
+        <ion-segment-button value="priceRange" (ionSelect)="selectPriceRange()">价格区间</ion-segment-button>
       </ion-segment>
     </ion-toolbar>
   </ion-navbar>

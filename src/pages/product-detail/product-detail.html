@@ -6,9 +6,9 @@
 -->
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title text-center>{{ 'PRODUCT_DETAIL_TITLE' | translate }}</ion-title>
+    <ion-title text-center>产品详情</ion-title>
     <ion-buttons end>
-      <button ion-button small ion-end (click)="shareImages()"><ion-icon name="share"></ion-icon>{{'SHARE_BUTTON'|translate}}</button>
+      <button ion-button small ion-end (click)="shareImages()"><ion-icon name="share"></ion-icon>分享</button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -29,25 +29,25 @@
   <div>
     【{{currentProduct.code}}】{{currentProduct.name}}
     <p>
-      {{'EX_FACTORY_PRICE'|translate}} : {{currentProduct.exFactoryPrice}}
+      出厂价 : {{currentProduct.exFactoryPrice}}
     </p>
     <p>
-      {{'FAVORABLE_PRICE'|translate}} : {{currentProduct.favorablePrice}}
+      优惠价 : {{currentProduct.favorablePrice}}
     </p>
   </div>
   <p style="background-color:#f53d3d;color:#f4f4f4;">购买方式</p>
   <div>
     <p>
-      {{'PHONE_NUMBER' | translate }}: {{currentProduct.phoneNumber}}
+      电话: {{currentProduct.phoneNumber}}
     </p>
     <p>
-      {{'WECHAT_NUMBER' | translate}}:{{currentProduct.wechatNumber}}
+      微信:{{currentProduct.wechatNumber}}
     </p>
   </div>
   <p style="background-color:#f53d3d;color:#f4f4f4;">图片</p>
   <div>
     <p>
-      {{'BABY_INNER_DETAIL' | translate}}
+      宝贝详情：
     </p>
     <p>
       <font color="#f53d3d">

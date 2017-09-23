@@ -7,26 +7,26 @@
         </div>
       </ion-item>
       <ion-item>
-        <ion-input type="tel" [(ngModel)]="phoneNumber" name="phoneNumber" maxlength="11" placeholder="{{ 'PHONENUMBER' | translate }}"></ion-input>
+        <ion-input type="tel" [(ngModel)]="phoneNumber" name="phoneNumber" maxlength="11" placeholder="手机号码"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="password" [(ngModel)]="password" name="password" placeholder="{{ 'PASSWORD' | translate }}"></ion-input>
+        <ion-input type="password" [(ngModel)]="password" name="password" placeholder="密码"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label fixed>{{ 'REMEMBER_PASSWORD' | translate }}</ion-label>
+        <ion-label fixed>记住密码</ion-label>
         <ion-checkbox name="rememberPassword" checked="true" [(ngModel)]="rememberPassword"></ion-checkbox>
       </ion-item>
       <ion-item>
-        <ion-label fixed>{{ 'AUTO_LOGIN' | translate }}</ion-label>
+        <ion-label fixed>自动登录</ion-label>
         <ion-checkbox name="autoLogin" checked="true" [(ngModel)]="autoLogin"></ion-checkbox>
       </ion-item>
       <!--
       <ion-item>
-        <a href="">{{ 'FORGET_PASSWORD' | translate }}</a>
+        <a href="">忘记密码?</a>
       </ion-item>
       -->
       <div padding>
-        <button ion-button color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
+        <button ion-button color="primary" block>登录</button>
       </div>
     </ion-list>
   </form>
