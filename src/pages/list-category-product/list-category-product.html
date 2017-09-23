@@ -9,10 +9,10 @@
  </ion-navbar>
   <ion-toolbar end>
     <ion-segment color="primary" [(ngModel)]="subOrderBy">
-      <ion-segment-button value="default" (ionSelect)="selectDefault()">{{'ORDERBY_DEFAULT' | translate}}</ion-segment-button>
-      <ion-segment-button value="price" (ionSelect)="selectPrice()">{{'ORDERBY_PRICE' | translate}}</ion-segment-button>
-      <ion-segment-button value="popularity" (ionSelect)="selectPopularity()">{{'ORDERBY_POPULARITY' | translate}}</ion-segment-button>
-      <ion-segment-button value="priceRange" (ionSelect)="selectPriceRange()">{{'PRICE_RANGE' | translate}}</ion-segment-button>
+      <ion-segment-button value="default" (ionSelect)="selectDefault()">默认</ion-segment-button>
+      <ion-segment-button value="price" (ionSelect)="selectPrice()">价格</ion-segment-button>
+      <ion-segment-button value="popularity" (ionSelect)="selectPopularity()">人气</ion-segment-button>
+      <ion-segment-button value="priceRange" (ionSelect)="selectPriceRange()">价格区间</ion-segment-button>
     </ion-segment>
   </ion-toolbar>
 </ion-header>
