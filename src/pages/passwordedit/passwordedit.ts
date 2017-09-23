@@ -38,7 +38,7 @@ export class PasswordeditPage {
       return;
     }
     if (!this.newPasswordConfirm) {
-      this._showMessage('请输入确认新密码');
+      this._showMessage('请输入新密码确认');
       return;
     }
     if (this.newPassword !== this.newPasswordConfirm) {
