@@ -104,7 +104,7 @@ export class ProductDetailPage {
   }
 
   private downloadImagesAndVideo() {
-    //let slf = this;
+    let slf = this;
     this.photoLibrary.requestAuthorization({read: true, write: true}).then(() => {
       // download images
       if (this.currentProduct.imageSrcs && this.currentProduct.imageSrcs.length > 0) {
@@ -112,6 +112,10 @@ export class ProductDetailPage {
           this.photoLibrary.saveImage(imgSrc, '阿坤珠宝');
         }
       }
+
+      // copy product code, name and description to clipboard
+      slf.clipboard.copy("【编号】：" + slf.currentProduct.code + "\r\n【说明】:" + (slf.currentProduct.name||'') 
+        + "\r\n【出厂价】：" + (slf.currentProduct.exFactoryPrice));
 
       // download video
       this.fileTransfer.download(this.currentProduct.videoSrc, this.file.tempDirectory + "AKunZhuBao.mp4")
