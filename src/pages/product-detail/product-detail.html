@@ -35,15 +35,6 @@
       优惠价 : {{currentProduct.favorablePrice}}
     </p>
   </div>
-  <p style="background-color:#f53d3d;color:#f4f4f4;">购买方式</p>
-  <div>
-    <p>
-      电话: {{currentProduct.phoneNumber}}
-    </p>
-    <p>
-      微信:{{currentProduct.wechatNumber}}
-    </p>
-  </div>
   <p style="background-color:#f53d3d;color:#f4f4f4;">图片</p>
   <div>
     <p>
@@ -57,12 +48,5 @@
     <ion-card class="card" *ngFor="let imgSrc of currentProduct.imageSrcs">
       <img [src]="imgSrc" style="width:auto;height:auto;"/>
     </ion-card>
-    <!--
-    <ion-card *ngIf="currentProduct.hasVideo" style="width:auto; height:450px;">
-    <video controls>
-      <source type="video/mp4" src="{{currentProduct.videoSrc}}"/>
-    </video>
-    </ion-card>
-  -->
   </div>
 </ion-content>
