@@ -69,24 +69,29 @@ export class MicroclassvideoDetailPage {
     this.photoLibrary.requestAuthorization({read: true, write: true}).then(() => {
       //let fileTransfer: FileTransferObject = this.transfer.create();
       // cdvfile://localhost/persistent/img/AKunZhuBao.mp4
-      this.fileTransfer.download(this.currentMicroClassVideo.videoSrc, this.file.tempDirectory + "AKunZhuBao.mp4")
-        .then((entry) => {
-          let fileUrl = entry.toURL();
-          this.photoLibrary.saveVideo(fileUrl, '阿坤珠宝').then(()=>{
-            // remove file
-            this.file.removeFile(this.file.tempDirectory, "AKunZhuBao.mp4")
-              .then(()=>console.log("Remove-Video succeeded."), (err)=> console.log("Remove-Video failed. Caused By : " + err));
-            this._showMessage("视频已下载到本地相册'阿坤珠宝'");
-            // jump to wechat
-            let url = "weixin://";
-            Wechat.jumpToWechat(url, function(){}, function(){
-              this._showMessage("跳转微信失败");
+      if (this.currentMicroClassVideo.videoSrc) {
+        this.fileTransfer.download(this.currentMicroClassVideo.videoSrc, this.file.tempDirectory + "AKunZhuBao.mp4")
+          .then((entry) => {
+            let fileUrl = entry.toURL();
+            this.photoLibrary.saveVideo(fileUrl, '阿坤珠宝').then(()=>{
+              // remove file
+              this.file.removeFile(this.file.tempDirectory, "AKunZhuBao.mp4")
+                .then(()=>console.log("Remove-Video succeeded."), (err)=> console.log("Remove-Video failed. Caused By : " + err));
+              this._showMessage("视频已下载到本地相册'阿坤珠宝'");
+              // jump to wechat
+              let url = "weixin://";
+              Wechat.jumpToWechat(url, function(){}, function(){
+                this._showMessage("跳转微信失败");
+              });
+            }, (err)=>{
+              this._showMessage("视频已下载失败");
             });
-          }, (err)=>{
-            this._showMessage("视频已下载失败");
-          });
-        }, 
-        (err)=>{ console.log("Download-Video failed. Caused By : " + err);});
+          }, 
+          (err)=>{ console.log("Download-Video failed. Caused By : " + err);}
+        );
+      } else {
+        this._showMessage("视频不存在，下载失败。");
+      }
     }).catch((err) => console.log("Save Video URL: " + this.currentMicroClassVideo.videoSrc + "; Caused by : " + err));
   }
 
