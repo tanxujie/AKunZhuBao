@@ -3,7 +3,7 @@ import { PhotoLibrary } from '@ionic-native/photo-library';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { Clipboard } from '@ionic-native/clipboard';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { ActionSheetController, Slides } from 'ionic-angular';
 import { Product } from '../../models/product';
 // WeChat plugin global variable
@@ -31,7 +31,8 @@ export class ProductDetailPage {
               private file: File, 
               private clipboard: Clipboard,
               private alertController: AlertController,
-              private actionSheetCtrl: ActionSheetController) {
+              private actionSheetCtrl: ActionSheetController,
+              public loadingCtrl: LoadingController) {
     this.currentProduct = navParams.get('product');
     this.fileTransfer = this.transfer.create();
   }
@@ -106,6 +107,14 @@ export class ProductDetailPage {
   private downloadImagesAndVideo() {
     let slf = this;
     this.photoLibrary.requestAuthorization({read: true, write: true}).then(() => {
+      // start downloading
+      let loading = this.loadingCtrl.create({
+        spinner: 'bubbles',
+        content: '正在下载...',
+        dismissOnPageChange: true,
+        showBackdrop: true
+      });
+      loading.present();
       // copy product code, name and description to clipboard
       slf.clipboard.copy("【编号】：" + slf.currentProduct.code + "\r\n【说明】:" + (slf.currentProduct.name||'') 
         + "\r\n【出厂价】：" + (slf.currentProduct.exFactoryPrice));
@@ -128,7 +137,7 @@ export class ProductDetailPage {
               // remove file
               this.file.removeFile(this.file.tempDirectory, 'AKunZhuBao.mp4')
                 .then(()=>console.log('Remove-Video succeeded.'), (err)=> console.log('Remove-Video failed. Caused By : ' + err));
-              this._showMessage("视频已下载到本地相册'阿坤珠宝'");
+              this._showMessage("图片视频已下载到本地相册");
               Wechat.jumpToWechat("weixin://", function(){}, function(){ this._showMessage('跳转微信失败');});
             }, ()=>{
               this._showMessage('视频已下载失败');
@@ -140,9 +149,11 @@ export class ProductDetailPage {
 
       if (len > 0 || this.currentProduct.hasVideo) {
         setTimeout(function(){
+          // end downloading
+          loading.dismiss();
           let alert = slf.alertController.create({
             title: "提示",
-            subTitle: "图片已下载到相册'阿坤珠宝'",
+            subTitle: "图片已下载到本地相册",
             buttons: [{
               text: 'OK',
               handler: ()=> {
@@ -153,7 +164,7 @@ export class ProductDetailPage {
             }]
           });
           alert.present();
-        }, 1500);
+        }, 5000);
       }
     }).catch(err => console.log("Save Images&Video failed. Caused By : " + err));
   }
@@ -165,6 +176,7 @@ export class ProductDetailPage {
     if (this.currentProduct.imageSrcs && this.currentProduct.imageSrcs.length) {
       imgCnt = this.currentProduct.imageSrcs.length;
     }
+
     // copy product code, name and description to clipboard
     slf.clipboard.copy("【编号】：" + slf.currentProduct.code + "\r\n【说明】:" + (slf.currentProduct.name||'') 
       + "\r\n【出厂价】：" + (slf.currentProduct.exFactoryPrice));
