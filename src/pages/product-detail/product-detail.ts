@@ -116,8 +116,7 @@ export class ProductDetailPage {
       });
       loading.present();
       // copy product code, name and description to clipboard
-      slf.clipboard.copy("【编号】：" + slf.currentProduct.code + "\r\n【说明】:" + (slf.currentProduct.name||'') 
-        + "\r\n【出厂价】：" + (slf.currentProduct.exFactoryPrice));
+      slf.clipboard.copy(slf.currentProduct.name||'');
 
       // download images
       let i = 0; 
@@ -178,8 +177,7 @@ export class ProductDetailPage {
     }
 
     // copy product code, name and description to clipboard
-    slf.clipboard.copy("【编号】：" + slf.currentProduct.code + "\r\n【说明】:" + (slf.currentProduct.name||'') 
-      + "\r\n【出厂价】：" + (slf.currentProduct.exFactoryPrice));
+    slf.clipboard.copy(slf.currentProduct.name||'');
     if (activeIdx < imgCnt) {
       Wechat.share({
         message: {
@@ -223,8 +221,7 @@ export class ProductDetailPage {
       imgCnt = this.currentProduct.imageSrcs.length;
     }
     // copy product code, name and description to clipboard
-    slf.clipboard.copy("【编号】：" + slf.currentProduct.code + "\r\n【说明】:" + (slf.currentProduct.name||'') 
-      + "\r\n【出厂价】：" + (slf.currentProduct.exFactoryPrice));
+    slf.clipboard.copy(slf.currentProduct.name||'');
     if (activeIdx < imgCnt) {
       Wechat.share({
         message: {
