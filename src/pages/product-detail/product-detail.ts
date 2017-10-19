@@ -106,6 +106,7 @@ export class ProductDetailPage {
 
   private downloadImagesAndVideo() {
     let slf = this;
+    slf.clipboard.copy(slf.currentProduct.name||'');
     this.photoLibrary.requestAuthorization({read: true, write: true}).then(() => {
       // start downloading
       let loading = this.loadingCtrl.create({
@@ -116,7 +117,7 @@ export class ProductDetailPage {
       });
       loading.present();
       // copy product code, name and description to clipboard
-      slf.clipboard.copy(slf.currentProduct.name||'');
+      //slf.clipboard.copy(slf.currentProduct.name||'');
 
       // download images
       let i = 0; 
@@ -137,7 +138,7 @@ export class ProductDetailPage {
               this.file.removeFile(this.file.tempDirectory, 'AKunZhuBao.mp4')
                 .then(()=>console.log('Remove-Video succeeded.'), (err)=> console.log('Remove-Video failed. Caused By : ' + err));
               this._showMessage("图片视频已下载到本地相册");
-              Wechat.jumpToWechat("weixin://", function(){}, function(){ this._showMessage('跳转微信失败');});
+              //Wechat.jumpToWechat("weixin://", function(){}, function(){ this._showMessage('跳转微信失败');});
             }, ()=>{
               this._showMessage('视频已下载失败');
             });
@@ -156,14 +157,22 @@ export class ProductDetailPage {
             buttons: [{
               text: 'OK',
               handler: ()=> {
-                Wechat.jumpToWechat("weixin://", function(){}, function(){
-                  slf._showMessage('跳转微信失败');
+                Wechat.share({
+                  text: " ",
+                  scene: Wechat.Scene.TIMELINE
+                }, function () {
+                  slf._showMessage('分享朋友圈成功');
+                }, function (reason) {
+                  slf._showMessage('分享朋友圈失败');
                 });
+                /*Wechat.jumpToWechat("weixin://", function(){}, function(){
+                  slf._showMessage('跳转微信失败');
+                });*/
               }
             }]
           });
           alert.present();
-        }, 5000);
+        }, 6000);
       }
     }).catch(err => console.log("Save Images&Video failed. Caused By : " + err));
   }
