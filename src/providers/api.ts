@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 export class Api {
   //private url: string = 'http://192.168.1.102:8080';
   //private url: string = 'http://123.56.11.216:80';
-  private url: string = 'http://www.akunzhubao.com:8989';
+  private url: string = 'http://www.akunzhubao.com';
 
   constructor(public http: Http, private settings: Settings) {
   }
