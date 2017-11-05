@@ -12,7 +12,7 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
+<ion-content padding overflow-scroll="true">
   <ion-slides pager style="height:65%;">
     <ion-list *ngFor="let imgSrc of currentProduct.imageSrcs">
         <ion-slide>
@@ -26,8 +26,10 @@
     </ion-slide>
   </ion-slides>
   <p style="background-color:#f53d3d;color:#f4f4f4;">商品信息</p>
-  <div>
+  <div class="selectable">
     【{{currentProduct.code}}】{{currentProduct.name}}
+  </div>
+  <div>
     <p>
       出厂价 : {{currentProduct.exFactoryPrice}}
     </p>

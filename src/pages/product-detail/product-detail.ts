@@ -108,12 +108,12 @@ export class ProductDetailPage {
 
   private downloadImagesAndVideo() {
     let slf = this;
-    slf.clipboard.copy(slf.currentProduct.name||'');
+    //slf.clipboard.copy(slf.currentProduct.name||'');
 
     // download images
     // let files: string[] = new Array();
-    // let i = 0;
-    // let len = 0;
+    let i = 0;
+    let len = 0;
     // if (this.currentProduct.imageSrcs && this.currentProduct.imageSrcs.length > 0) {
     //   len = this.currentProduct.imageSrcs.length;
     //   for (; i < len; i++) {
@@ -126,11 +126,15 @@ export class ProductDetailPage {
     //     });;
     //   }
     // }
+    // let files: string[] = new Array;
+    // for (let i = 0, len = this.currentProduct.imageSrcs.length; i < len; i++) {
+    //   files.push(this.currentProduct.imageSrcs[i]);
+    // }
     // let options = {
-    //   message: slf.currentProduct.name||'',
-    //   subject: '图片分享 ',
+    //   //message: slf.currentProduct.name||'',
+    //   //subject: '图片分享 ',
     //   files: files,
-    //   url: 'weixin://'
+    //   url: 'weixin://dl/moments'
     // };
     // let onSuccess = function(result) {
     //   alert('分享成功');
@@ -139,75 +143,76 @@ export class ProductDetailPage {
     //   alert('分享失败');
     // };
     
-    //this.socialSharing.shareWithOptions(options).then(onSuccess, onError);
-    this.socialSharing.share((slf.currentProduct.name||''), '', this.currentProduct.imageSrcs, 'weixin://');
+    // this.socialSharing.shareWithOptions(options).then(onSuccess, onError);
+    //this.socialSharing.share((slf.currentProduct.name||''), '', this.currentProduct.imageSrcs, 'weixin://');
 
-    // this.photoLibrary.requestAuthorization({read: true, write: true}).then(() => {
-    //   // start downloading
-    //   let loading = this.loadingCtrl.create({
-    //     spinner: 'bubbles',
-    //     content: '正在下载...',
-    //     dismissOnPageChange: true,
-    //     showBackdrop: true
-    //   });
-    //   loading.present();
+    this.photoLibrary.requestAuthorization({read: true, write: true}).then(() => {
+      // start downloading
+      let loading = this.loadingCtrl.create({
+        spinner: 'bubbles',
+        content: '正在下载...',
+        dismissOnPageChange: true,
+        showBackdrop: true
+      });
+      loading.present();
 
-    //   // download images
-    //   let i = 0; 
-    //   let len = 0;
-    //   if (this.currentProduct.imageSrcs && this.currentProduct.imageSrcs.length > 0) {
-    //     len = this.currentProduct.imageSrcs.length;
-    //     for (; i < len; i++) {
-    //       this.photoLibrary.saveImage(this.currentProduct.imageSrcs[i], '阿坤珠宝');
-    //     }
-    //   }
+      // download images
+      let i = 0; 
+      let len = 0;
+      if (this.currentProduct.imageSrcs && this.currentProduct.imageSrcs.length > 0) {
+        len = this.currentProduct.imageSrcs.length;
+        for (; i < len; i++) {
+          this.photoLibrary.saveImage(this.currentProduct.imageSrcs[i], '阿坤珠宝');
+        }
+      }
 
-    //   // download video
-    //   if (this.currentProduct.hasVideo) {
-    //     this.fileTransfer.download(this.currentProduct.videoSrc, this.file.tempDirectory + "AKunZhuBao.mp4")
-    //       .then((entry)=>{
-    //         this.photoLibrary.saveVideo(entry.toURL(), '阿坤珠宝').then(()=>{
-    //           // remove file
-    //           this.file.removeFile(this.file.tempDirectory, 'AKunZhuBao.mp4')
-    //             .then(()=>console.log('Remove-Video succeeded.'), (err)=> console.log('Remove-Video failed. Caused By : ' + err));
-    //           //this._showMessage("图片视频已下载到本地相册");
-    //           //Wechat.jumpToWechat("weixin://", function(){}, function(){ this._showMessage('跳转微信失败');});
-    //         }, ()=>{
-    //           this._showMessage('视频已下载失败');
-    //         });
-    //       }, (err)=>{
-    //         console.log("FileTransfer Download failed. Caused by : " + err);
-    //       }).catch((err)=>{ console.log("FileTransfer Download failed. Caused by : " + err); });
-    //   }
+      // download video
+      if (this.currentProduct.hasVideo) {
+        this.fileTransfer.download(this.currentProduct.videoSrc, this.file.tempDirectory + "AKunZhuBao.mp4")
+          .then((entry)=>{
+            this.photoLibrary.saveVideo(entry.toURL(), '阿坤珠宝').then(()=>{
+              // remove file
+              this.file.removeFile(this.file.tempDirectory, 'AKunZhuBao.mp4')
+                .then(()=>console.log('Remove-Video succeeded.'), (err)=> console.log('Remove-Video failed. Caused By : ' + err));
+              //this._showMessage("图片视频已下载到本地相册");
+              //Wechat.jumpToWechat("weixin://", function(){}, function(){ this._showMessage('跳转微信失败');});
+            }, ()=>{
+              this._showMessage('视频已下载失败');
+            });
+          }, (err)=>{
+            console.log("FileTransfer Download failed. Caused by : " + err);
+          }).catch((err)=>{ console.log("FileTransfer Download failed. Caused by : " + err); });
+      }
 
-    //   if (len > 0 || this.currentProduct.hasVideo) {
-    //     setTimeout(function(){
-    //       // end downloading
-    //       loading.dismiss();
-    //       let alert = slf.alertController.create({
-    //         title: "提示",
-    //         subTitle: "图片已下载到本地相册",
-    //         buttons: [{
-    //           text: 'OK',
-    //           handler: ()=> {
-    //             /*Wechat.share({
-    //               text: " ",
-    //               scene: Wechat.Scene.TIMELINE
-    //             }, function () {
-    //               slf._showMessage('分享朋友圈成功');
-    //             }, function (reason) {
-    //               slf._showMessage('分享朋友圈失败');
-    //             });*/
-    //             Wechat.jumpToWechat("weixin://", function(){}, function(){
-    //               slf._showMessage('跳转微信失败');
-    //             });
-    //           }
-    //         }]
-    //       });
-    //       alert.present();
-    //     }, 6000);
-    //   }
-    // }).catch(err => console.log("Save Images&Video failed. Caused By : " + err));
+      if (len > 0 || this.currentProduct.hasVideo) {
+        setTimeout(function(){
+          // end downloading
+          loading.dismiss();
+          let alert = slf.alertController.create({
+            title: "提示",
+            subTitle: "图片已下载到本地相册，请选择并复制黏贴商品信息",
+            buttons: [{
+              text: 'OK',
+              handler: ()=> {
+                /*Wechat.share({
+                  text: " ",
+                  scene: Wechat.Scene.TIMELINE
+                }, function () {
+                  slf._showMessage('分享朋友圈成功');
+                }, function (reason) {
+                  slf._showMessage('分享朋友圈失败');
+                });*/
+                //slf.clipboard.copy(slf.currentProduct.name||'');
+                // Wechat.jumpToWechat("weixin://", function(){}, function(){
+                //   slf._showMessage('跳转微信失败');
+                // });
+              }
+            }]
+          });
+          alert.present();
+        }, 7000);
+      }
+    }).catch(err => console.log("Save Images&Video failed. Caused By : " + err));
   }
 
   private _shareWXTimeLine() {
