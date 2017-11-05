@@ -46,7 +46,7 @@ import { PhotoLibrary } from '@ionic-native/photo-library';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { Clipboard } from '@ionic-native/clipboard';
-
+import { SocialSharing } from '@ionic-native/social-sharing';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ProductProvider } from '../providers/product/product';
@@ -138,6 +138,7 @@ export function provideSettings(storage: Storage) {
     StatusBar,
     StreamingMedia,
     CallNumber,
+    SocialSharing,
     PhotoLibrary,
     File,
     FileTransfer,
