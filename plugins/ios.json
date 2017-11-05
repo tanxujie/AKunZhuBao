@@ -47,6 +47,12 @@
         },
         "cordova-clipboard": {
             "PACKAGE_NAME": "com.akunzhubao"
+        },
+        "cordova-plugin-x-socialsharing": {
+            "PACKAGE_NAME": "com.akunzhubao.mobile"
+        },
+        "cordova-plugin-disable-ios11-statusbar": {
+            "PACKAGE_NAME": "com.akunzhubao.mobile"
         }
     },
     "dependent_plugins": {
@@ -55,6 +61,9 @@
         },
         "cordova-plugin-add-swift-support": {
             "PACKAGE_NAME": "com.akunzhubao"
+        },
+        "es6-promise-plugin": {
+            "PACKAGE_NAME": "com.akunzhubao.mobile"
         }
     }
 }
