@@ -116,8 +116,6 @@ export class ProductDetailPage {
         showBackdrop: true
       });
       loading.present();
-      // copy product code, name and description to clipboard
-      //slf.clipboard.copy(slf.currentProduct.name||'');
 
       // download images
       let i = 0; 
@@ -137,7 +135,7 @@ export class ProductDetailPage {
               // remove file
               this.file.removeFile(this.file.tempDirectory, 'AKunZhuBao.mp4')
                 .then(()=>console.log('Remove-Video succeeded.'), (err)=> console.log('Remove-Video failed. Caused By : ' + err));
-              this._showMessage("图片视频已下载到本地相册");
+              //this._showMessage("图片视频已下载到本地相册");
               //Wechat.jumpToWechat("weixin://", function(){}, function(){ this._showMessage('跳转微信失败');});
             }, ()=>{
               this._showMessage('视频已下载失败');
@@ -157,17 +155,17 @@ export class ProductDetailPage {
             buttons: [{
               text: 'OK',
               handler: ()=> {
-                Wechat.share({
+                /*Wechat.share({
                   text: " ",
                   scene: Wechat.Scene.TIMELINE
                 }, function () {
                   slf._showMessage('分享朋友圈成功');
                 }, function (reason) {
                   slf._showMessage('分享朋友圈失败');
-                });
-                /*Wechat.jumpToWechat("weixin://", function(){}, function(){
-                  slf._showMessage('跳转微信失败');
                 });*/
+                Wechat.jumpToWechat("weixin://", function(){}, function(){
+                  slf._showMessage('跳转微信失败');
+                });
               }
             }]
           });
