@@ -17,7 +17,7 @@ import { ListCategoryPage } from '../list-category/list-category';
 })
 export class ListCategoryProductPage {
   currentProducts: ProductPair[] = [];
-  page: number = 0;
+  page: number = 1;
   orderBy: string = '';
   orderDirection: string = '';
   subOrderBy: string = '';
@@ -31,7 +31,7 @@ export class ListCategoryProductPage {
     this.majorCategoryId = navParams.get('majorCategoryId');
     this.minorCategoryId = navParams.get('minorCategoryId');
     this.subOrderBy = 'default';
-    this.page = 0;
+    this.page = 1;
     this.doSearch();
   }
 
@@ -50,7 +50,7 @@ export class ListCategoryProductPage {
       orderDirection: this.orderDirection
     };
     this.pdProvider.query(p).subscribe(
-      data => { refresher.complete();this.resolve(data);}, 
+      data => { refresher.complete();this.resolve(data); this.page = 1;}, 
       err => { refresher.complete();this.reject(err);});
   }
 
@@ -60,7 +60,7 @@ export class ListCategoryProductPage {
       minorCategoryId: this.minorCategoryId,
       orderBy: this.orderBy,
       orderDirection: this.orderDirection,
-      page: this.page + 1
+      currentPage: this.page + 1
     };
     this.pdProvider.query(p).subscribe(
       data => { infiniteScroll.complete();this.resolveInfiniteScroll(data);}, 
