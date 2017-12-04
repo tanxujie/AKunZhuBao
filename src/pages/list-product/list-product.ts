@@ -72,7 +72,7 @@ export class ListProductPage {
       orderDirection: this.orderDirection
     };
     this.pdProvider.query(p).subscribe(
-      data => { refresher.complete();this.resolve(data);}, 
+      data => { refresher.complete();this.resolve(data);this.page = 0;}, 
       err => { refresher.complete();this.reject(err);});
   }
 
@@ -86,7 +86,7 @@ export class ListProductPage {
       engraving: this.engraving,
       orderBy: this.orderBy,
       orderDirection: this.orderDirection,
-      page: this.page + 1
+      currentPage: this.page + 1
     };
     this.pdProvider.query(p).subscribe(
       data => { infiniteScroll.complete();this.resolveInfiniteScroll(data);}, 
