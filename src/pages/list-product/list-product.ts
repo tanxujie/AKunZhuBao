@@ -18,7 +18,7 @@ import { ListCategoryPage } from '../list-category/list-category';
 export class ListProductPage {
 
   currentProducts: ProductPair[] = [];
-  page: number = 0;
+  page: number = 1;
   condition: string = '';
 
   newProduct: boolean = false; // default is true
@@ -44,7 +44,7 @@ export class ListProductPage {
     this.subCondition = 'newProduct';
     this.newProduct = true;
     this.subOrderBy = 'default';
-    this.page = 0;
+    this.page = 1;
     this.condition = '';
     this.doSearch();
   }
@@ -72,7 +72,7 @@ export class ListProductPage {
       orderDirection: this.orderDirection
     };
     this.pdProvider.query(p).subscribe(
-      data => { refresher.complete();this.resolve(data);this.page = 0;}, 
+      data => { refresher.complete();this.resolve(data);this.page = 1;}, 
       err => { refresher.complete();this.reject(err);});
   }
 
