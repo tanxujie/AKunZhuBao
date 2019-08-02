@@ -203,9 +203,9 @@ export class ProductDetailPage {
                   slf._showMessage('分享朋友圈失败');
                 });*/
                 //slf.clipboard.copy(slf.currentProduct.name||'');
-                // Wechat.jumpToWechat("weixin://", function(){}, function(){
-                //   slf._showMessage('跳转微信失败');
-                // });
+                 Wechat.jumpToWechat("weixin://", function(){}, function(){
+                   slf._showMessage('跳转微信失败');
+                 });
               }
             }]
           });

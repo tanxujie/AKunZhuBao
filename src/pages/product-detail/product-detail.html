@@ -26,10 +26,13 @@
     </ion-slide>
   </ion-slides>
   <p style="background-color:#f53d3d;color:#f4f4f4;">商品信息</p>
-  <div class="selectable">
-    【{{currentProduct.code}}】{{currentProduct.name}}
-  </div>
   <div>
+      【{{currentProduct.code}}】
+  </div>
+  <div class="selectable">
+    {{currentProduct.name}}
+    </div>
+    <div>
     <p>
       出厂价 : {{currentProduct.exFactoryPrice}}
     </p>
